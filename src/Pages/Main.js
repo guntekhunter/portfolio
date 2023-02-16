@@ -41,10 +41,10 @@ export default function Main() {
                 factorY={0.1}
                 className="w-[1rem]"
               >
-                <div className="border-b-[2px] border-current w-[7rem] realtive rotate-90"></div>
+                <div className="border-b-[2px] border-[#D9D9D9] w-[7rem] realtive rotate-90"></div>
               </MouseParallaxChild>
               <MouseParallaxChild factorX={0.5} factorY={0.5}>
-                <div className="border-b-[2px] border-current w-[7rem] realtive pb-[10rem] "></div>
+                <div className="border-b-[2px] border-[#D9D9D9] w-[7rem] realtive pb-[10rem] "></div>
               </MouseParallaxChild>
             </div>
             <div className="w-[20rem]">
@@ -53,26 +53,26 @@ export default function Main() {
                 factorY={0.1}
                 className="w-[1rem]"
               >
-                <div className="border-[2px] border-current w-[10rem] h-[15rem] realtive border-dashed">
+                <div className="border-[2px] border-[#D9D9D9] w-[10rem] h-[15rem] realtive border-dashed">
                   <MouseParallaxChild
                     factorX={0.1}
                     factorY={0.1}
                     className="w-[1rem]"
                   >
-                    <div className="border-b-[2px] border-current w-[7rem] realtive rotate-90"></div>
+                    <div className="border-b-[2px] border-[#D9D9D9] w-[7rem] realtive rotate-90"></div>
                   </MouseParallaxChild>
                   <MouseParallaxChild factorX={0.5} factorY={0.5}>
-                    <div className="border-b-[2px] border-current w-[7rem] realtive pb-[10rem] ml-[5rem]"></div>
+                    <div className="border-b-[2px] border-[#D9D9D9] w-[7rem] realtive pb-[10rem] ml-[5rem]"></div>
                   </MouseParallaxChild>
                 </div>
               </MouseParallaxChild>
-                  <MouseParallaxChild
-                    factorX={0.1}
-                    factorY={0.5}
-                    className="w-[1rem]"
-                  >
-                    <div className="border-b-[2px] border-current w-[7rem] realtive rotate-90 mr-[9]"></div>
-                  </MouseParallaxChild>
+              <MouseParallaxChild
+                factorX={0.1}
+                factorY={0.5}
+                className="w-[1rem]"
+              >
+                <div className="border-b-[2px] border-[#D9D9D9] w-[7rem] realtive rotate-90 mr-[9]"></div>
+              </MouseParallaxChild>
             </div>
           </MouseParallaxContainer>
         </div>
@@ -113,6 +113,77 @@ export default function Main() {
           </div>
         </div>
       </div>
+
+      {/* all the project */}
+      <section className="py-[3rem] flex">
+        <div className="container w-[100vw] h-[120vh] relative">
+          <MouseParallaxContainer
+            useWindowMouseEvents
+            className="flex w-full h-full items-center justify-around paralax"
+            globalFactorX={0.3}
+            globalFactorY={0.3}
+            resetOnLeave
+          >
+            <MouseParallaxChild
+              factorX={0.3}
+              factorY={0.3}
+              className="w-[1rem] absolute inset-[8rem] w-[20rem] hover:w-[23rem] ease-out duration-500"
+            >
+              <img
+                src="./project/1.jpg"
+                className="border-[#353435] border-dashed border-[2px]"
+              ></img>
+            </MouseParallaxChild>
+            <MouseParallaxChild
+              factorX={0.5}
+              factorY={0.5}
+              className="absolute inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem] ease-out duration-500"
+            >
+              <img
+                src="./project/2.jpg"
+                className="border-[#353435] border-dashed border-[2px]"
+              ></img>
+            </MouseParallaxChild>
+            <MouseParallaxChild
+              factorX={0.2}
+              factorY={0.2}
+              className="absolute inset-[18rem] left-[60rem] w-[15rem] hover:w-[23rem] ease-out duration-500"
+            >
+              <img
+                src="./project/3.jpg"
+                className="border-[#353435] border-dashed border-[2px]"
+              ></img>
+            </MouseParallaxChild>
+            <MouseParallaxChild
+              factorX={0.3}
+              factorY={0.4}
+              className="absolute right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem] ease-out duration-500"
+            >
+              <img
+                src="./project/4.jpg"
+                className="border-[#353435] border-dashed border-[2px]"
+              ></img>
+            </MouseParallaxChild>
+            <MouseParallaxChild
+              factorX={0.4}
+              factorY={0.6}
+              className="w-[1rem] absolute inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem] ease-out duration-500"
+            >
+              <img
+                src="./project/5.jpg"
+                className="border-[#353435] border-dashed border-[2px]"
+              ></img>
+            </MouseParallaxChild>
+            <div className="text-container h-full flex items-center justify-around text-right">
+              <div className="text-[2rem] ml-[15rem] mt-[5rem] border-b-[2px] border-[#353435]">
+                <p className="">SOME OF</p>
+                <p className="font-bold">MY WORK.</p>
+              </div>
+            </div>
+          </MouseParallaxContainer>
+        </div>
+        <div className="bg-current"></div>
+      </section>
     </div>
   );
 }
