@@ -5,6 +5,85 @@ import {
 } from "react-parallax-mouse";
 
 export default function Main() {
+  const projectList = [
+    {
+      section1: [
+        {
+          image: "./project/1.jpg",
+          class: "inset-[8rem] w-[20rem] hover:w-[23rem]",
+          factoryX: 0.1,
+          factoryY: 0.1,
+        },
+        {
+          image: "./project/2.jpg",
+          class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
+          factoryX: 0.2,
+          factoryY: 0.2,
+        },
+        {
+          image: "./project/3.jpg",
+          class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
+          factoryX: 0.2,
+          factoryY: 0.2,
+        },
+        {
+          image: "./project/4.jpg",
+          class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
+          factoryX: 0.4,
+          factoryY: 0.4,
+        },
+        {
+          image: "./project/5.jpg",
+          class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
+          factoryX: 0.3,
+          factoryY: 0.3,
+        },
+      ],
+      section2: [
+        {
+          image: "./project/1.jpg",
+          class: "inset-[8rem] w-[20rem] hover:w-[23rem]",
+          factoryX: 0.3,
+          factoryY: 0.3,
+        },
+        {
+          image: "./project/2.jpg",
+          class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
+          factoryX: 0.5,
+          factoryY: 0.5,
+        },
+        {
+          image: "./project/3.jpg",
+          class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
+          factoryX: 0.2,
+          factoryY: 0.2,
+        },
+        {
+          image: "./project/4.jpg",
+          class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
+          factoryX: 0.3,
+          factoryY: 0.4,
+        },
+        {
+          image: "./project/5.jpg",
+          class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
+          factoryX: 0.4,
+          factoryY: 0.6,
+        },
+        {
+          image: "./project/6.jpg",
+          class: "inset-[33rem] top-[17rem] w-[20rem] hover:w-[23rem]",
+          factoryX: 0.4,
+          factoryY: 0.6,
+        },
+      ],
+    },
+  ];
+
+  console.log(
+    projectList.map((item) => item.section1.map((data) => data.factorY))
+  );
+  // console.log(projectList.section1);
   return (
     <div>
       {/* navbar */}
@@ -80,16 +159,16 @@ export default function Main() {
           <div className="media-social">
             <ul className="space-y-[1rem]">
               <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-                <img src="./icon/instagram.png"></img>
+                <img alt="" src="./icon/instagram.png"></img>
               </li>
               <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-                <img src="./icon/github.png"></img>
+                <img alt="" src="./icon/github.png"></img>
               </li>
               <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-                <img src="./icon/linkedin.png"></img>
+                <img alt="" src="./icon/linkedin.png"></img>
               </li>
               <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-                <img src="./icon/twitter.png"></img>
+                <img alt="" src="./icon/twitter.png"></img>
               </li>
             </ul>
           </div>
@@ -115,75 +194,70 @@ export default function Main() {
       </div>
 
       {/* all the project */}
-      <section className="py-[3rem] flex">
-        <div className="container w-[100vw] h-[120vh] relative">
-          <MouseParallaxContainer
-            useWindowMouseEvents
-            className="flex w-full h-full items-center justify-around paralax"
-            globalFactorX={0.3}
-            globalFactorY={0.3}
-            resetOnLeave
-          >
-            <MouseParallaxChild
-              factorX={0.3}
-              factorY={0.3}
-              className="w-[1rem] absolute inset-[8rem] w-[20rem] hover:w-[23rem] ease-out duration-500"
+      <section className="py-[3rem] flex overflow-hidden hover:overflow-x-scroll">
+        <div>
+          <div className="container w-[100vw] h-[120vh] relative">
+            <MouseParallaxContainer
+              useWindowMouseEvents
+              className="flex w-full h-full items-center justify-around paralax"
+              globalFactorX={0.3}
+              globalFactorY={0.3}
+              resetOnLeave
             >
-              <img
-                src="./project/1.jpg"
-                className="border-[#353435] border-dashed border-[2px]"
-              ></img>
-            </MouseParallaxChild>
-            <MouseParallaxChild
-              factorX={0.5}
-              factorY={0.5}
-              className="absolute inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem] ease-out duration-500"
-            >
-              <img
-                src="./project/2.jpg"
-                className="border-[#353435] border-dashed border-[2px]"
-              ></img>
-            </MouseParallaxChild>
-            <MouseParallaxChild
-              factorX={0.2}
-              factorY={0.2}
-              className="absolute inset-[18rem] left-[60rem] w-[15rem] hover:w-[23rem] ease-out duration-500"
-            >
-              <img
-                src="./project/3.jpg"
-                className="border-[#353435] border-dashed border-[2px]"
-              ></img>
-            </MouseParallaxChild>
-            <MouseParallaxChild
-              factorX={0.3}
-              factorY={0.4}
-              className="absolute right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem] ease-out duration-500"
-            >
-              <img
-                src="./project/4.jpg"
-                className="border-[#353435] border-dashed border-[2px]"
-              ></img>
-            </MouseParallaxChild>
-            <MouseParallaxChild
-              factorX={0.4}
-              factorY={0.6}
-              className="w-[1rem] absolute inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem] ease-out duration-500"
-            >
-              <img
-                src="./project/5.jpg"
-                className="border-[#353435] border-dashed border-[2px]"
-              ></img>
-            </MouseParallaxChild>
-            <div className="text-container h-full flex items-center justify-around text-right">
-              <div className="text-[2rem] ml-[15rem] mt-[5rem] border-b-[2px] border-[#353435]">
-                <p className="">SOME OF</p>
-                <p className="font-bold">MY WORK.</p>
+              {projectList.map((item) =>
+                item.section1.map((data) => (
+                  <MouseParallaxChild
+                    factorX={data.factoryX}
+                    factorY={data.factoryY}
+                    className={`absolute ${data.class} ease-out duration-500`}
+                  >
+                    <img
+                      alt=""
+                      src={data.image}
+                      className="border-[#353435] border-dashed border-[2px]"
+                    ></img>
+                  </MouseParallaxChild>
+                ))
+              )}
+              <div className="text-container h-full flex items-center justify-around text-right">
+                <div className="text-[2rem] ml-[15rem] mt-[5rem] border-b-[2px] border-[#353435]">
+                  <p className="">SOME OF</p>
+                  <p className="font-bold">MY WORK.</p>
+                </div>
               </div>
-            </div>
-          </MouseParallaxContainer>
+            </MouseParallaxContainer>
+          </div>
         </div>
-        <div className="bg-current"></div>
+        <div>
+          <div className="container w-[100vw] h-[120vh] relative">
+            <MouseParallaxContainer
+              useWindowMouseEvents
+              className="flex w-full h-full items-center justify-around paralax"
+              globalFactorX={0.3}
+              globalFactorY={0.3}
+              resetOnLeave
+            >
+              {projectList.map((item) =>
+                item.section2.map((data) => (
+                  <MouseParallaxChild
+                    factorX={data.factoryX}
+                    factorY={data.factoryY}
+                    className={`absolute ${data.class} ease-out duration-500`}
+                  >
+                    <img
+                      alt=""
+                      src={data.image}
+                      className="border-[#353435] border-dashed border-[2px]"
+                    ></img>
+                  </MouseParallaxChild>
+                ))
+              )}
+            </MouseParallaxContainer>
+          </div>
+        </div>
       </section>
+
+      
     </div>
   );
 }
