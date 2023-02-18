@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   MouseParallaxContainer,
   MouseParallaxChild,
@@ -83,12 +83,15 @@ export default function Main() {
   console.log(
     projectList.map((item) => item.section1.map((data) => data.factorY))
   );
+
+  // scroll position
+
   // console.log(projectList.section1);
   return (
     <div>
       {/* navbar */}
       <div className="flex items-center justify-around text-[#353435] z-10">
-        <nav className="flex items-center justify-between w-[80%] h-[3rem] realtive">
+        <nav className="flex items-center justify-between w-[90%] h-[3rem] realtive">
           <div>
             <h1 className="font-bold text-[20px]">AGUNG</h1>
           </div>
@@ -155,7 +158,7 @@ export default function Main() {
             </div>
           </MouseParallaxContainer>
         </div>
-        <div className="sumary w-[80%] flex items-center justify-between h-[70vh] z-10">
+        <div className="sumary w-[90%] flex items-center justify-between h-[70vh] z-10">
           <div className="media-social">
             <ul className="space-y-[1rem]">
               <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
@@ -194,70 +197,157 @@ export default function Main() {
       </div>
 
       {/* all the project */}
-      <section className="py-[3rem] flex overflow-hidden hover:overflow-x-scroll">
-        <div>
-          <div className="container w-[100vw] h-[120vh] relative">
-            <MouseParallaxContainer
-              useWindowMouseEvents
-              className="flex w-full h-full items-center justify-around paralax"
-              globalFactorX={0.3}
-              globalFactorY={0.3}
-              resetOnLeave
-            >
-              {projectList.map((item) =>
-                item.section1.map((data) => (
-                  <MouseParallaxChild
-                    factorX={data.factoryX}
-                    factorY={data.factoryY}
-                    className={`absolute ${data.class} ease-out duration-500`}
-                  >
-                    <img
-                      alt=""
-                      src={data.image}
-                      className="border-[#353435] border-dashed border-[2px]"
-                    ></img>
-                  </MouseParallaxChild>
-                ))
-              )}
-              <div className="text-container h-full flex items-center justify-around text-right">
-                <div className="text-[2rem] ml-[15rem] mt-[5rem] border-b-[2px] border-[#353435]">
-                  <p className="">SOME OF</p>
-                  <p className="font-bold">MY WORK.</p>
+      <section className="py-[3rem]">
+        <div className="flex overflow-auto hover:overflow-x-scroll scrollbar-hide">
+          <div>
+            <div className="container w-[100vw] h-[120vh] relative">
+              <MouseParallaxContainer
+                useWindowMouseEvents
+                className="flex w-full h-full items-center justify-around paralax "
+                globalFactorX={0.3}
+                globalFactorY={0.3}
+                resetOnLeave
+              >
+                {projectList.map((item) =>
+                  item.section1.map((data) => (
+                    <MouseParallaxChild
+                      factorX={data.factoryX}
+                      factorY={data.factoryY}
+                      className={`absolute ${data.class} ease-out duration-500`}
+                    >
+                      <img
+                        alt=""
+                        src={data.image}
+                        className="border-[#353435] border-dashed border-[2px]"
+                      ></img>
+                    </MouseParallaxChild>
+                  ))
+                )}
+                <div className="text-container h-full flex items-center justify-around text-right">
+                  <div className="text-[2rem] ml-[15rem] mt-[5rem] border-b-[2px] border-[#353435]">
+                    <p className="">SOME OF</p>
+                    <p className="font-bold">MY WORK.</p>
+                  </div>
                 </div>
-              </div>
-            </MouseParallaxContainer>
+              </MouseParallaxContainer>
+            </div>
+          </div>
+          <div>
+            <div className="container w-[100vw] h-[120vh] relative">
+              <MouseParallaxContainer
+                useWindowMouseEvents
+                className="flex w-full h-full items-center justify-around paralax"
+                globalFactorX={0.3}
+                globalFactorY={0.3}
+                resetOnLeave
+              >
+                {projectList.map((item) =>
+                  item.section2.map((data) => (
+                    <MouseParallaxChild
+                      factorX={data.factoryX}
+                      factorY={data.factoryY}
+                      className={`absolute ${data.class} ease-out duration-500`}
+                    >
+                      <img
+                        alt=""
+                        src={data.image}
+                        className="border-[#353435] border-dashed border-[2px]"
+                      ></img>
+                    </MouseParallaxChild>
+                  ))
+                )}
+              </MouseParallaxContainer>
+            </div>
           </div>
         </div>
-        <div>
-          <div className="container w-[100vw] h-[120vh] relative">
-            <MouseParallaxContainer
-              useWindowMouseEvents
-              className="flex w-full h-full items-center justify-around paralax"
-              globalFactorX={0.3}
-              globalFactorY={0.3}
-              resetOnLeave
-            >
-              {projectList.map((item) =>
-                item.section2.map((data) => (
-                  <MouseParallaxChild
-                    factorX={data.factoryX}
-                    factorY={data.factoryY}
-                    className={`absolute ${data.class} ease-out duration-500`}
-                  >
-                    <img
-                      alt=""
-                      src={data.image}
-                      className="border-[#353435] border-dashed border-[2px]"
-                    ></img>
-                  </MouseParallaxChild>
-                ))
-              )}
-            </MouseParallaxContainer>
+        <div className="container w-full items-center justify-around flex">
+          <div className="w-[85%]">
+            <div className="grid justify-items-end">
+              <ul className="flex gap-x-5">
+                <li>01</li>
+                <li>02</li>
+                <li>03</li>
+                <li>04</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* expirience section */}
+      <section className="flex justify-around w-full pb-[5rem]">
+        <div className="w-[80%]">
+          <div>
+            <h1 className="text-[1.8rem] font-bold">EXPIRIENCE</h1>
+          </div>
+          <div className="flex justify-between space-x-[3rem] mt-[2rem]">
+            <div className="flex text-[.73rem] w-[50%]">
+              <div className="flex w-[100%] mr-0 align-center">
+                <p className="date w-full mt-[.2rem]">
+                  Oct 12 2022 - Jan 12 Jan
+                </p>
+              </div>
+              <div className="content">
+                <p className="title text-[1rem] font-bold">
+                  Frotend Developer Intern
+                </p>
+                <div className="flex space-x-2">
+                  <p className="description truncate overflow-hidden w-[18rem]">
+                    Website persuratan upana studio dibuat untuk memudahkan
+                    proses administrasi strartup ini, mengubah sistem persuratan
+                    dari manual menjadi website akan menghemat waktu kariawan du
+                    Upana studio
+                  </p>
+                  <div className="my-auto w-2 h-2 align-center flex">
+                    <img src="./icon/arrow.png" className="-rotate-90"></img>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex text-[.73rem] w-[50%]">
+              <p className="date w-[100%] mr-0 date w-full mt-[.2rem]">
+                Oct 12 2022 - Jan 12 Jan
+              </p>
+              <div className="content">
+                <p className="title text-[1rem] font-bold">
+                  Frotend Developer Intern
+                </p>
+                <div className="flex space-x-2">
+                  <p className="description truncate overflow-hidden w-[18rem]">
+                    Website persuratan upana studio dibuat untuk memudahkan
+                    proses administrasi strartup ini, mengubah sistem persuratan
+                    dari manual menjadi website akan menghemat waktu kariawan du
+                    Upana studio
+                  </p>
+                  <div className="my-auto w-2 h-2 align-center flex">
+                    <img src="./icon/arrow.png" className="-rotate-90"></img>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      
+      {/* skills section */}
+      <section className="flex justify-around w-full pb-[5rem] pt-[2rem]">
+        <div className=" w-[90%]">
+          <h1 className="text-[1.8rem] font-bold flex justify-center">SKILLS</h1>
+          <div className="grid grid-cols-6 gap-4 mt-[1.5rem]">
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">HTML</div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">CSS</div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">JS</div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">REACT</div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">TAILWIND</div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">AXIOS</div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">HTML</div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">CSS</div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">JS</div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">REACT</div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">TAILWIND</div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">AXIOS</div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
