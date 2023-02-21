@@ -3,8 +3,10 @@ import {
   MouseParallaxContainer,
   MouseParallaxChild,
 } from "react-parallax-mouse";
+import Experience from "../Component/Experience";
 
 export default function Main() {
+  const [active, setActive] = useState(false);
   const projectList = [
     {
       section1: [
@@ -84,9 +86,14 @@ export default function Main() {
     projectList.map((item) => item.section1.map((data) => data.factorY))
   );
 
-  // scroll position
-
-  // console.log(projectList.section1);
+  // dropdown
+  const dropDown = () => {
+    console.log("clicked");
+    setActive(true);
+    if (active === true){
+      setActive(false);
+    }
+  };
   return (
     <div>
       {/* navbar */}
@@ -279,72 +286,58 @@ export default function Main() {
           <div>
             <h1 className="text-[1.8rem] font-bold">EXPIRIENCE</h1>
           </div>
-          <div className="flex justify-between space-x-[3rem] mt-[2rem]">
-            <div className="flex text-[.73rem] w-[50%]">
-              <div className="flex w-[100%] mr-0 align-center">
-                <p className="date w-full mt-[.2rem]">
-                  Oct 12 2022 - Jan 12 Jan
-                </p>
-              </div>
-              <div className="content">
-                <p className="title text-[1rem] font-bold">
-                  Frotend Developer Intern
-                </p>
-                <div className="flex space-x-2">
-                  <p className="description truncate overflow-hidden w-[18rem]">
-                    Website persuratan upana studio dibuat untuk memudahkan
-                    proses administrasi strartup ini, mengubah sistem persuratan
-                    dari manual menjadi website akan menghemat waktu kariawan du
-                    Upana studio
-                  </p>
-                  <div className="my-auto w-2 h-2 align-center flex">
-                    <img src="./icon/arrow.png" className="-rotate-90"></img>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex text-[.73rem] w-[50%]">
-              <p className="date w-[100%] mr-0 date w-full mt-[.2rem]">
-                Oct 12 2022 - Jan 12 Jan
-              </p>
-              <div className="content">
-                <p className="title text-[1rem] font-bold">
-                  Frotend Developer Intern
-                </p>
-                <div className="flex space-x-2">
-                  <p className="description truncate overflow-hidden w-[18rem]">
-                    Website persuratan upana studio dibuat untuk memudahkan
-                    proses administrasi strartup ini, mengubah sistem persuratan
-                    dari manual menjadi website akan menghemat waktu kariawan du
-                    Upana studio
-                  </p>
-                  <div className="my-auto w-2 h-2 align-center flex">
-                    <img src="./icon/arrow.png" className="-rotate-90"></img>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* <div className="flex justify-between space-x-[3rem] mt-[2rem]"> */}
+          <div className="grid grid-cols-2 gap-14 mt-[2rem]">
+            <Experience/>
+            <Experience/>
+            
           </div>
         </div>
       </section>
 
       {/* skills section */}
       <section className="flex justify-around w-full pb-[5rem] pt-[2rem]">
-        <div className=" w-[90%]">
-          <h1 className="text-[1.8rem] font-bold flex justify-center">SKILLS</h1>
+        <div className=" w-[80%]">
+          <h1 className="text-[1.8rem] font-bold flex justify-center">
+            SKILLS
+          </h1>
           <div className="grid grid-cols-6 gap-4 mt-[1.5rem]">
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">HTML</div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">CSS</div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">JS</div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">REACT</div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">TAILWIND</div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">AXIOS</div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">HTML</div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">CSS</div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">JS</div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">REACT</div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">TAILWIND</div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] font-bold">AXIOS</div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+              HTML
+            </div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+              CSS
+            </div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+              JS
+            </div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+              REACT
+            </div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+              TAILWIND
+            </div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+              AXIOS
+            </div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+              HTML
+            </div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+              CSS
+            </div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+              JS
+            </div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+              REACT
+            </div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+              TAILWIND
+            </div>
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+              AXIOS
+            </div>
           </div>
         </div>
       </section>
