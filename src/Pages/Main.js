@@ -90,15 +90,28 @@ export default function Main() {
   const dropDown = () => {
     console.log("clicked");
     setActive(true);
-    if (active === true){
+    if (active === true) {
       setActive(false);
     }
+  };
+
+  // slider
+  const slideLeft = () => {
+    console.log("left");
+    var slider = document.getElementById("slider");
+    slider.scrollLeft = slider.scrollLeft - 1800;
+  };
+
+  const slideRight = () => {
+    console.log("right");
+    var slider = document.getElementById("slider");
+    slider.scrollLeft = slider.scrollLeft + 1800;
   };
   return (
     <div>
       {/* navbar */}
       <div className="flex items-center justify-around text-[#353435] z-10">
-        <nav className="flex items-center justify-between w-[90%] h-[3rem] realtive">
+        <nav className="flex items-center justify-between w-[80%] h-[3rem] realtive">
           <div>
             <h1 className="font-bold text-[20px]">AGUNG</h1>
           </div>
@@ -165,7 +178,7 @@ export default function Main() {
             </div>
           </MouseParallaxContainer>
         </div>
-        <div className="sumary w-[90%] flex items-center justify-between h-[70vh] z-10">
+        <div className="sumary w-[80%] flex items-center justify-between h-[70vh] z-10">
           <div className="media-social">
             <ul className="space-y-[1rem]">
               <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
@@ -204,8 +217,21 @@ export default function Main() {
       </div>
 
       {/* all the project */}
-      <section className="py-[3rem]">
-        <div className="flex overflow-auto hover:overflow-x-scroll scrollbar-hide">
+      <section className="py-[3rem] relative">
+        <div
+          className="absolute padding-auto left-[5rem] top-[25rem] flex justify-around align-center z-10 p-[1rem] rounded-full border-[2px] border-black cursor-pointer "
+          onClick={slideLeft}
+        >
+          <img
+            alt=""
+            src="./icon/arrow.png"
+            className="w-[1rem] h-[1rem] rotate-180"
+          />
+        </div>
+        <div
+          id="slider"
+          className="flex overflow-scroll scroll whitespace-nowrap hover:overflow-x-scroll scrollbar-hide scroll-smooth"
+        >
           <div>
             <div className="container w-[100vw] h-[120vh] relative">
               <MouseParallaxContainer
@@ -222,11 +248,14 @@ export default function Main() {
                       factorY={data.factoryY}
                       className={`absolute ${data.class} ease-out duration-500`}
                     >
-                      <img
-                        alt=""
-                        src={data.image}
-                        className="border-[#353435] border-dashed border-[2px]"
-                      ></img>
+                      <div className="w-full relative cursor-pointer">
+                        <img
+                          alt=""
+                          src={data.image}
+                          className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed"
+                        ></img>
+                        {/* <div className="absolute left-[40%] top-[50%]">persuratan</div> */}
+                      </div>
                     </MouseParallaxChild>
                   ))
                 )}
@@ -267,6 +296,12 @@ export default function Main() {
             </div>
           </div>
         </div>
+        <div
+          className="absolute padding-auto left-[70rem] top-[25rem] flex justify-around align-center p-[1rem] rounded-full border-[2px] border-black cursor-pointer"
+          onClick={slideRight}
+        >
+          <img alt="" src="./icon/arrow.png" className="w-[1rem] h-[1rem] " />
+        </div>
         <div className="container w-full items-center justify-around flex">
           <div className="w-[85%]">
             <div className="grid justify-items-end">
@@ -288,9 +323,8 @@ export default function Main() {
           </div>
           {/* <div className="flex justify-between space-x-[3rem] mt-[2rem]"> */}
           <div className="grid grid-cols-2 gap-14 mt-[2rem]">
-            <Experience/>
-            <Experience/>
-            
+            <Experience />
+            <Experience />
           </div>
         </div>
       </section>

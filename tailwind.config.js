@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      visibility: ["group-hover"],
+      backdropBlur: {
+        xs: '2px',
+      }
+    },
     fontFamily: {
       bebas: ["Bebas Neue"],
       sans: ["ui-sans-serif", "system-ui"],
@@ -12,8 +17,5 @@ module.exports = {
       body: ['"Open Sans"'],
     },
   },
-  plugins: [
-    require("tailwind-scrollbar"),
-    require('tailwind-scrollbar-hide')
-  ],
+  plugins: [require("tailwind-scrollbar"), require("tailwind-scrollbar-hide")],
 };
