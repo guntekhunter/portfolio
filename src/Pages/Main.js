@@ -143,10 +143,18 @@ export default function Main() {
                 factorY={0.1}
                 className="w-[1rem]"
               >
-                <div className="border-b-[2px] border-[#D9D9D9] w-[7rem] realtive rotate-90"></div>
+                <img
+                  alt=""
+                  src="./icon/background/2.png"
+                  className="ml-2 w-2"
+                />
               </MouseParallaxChild>
               <MouseParallaxChild factorX={0.5} factorY={0.5}>
-                <div className="border-b-[2px] border-[#D9D9D9] w-[7rem] realtive pb-[10rem] "></div>
+                <img
+                  alt=""
+                  src="./icon/background/1.png"
+                  className="pt-[7rem] w-[6rem]"
+                />
               </MouseParallaxChild>
             </div>
             <div className="w-[20rem]">
@@ -161,24 +169,34 @@ export default function Main() {
                     factorY={0.1}
                     className="w-[1rem]"
                   >
-                    <div className="border-b-[2px] border-[#D9D9D9] w-[7rem] realtive rotate-90"></div>
+                    <img
+                      alt=""
+                      src="./icon/background/2.png"
+                      className="ml-[14rem] w-2"
+                    />
                   </MouseParallaxChild>
                   <MouseParallaxChild factorX={0.5} factorY={0.5}>
-                    <div className="border-b-[2px] border-[#D9D9D9] w-[7rem] realtive pb-[10rem] ml-[5rem]"></div>
+                    <img
+                      alt=""
+                      src="./icon/background/1.png"
+                      className="mt-[2rem] ml-[8rem] w-[6rem]"
+                    />
                   </MouseParallaxChild>
                 </div>
               </MouseParallaxChild>
-              <MouseParallaxChild
-                factorX={0.1}
-                factorY={0.5}
-                className="w-[1rem]"
-              >
-                <div className="border-b-[2px] border-[#D9D9D9] w-[7rem] realtive rotate-90 mr-[9]"></div>
+              <MouseParallaxChild factorX={0.1} factorY={0.5}>
+                <img
+                  alt=""
+                  src="./icon/background/2.png"
+                  className="ml-[15rem] w-[.51rem]"
+                />
               </MouseParallaxChild>
             </div>
           </MouseParallaxContainer>
         </div>
-        <div className="sumary w-[80%] flex items-center justify-between h-[70vh] z-10">
+
+        {/* socialmedia */}
+        <div className="sumary w-[80%] flex items-center justify-between h-[70vh] z-10 relative">
           <div className="media-social">
             <ul className="space-y-[1rem]">
               <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
@@ -195,7 +213,12 @@ export default function Main() {
               </li>
             </ul>
           </div>
-          <div className="summary-content w-[30rem]">
+
+          {/* content */}
+          <div className="summary-content w-[30rem] flex">
+            <div className="w-[8rem] pt-[7rem] pr-2">
+              <img src="./icon/custom-arrow.png" className="rotate-[250deg]" />
+            </div>
             <div className="summary-container">
               <p className="hy text-[.7rem]">Hi there! My name is</p>
               <p className="name text-[1.8rem] font-bold">
@@ -208,16 +231,84 @@ export default function Main() {
                 latest development technologies, I am dedicated to delivering
                 high-quality and impactful projects.
               </p>
+              <div className="flex">
+                <button className="px-6 py-2 mt-3 border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-[#000000] cursor-pointer">
+                  Contact Me
+                </button>
+              </div>
             </div>
           </div>
-          <div className="contact -rotate-90 text-[.7rem] pr-auto font-bold">
-            <p>agunghaeruddin270@gmail.com - 085241944648</p>
-          </div>
+          <div className="w-[15rem]"></div>
         </div>
       </div>
 
       {/* all the project */}
       <section className="py-[3rem] relative">
+        {/* background paralax */}
+        <div className="flex absolute z-0 w-full items-center justify-around realtive h-full">
+          <MouseParallaxContainer
+            useWindowMouseEvents
+            className="flex w-full h-full items-center justify-around paralax"
+            globalFactorX={0.3}
+            globalFactorY={0.3}
+            resetOnLeave
+          >
+            <div className="w-[20rem]">
+              <MouseParallaxChild
+                factorX={0.1}
+                factorY={0.1}
+                className="w-[1rem]"
+              >
+                <img
+                  alt=""
+                  src="./icon/background/2.2.png"
+                  className="mt-[1rem] w-2"
+                />
+              </MouseParallaxChild>
+              <MouseParallaxChild factorX={0.5} factorY={0.5}>
+                <img
+                  alt=""
+                  src="./icon/background/2.1.png"
+                  className="pt-[7rem] ml-[25rem] w-[5rem]"
+                />
+              </MouseParallaxChild>
+            </div>
+            <div className="w-[20rem]">
+              <MouseParallaxChild
+                factorX={0.1}
+                factorY={0.1}
+                className="w-[1rem]"
+              >
+                <div className="w-[10rem] h-[15rem]">
+                  <MouseParallaxChild
+                    factorX={0.1}
+                    factorY={0.1}
+                  >
+                    <img
+                      alt=""
+                      src="./icon/background/2.2.png"
+                      className="mt-[-14rem] ml-[15rem] w-2"
+                    />
+                  </MouseParallaxChild>
+                  <MouseParallaxChild factorX={0.5} factorY={0.5}>
+                    <img
+                      alt=""
+                      src="./icon/background/2.1.png"
+                      className="mt-[2rem] ml-[8rem] w-[5rem]"
+                    />
+                  </MouseParallaxChild>
+                </div>
+              </MouseParallaxChild>
+              <MouseParallaxChild factorX={0.1} factorY={0.5}>
+                <img
+                  alt=""
+                  src="./icon/background/2.2.png"
+                  className="ml-[15rem] mt-[5rem] w-[.51rem]"
+                />
+              </MouseParallaxChild>
+            </div>
+          </MouseParallaxContainer>
+        </div>
         <div
           className="absolute padding-auto left-[5rem] top-[25rem] flex justify-around align-center z-10 p-[1rem] rounded-full border-[2px] border-black cursor-pointer "
           onClick={slideLeft}
@@ -336,40 +427,40 @@ export default function Main() {
             SKILLS
           </h1>
           <div className="grid grid-cols-6 gap-4 mt-[1.5rem]">
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
               HTML
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
               CSS
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
               JS
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
               REACT
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
               TAILWIND
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
               AXIOS
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
               HTML
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
               CSS
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
               JS
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
               REACT
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
               TAILWIND
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#353435] cursor-pointer">
+            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
               AXIOS
             </div>
           </div>
