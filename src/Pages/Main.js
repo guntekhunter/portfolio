@@ -5,90 +5,14 @@ import {
 } from "react-parallax-mouse";
 import Experience from "../Component/Experience";
 import ModalProject from "../Component/ModalProject";
+import projectList from "../Data/ProjectList.json";
 
 export default function Main() {
   const [active, setActive] = useState(false);
   const [next, setNext] = useState(0);
-  const containerRef = useRef(null);
   const [showModal, setShowModal] = useState(false);
-  const projectList = [
-    {
-      section1: [
-        {
-          image: "./project/1.jpg",
-          class: "inset-[8rem] w-[20rem] hover:w-[23rem]",
-          factoryX: 0.1,
-          factoryY: 0.1,
-        },
-        {
-          image: "./project/2.jpg",
-          class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
-          factoryX: 0.2,
-          factoryY: 0.2,
-        },
-        {
-          image: "./project/3.jpg",
-          class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
-          factoryX: 0.2,
-          factoryY: 0.2,
-        },
-        {
-          image: "./project/4.jpg",
-          class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
-          factoryX: 0.4,
-          factoryY: 0.4,
-        },
-        {
-          image: "./project/5.jpg",
-          class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
-          factoryX: 0.3,
-          factoryY: 0.3,
-        },
-      ],
-      section2: [
-        {
-          image: "./project/1.jpg",
-          class: "inset-[8rem] w-[20rem] hover:w-[23rem]",
-          factoryX: 0.3,
-          factoryY: 0.3,
-        },
-        {
-          image: "./project/2.jpg",
-          class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
-          factoryX: 0.5,
-          factoryY: 0.5,
-        },
-        {
-          image: "./project/3.jpg",
-          class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
-          factoryX: 0.2,
-          factoryY: 0.2,
-        },
-        {
-          image: "./project/4.jpg",
-          class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
-          factoryX: 0.3,
-          factoryY: 0.4,
-        },
-        {
-          image: "./project/5.jpg",
-          class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
-          factoryX: 0.4,
-          factoryY: 0.6,
-        },
-        {
-          image: "./project/6.jpg",
-          class: "inset-[33rem] top-[17rem] w-[20rem] hover:w-[23rem]",
-          factoryX: 0.4,
-          factoryY: 0.6,
-        },
-      ],
-    },
-  ];
-
-  // console.log(
-  //   projectList.map((item) => item.section1.map((data) => data.factorY))
-  // );
+  const [id, setId] = useState();
+  const containerRef = useRef(null);
 
   // slider
   const slideLeft = () => {
@@ -110,10 +34,10 @@ export default function Main() {
     console.log(containerRef?.current.scrollLeft);
     setNext(containerRef?.current.scrollLeft);
   };
-  console.log(next);
 
-  const handleShowModal = () => {
+  const handleShowModal = (e) => {
     setShowModal(true);
+    setId(e.target.id);
     console.log("clicked");
   };
 
@@ -353,6 +277,7 @@ export default function Main() {
                       <div className="w-full relative cursor-pointer">
                         <img
                           onClick={handleShowModal}
+                          id={data.id}
                           alt=""
                           src={data.image}
                           className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed"
@@ -431,7 +356,7 @@ export default function Main() {
         </div>
       </section>
 
-      <ModalProject isVisible={showModal} />
+      <ModalProject isVisible={showModal} onClose={() => setShowModal(false)} id={id}/>
       {/* expirience section */}
       <section className="flex justify-around w-full pb-[5rem]">
         <div className="w-[80%]">
