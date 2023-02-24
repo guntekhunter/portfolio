@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   MouseParallaxContainer,
   MouseParallaxChild,
 } from "react-parallax-mouse";
 import Experience from "../Component/Experience";
+import ModalProject from "../Component/ModalProject";
 
 export default function Main() {
   const [active, setActive] = useState(false);
+  const [next, setNext] = useState(0);
+  const containerRef = useRef(null);
+  const [showModal, setShowModal] = useState(false);
   const projectList = [
     {
       section1: [
@@ -82,31 +86,37 @@ export default function Main() {
     },
   ];
 
-  console.log(
-    projectList.map((item) => item.section1.map((data) => data.factorY))
-  );
-
-  // dropdown
-  const dropDown = () => {
-    console.log("clicked");
-    setActive(true);
-    if (active === true) {
-      setActive(false);
-    }
-  };
+  // console.log(
+  //   projectList.map((item) => item.section1.map((data) => data.factorY))
+  // );
 
   // slider
   const slideLeft = () => {
     console.log("left");
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft - 1800;
+    setNext(false);
+    // console.log(window.scrollX);
   };
 
   const slideRight = () => {
     console.log("right");
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft + 1800;
+    setNext(true);
   };
+
+  const handleScroll = () => {
+    console.log(containerRef?.current.scrollLeft);
+    setNext(containerRef?.current.scrollLeft);
+  };
+  console.log(next);
+
+  const handleShowModal = () => {
+    setShowModal(true);
+    console.log("clicked");
+  };
+
   return (
     <div>
       {/* navbar */}
@@ -280,10 +290,7 @@ export default function Main() {
                 className="w-[1rem]"
               >
                 <div className="w-[10rem] h-[15rem]">
-                  <MouseParallaxChild
-                    factorX={0.1}
-                    factorY={0.1}
-                  >
+                  <MouseParallaxChild factorX={0.1} factorY={0.1}>
                     <img
                       alt=""
                       src="./icon/background/2.2.png"
@@ -310,7 +317,9 @@ export default function Main() {
           </MouseParallaxContainer>
         </div>
         <div
-          className="absolute padding-auto left-[5rem] top-[25rem] flex justify-around align-center z-10 p-[1rem] rounded-full border-[2px] border-black cursor-pointer "
+          className={`absolute padding-auto left-[5rem] top-[25rem] flex justify-around align-center z-10 p-[1rem] rounded-full border-[2px] ${
+            next <= 1296 ? "hidden duration-200" : "border-[#353435]"
+          } cursor-pointer`}
           onClick={slideLeft}
         >
           <img
@@ -321,6 +330,8 @@ export default function Main() {
         </div>
         <div
           id="slider"
+          ref={containerRef}
+          onScroll={handleScroll}
           className="flex overflow-scroll scroll whitespace-nowrap hover:overflow-x-scroll scrollbar-hide scroll-smooth"
         >
           <div>
@@ -341,6 +352,7 @@ export default function Main() {
                     >
                       <div className="w-full relative cursor-pointer">
                         <img
+                          onClick={handleShowModal}
                           alt=""
                           src={data.image}
                           className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed"
@@ -388,24 +400,38 @@ export default function Main() {
           </div>
         </div>
         <div
-          className="absolute padding-auto left-[70rem] top-[25rem] flex justify-around align-center p-[1rem] rounded-full border-[2px] border-black cursor-pointer"
+          className={`absolute padding-auto left-[70rem] top-[25rem] flex justify-around align-center p-[1rem] rounded-full border-[2px] ${
+            next >= 1296 ? "hidden duration-200" : "border-[#353435]"
+          }  cursor-pointer`}
           onClick={slideRight}
         >
-          <img alt="" src="./icon/arrow.png" className="w-[1rem] h-[1rem] " />
+          <img alt="" src="./icon/arrow.png" className="w-[1rem] h-[1rem]" />
         </div>
         <div className="container w-full items-center justify-around flex">
           <div className="w-[85%]">
             <div className="grid justify-items-end">
               <ul className="flex gap-x-5">
-                <li>01</li>
-                <li>02</li>
-                <li>03</li>
-                <li>04</li>
+                <li
+                  className={`${
+                    next ? "text-[#D9D9D9]" : "text-[#353435]"
+                  } duration-200`}
+                >
+                  01
+                </li>
+                <li
+                  className={`${
+                    !next ? "text-[#D9D9D9]" : "text-[#353435]"
+                  } duration-200`}
+                >
+                  02
+                </li>
               </ul>
             </div>
           </div>
         </div>
       </section>
+
+      <ModalProject isVisible={showModal} />
       {/* expirience section */}
       <section className="flex justify-around w-full pb-[5rem]">
         <div className="w-[80%]">
