@@ -3,6 +3,7 @@ import {
   MouseParallaxContainer,
   MouseParallaxChild,
 } from "react-parallax-mouse";
+import { Link } from "react-router-dom";
 import Experience from "../Component/Experience";
 import ModalProject from "../Component/ModalProject";
 import projectList from "../Data/ProjectList.json";
@@ -10,9 +11,99 @@ import projectList from "../Data/ProjectList.json";
 export default function Main() {
   const [active, setActive] = useState(false);
   const [next, setNext] = useState(0);
+  const [scroll, setScroll] = useState(0);
+  const [idProject, setIdProject] = useState();
+  console.log(projectList);
+  // const projectList = [
+  //   {
+  //     section1: [
+  //       {
+  //         id:1,
+  //         image: "./project/1.jpg",
+  //         class: "inset-[8rem] w-[20rem] hover:w-[23rem]",
+  //         factoryX: 0.1,
+  //         factoryY: 0.1,
+  //       },
+  //       {
+  //         id:2,
+  //         image: "./project/2.jpg",
+  //         class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
+  //         factoryX: 0.2,
+  //         factoryY: 0.2,
+  //       },
+  //       {
+  //         id:3,
+  //         image: "./project/3.jpg",
+  //         class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
+  //         factoryX: 0.2,
+  //         factoryY: 0.2,
+  //       },
+  //       {
+  //         id:4,
+  //         image: "./project/4.jpg",
+  //         class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
+  //         factoryX: 0.4,
+  //         factoryY: 0.4,
+  //       },
+  //       {
+  //         id:5,
+  //         image: "./project/5.jpg",
+  //         class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
+  //         factoryX: 0.3,
+  //         factoryY: 0.3,
+  //       },
+  //     ],
+  //     section2: [
+  //       {
+  //         id:6,
+  //         image: "./project/1.jpg",
+  //         class: "inset-[8rem] w-[20rem] hover:w-[23rem]",
+  //         factoryX: 0.3,
+  //         factoryY: 0.3,
+  //       },
+  //       {
+  //         id:7,
+  //         image: "./project/2.jpg",
+  //         class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
+  //         factoryX: 0.5,
+  //         factoryY: 0.5,
+  //       },
+  //       {
+  //         id:8,
+  //         image: "./project/3.jpg",
+  //         class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
+  //         factoryX: 0.2,
+  //         factoryY: 0.2,
+  //       },
+  //       {
+  //         id:9,
+  //         image: "./project/4.jpg",
+  //         class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
+  //         factoryX: 0.3,
+  //         factoryY: 0.4,
+  //       },
+  //       {
+  //         id:10,
+  //         image: "./project/5.jpg",
+  //         class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
+  //         factoryX: 0.4,
+  //         factoryY: 0.6,
+  //       },
+  //       {
+  //         id:11,
+  //         image: "./project/6.jpg",
+  //         class: "inset-[33rem] top-[17rem] w-[20rem] hover:w-[23rem]",
+  //         factoryX: 0.4,
+  //         factoryY: 0.6,
+  //       },
+  //     ],
+  //   },
+  // ];
+
   const [showModal, setShowModal] = useState(false);
   const [id, setId] = useState();
   const containerRef = useRef(null);
+  const allRef = useRef(null);
 
   // slider
   const slideLeft = () => {
@@ -20,7 +111,6 @@ export default function Main() {
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft - 1800;
     setNext(false);
-    // console.log(window.scrollX);
   };
 
   const slideRight = () => {
@@ -41,20 +131,61 @@ export default function Main() {
     console.log("clicked");
   };
 
+  const handleScrollSection = (e) => {
+    console.log("clicked" + e.target.id);
+    if (e.target.id === "sumary") {
+      console.log(allRef?.current.scrollTop);
+      setScroll(allRef?.current.scrollTop);
+    }
+  };
+
+  const handleHover = (e) => {
+    console.log("hoverig" + e.target.id);
+    const id = parseInt(e.target.id);
+    setIdProject(id);
+  };
+  const handleLeave = (e) => {
+    console.log("hoverig" + e.target.id);
+    setIdProject(null);
+  };
   return (
     <div>
       {/* navbar */}
       <div className="flex items-center justify-around text-[#353435] z-10">
-        <nav className="flex items-center justify-between w-[80%] h-[3rem] realtive">
+        <nav className="flex items-center justify-between w-[80%] h-[3rem] realtive z-10">
           <div>
             <h1 className="font-bold text-[20px]">AGUNG</h1>
           </div>
           <div className="w-[30%]">
-            <ul className="inline-flex text-[12px] font-bold justify-between w-full">
-              <li>SUMMARY</li>
-              <li className="text-[#BEBBB5]">MY WORK</li>
-              <li className="text-[#BEBBB5]">EXPERIENCE</li>
-              <li className="text-[#BEBBB5]">SKILLS</li>
+            <ul className="inline-flex text-[12px] font-bold justify-between w-full z-10">
+              <li
+                className="z-10 cursor-pointer duration-200"
+                id="sumary"
+                onClick={handleScrollSection}
+              >
+                SUMMARY
+              </li>
+              <li
+                className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
+                id="my work"
+                onClick={handleScrollSection}
+              >
+                MY WORK
+              </li>
+              <li
+                className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
+                id="experience"
+                onClick={handleScrollSection}
+              >
+                EXPERIENCE
+              </li>
+              <li
+                className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
+                id="skills"
+                onClick={handleScrollSection}
+              >
+                SKILLS
+              </li>
             </ul>
           </div>
           <div className="absolute right-0 w-[31rem] border-b-[2px] h-[3rem]" />
@@ -66,7 +197,7 @@ export default function Main() {
         <div className="flex absolute z-0 w-full items-center justify-around realtive h-full">
           <MouseParallaxContainer
             useWindowMouseEvents
-            className="flex w-full h-full items-center justify-around paralax"
+            className="flex w-full h-full items-center justify-around paralax z-0"
             globalFactorX={0.3}
             globalFactorY={0.3}
             resetOnLeave
@@ -241,15 +372,15 @@ export default function Main() {
           </MouseParallaxContainer>
         </div>
         <div
-          className={`absolute padding-auto left-[5rem] top-[25rem] flex justify-around align-center z-10 p-[1rem] rounded-full border-[2px] ${
-            next <= 1296 ? "hidden duration-200" : "border-[#353435]"
-          } cursor-pointer`}
+          className={`hover:opacity-100 opacity-0 duration-500 absolute left-[-1.5rem] grid content-center h-[75%] align-center z-10 p-[1rem] ${
+            next >= 1296 ? "border-[#353435]" : "hidden duration-200"
+          } cursor-pointer transition ease-in-out hover:translate-x-5`}
           onClick={slideLeft}
         >
           <img
             alt=""
             src="./icon/arrow.png"
-            className="w-[1rem] h-[1rem] rotate-180"
+            className="w-[1rem] h-[100%] bg-red rotate-180"
           />
         </div>
         <div
@@ -268,21 +399,37 @@ export default function Main() {
                 resetOnLeave
               >
                 {projectList.map((item) =>
-                  item.section1.map((data) => (
+                  item.section1.map((data, key) => (
                     <MouseParallaxChild
+                      key={key}
                       factorX={data.factoryX}
                       factorY={data.factoryY}
                       className={`absolute ${data.class} ease-out duration-500`}
                     >
-                      <div className="w-full relative cursor-pointer">
-                        <img
-                          onClick={handleShowModal}
-                          id={data.id}
-                          alt=""
-                          src={data.image}
-                          className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed"
-                        ></img>
-                        {/* <div className="absolute left-[40%] top-[50%]">persuratan</div> */}
+                      <div
+                        className="w-full relative cursor-pointer bg-gray-200"
+                        id={data.id}
+                        onMouseEnter={handleHover}
+                        onMouseLeave={handleLeave}
+                      >
+                        <Link to={'/portofolio'}>
+                          <img
+                            // onClick={handleShowModal}
+                            id={data.id}
+                            alt=""
+                            src={data.image}
+                            className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed hover:opacity-70 duration-500"
+                          ></img>
+                          <p
+                            className={`${
+                              idProject === data.id
+                                ? "flex duration-500"
+                                : "hidden"
+                            } absolute ease-out left-[50%] top-[50%] z-0`}
+                          >
+                            {data.name}
+                          </p>
+                        </Link>
                       </div>
                     </MouseParallaxChild>
                   ))
@@ -306,8 +453,9 @@ export default function Main() {
                 resetOnLeave
               >
                 {projectList.map((item) =>
-                  item.section2.map((data) => (
+                  item.section2.map((data, key) => (
                     <MouseParallaxChild
+                      key={key}
                       factorX={data.factoryX}
                       factorY={data.factoryY}
                       className={`absolute ${data.class} ease-out duration-500`}
@@ -325,7 +473,7 @@ export default function Main() {
           </div>
         </div>
         <div
-          className={`absolute padding-auto left-[70rem] top-[25rem] flex justify-around align-center p-[1rem] rounded-full border-[2px] ${
+          className={`hover:opacity-100 opacity-0 duration-500 absolute padding-auto grid content-center left-[76rem] h-[85%] top-0 flex justify-around align-center p-[1rem] ${
             next >= 1296 ? "hidden duration-200" : "border-[#353435]"
           }  cursor-pointer`}
           onClick={slideRight}
@@ -356,7 +504,11 @@ export default function Main() {
         </div>
       </section>
 
-      <ModalProject isVisible={showModal} onClose={() => setShowModal(false)} id={id}/>
+      <ModalProject
+        isVisible={showModal}
+        onClose={() => setShowModal(false)}
+        id={id}
+      />
       {/* expirience section */}
       <section className="flex justify-around w-full pb-[5rem]">
         <div className="w-[80%]">
