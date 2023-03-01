@@ -7,104 +7,20 @@ import { Link } from "react-router-dom";
 import Experience from "../Component/Experience";
 import ModalProject from "../Component/ModalProject";
 import projectList from "../Data/ProjectList.json";
+import { motion } from "framer-motion";
 
 export default function Main() {
   const [active, setActive] = useState(false);
   const [next, setNext] = useState(0);
   const [scroll, setScroll] = useState(0);
   const [idProject, setIdProject] = useState();
-  console.log(projectList);
-  // const projectList = [
-  //   {
-  //     section1: [
-  //       {
-  //         id:1,
-  //         image: "./project/1.jpg",
-  //         class: "inset-[8rem] w-[20rem] hover:w-[23rem]",
-  //         factoryX: 0.1,
-  //         factoryY: 0.1,
-  //       },
-  //       {
-  //         id:2,
-  //         image: "./project/2.jpg",
-  //         class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
-  //         factoryX: 0.2,
-  //         factoryY: 0.2,
-  //       },
-  //       {
-  //         id:3,
-  //         image: "./project/3.jpg",
-  //         class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
-  //         factoryX: 0.2,
-  //         factoryY: 0.2,
-  //       },
-  //       {
-  //         id:4,
-  //         image: "./project/4.jpg",
-  //         class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
-  //         factoryX: 0.4,
-  //         factoryY: 0.4,
-  //       },
-  //       {
-  //         id:5,
-  //         image: "./project/5.jpg",
-  //         class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
-  //         factoryX: 0.3,
-  //         factoryY: 0.3,
-  //       },
-  //     ],
-  //     section2: [
-  //       {
-  //         id:6,
-  //         image: "./project/1.jpg",
-  //         class: "inset-[8rem] w-[20rem] hover:w-[23rem]",
-  //         factoryX: 0.3,
-  //         factoryY: 0.3,
-  //       },
-  //       {
-  //         id:7,
-  //         image: "./project/2.jpg",
-  //         class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
-  //         factoryX: 0.5,
-  //         factoryY: 0.5,
-  //       },
-  //       {
-  //         id:8,
-  //         image: "./project/3.jpg",
-  //         class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
-  //         factoryX: 0.2,
-  //         factoryY: 0.2,
-  //       },
-  //       {
-  //         id:9,
-  //         image: "./project/4.jpg",
-  //         class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
-  //         factoryX: 0.3,
-  //         factoryY: 0.4,
-  //       },
-  //       {
-  //         id:10,
-  //         image: "./project/5.jpg",
-  //         class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
-  //         factoryX: 0.4,
-  //         factoryY: 0.6,
-  //       },
-  //       {
-  //         id:11,
-  //         image: "./project/6.jpg",
-  //         class: "inset-[33rem] top-[17rem] w-[20rem] hover:w-[23rem]",
-  //         factoryX: 0.4,
-  //         factoryY: 0.6,
-  //       },
-  //     ],
-  //   },
-  // ];
-
   const [showModal, setShowModal] = useState(false);
   const [id, setId] = useState();
   const containerRef = useRef(null);
   const allRef = useRef(null);
 
+  // transition with motion
+  const transition = { duration: .1, ease: [1, 1, 1, 1] };
   // slider
   const slideLeft = () => {
     console.log("left");
@@ -284,7 +200,13 @@ export default function Main() {
             <div className="w-[8rem] pt-[7rem] pr-2">
               <img src="./icon/custom-arrow.png" className="rotate-[250deg]" />
             </div>
-            <div className="summary-container">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{opacity:0}}
+              transition={transition}
+              className="summary-container"
+            >
               <p className="hy text-[.7rem]">Hi there! My name is</p>
               <p className="name text-[1.8rem] font-bold">
                 MUH. AGUNG HAERUDDIN
@@ -301,7 +223,7 @@ export default function Main() {
                   Contact Me
                 </button>
               </div>
-            </div>
+            </motion.div>
           </div>
           <div className="w-[15rem]"></div>
         </div>
@@ -412,7 +334,7 @@ export default function Main() {
                         onMouseEnter={handleHover}
                         onMouseLeave={handleLeave}
                       >
-                        <Link to={'/portofolio'}>
+                        <Link to={"/portofolio"}>
                           <img
                             // onClick={handleShowModal}
                             id={data.id}
@@ -434,12 +356,18 @@ export default function Main() {
                     </MouseParallaxChild>
                   ))
                 )}
-                <div className="text-container h-full flex items-center justify-around text-right">
+                <motion.div
+                initial={{opacity:0}}
+                animate={{opacity:1}}
+                  exit={{ opacity: 0 }}
+                  transition={{delay:.25, duration:.5, ease:'easeOut'}}
+                  className="text-container h-full flex items-center justify-around text-right"
+                >
                   <div className="text-[2rem] ml-[15rem] mt-[5rem] border-b-[2px] border-[#353435]">
                     <p className="">SOME OF</p>
                     <p className="font-bold">MY WORK.</p>
                   </div>
-                </div>
+                </motion.div>
               </MouseParallaxContainer>
             </div>
           </div>
