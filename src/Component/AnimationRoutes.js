@@ -7,10 +7,10 @@ import Portofolio from "../Pages/Portofolio";
 export default function AnimationRoutes() {
   const location = useLocation();
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="await">
       <Routes location={location} key={location.pathname}>
         <Route exact path="/" element={<Main />}></Route>
-        <Route exact path="/portofolio" element={<Portofolio />}></Route>
+        <Route exact path="/portofolio/:id" element={<Portofolio />}></Route>
       </Routes>
     </AnimatePresence>
   );

@@ -1,8 +1,21 @@
 import React from "react";
-
+import { useLocation, useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 export default function Portofolio() {
+  const id = useParams();
+  const location = useLocation();
+
+  const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
+
+  console.log(id);
+  console.log(location);
   return (
-    <div>
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="scrollbar-hideflex whitespace-nowrap overflow-auto scrollbar-hide"
+    >
       {/* navbar */}
       <nav>
         <div className="flex items-center justify-around text-[#353435] z-10">
@@ -26,21 +39,39 @@ export default function Portofolio() {
         </div>
       </nav>
       {/* section 1 */}
-      <div className="grid w-full justify-items-center">
-        <div className="m-4">
+      <div className="grid w-full justify-items-center relative">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="m-4"
+        >
           <h1 className="text-[8rem]">Confie.id</h1>
-        </div>
+        </motion.div>
         <div className="w-full grid justify-items-center">
-          <div className="w-[100%] h-[20rem] bg-contain overflow-hidden relative border-solid border-[#353435]">
-            <div className=""/>
-            <img
-              src="./project/1.jpg"
+          <motion.div
+            initial={{ y: "-60%", width: location.state }}
+            animate={{
+              y: 0,
+              width: "80%",
+              height: window.innerHeight > 1440 ? 800 : 400,
+              transition: { delay: 0.1, ...transition },
+            }}
+          >
+            <div className="" />
+            <motion.img
+              // src={`./project/${id}.jpg`}
+              initial={{ scale: 1 }}
+              src={`/project/${id.id}.jpg`}
+              transition={transition}
               alt=""
-              className="absolute top-[-7rem]"
+              className=" top-[1rem]"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
-    </div>
+
+      <div>ahhay</div>
+    </motion.div>
   );
 }

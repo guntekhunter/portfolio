@@ -6,7 +6,7 @@ import {
 import { Link } from "react-router-dom";
 import Experience from "../Component/Experience";
 import ModalProject from "../Component/ModalProject";
-import projectList from "../Data/ProjectList.json";
+// import projectList from "../Data/ProjectList.json";
 import { motion } from "framer-motion";
 
 export default function Main() {
@@ -16,11 +16,120 @@ export default function Main() {
   const [idProject, setIdProject] = useState();
   const [showModal, setShowModal] = useState(false);
   const [id, setId] = useState();
+  const [hoverId, setHoverId] = useState();
   const containerRef = useRef(null);
   const allRef = useRef(null);
 
+  const projectList = [
+    {
+      section1: [
+        {
+          id: 1,
+          image: "./project/1.jpg",
+          width: "20rem",
+          class: "inset-[8rem] w-[20rem] hover:w-[23rem]",
+          name: "Persuratan Upana",
+          factoryX: 0.1,
+          factoryY: 0.1,
+        },
+        {
+          id: 2,
+          image: "./project/2.jpg",
+          width: "20rem",
+          class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
+          name: "Confie.id",
+          factoryX: 0.2,
+          factoryY: 0.2,
+        },
+        {
+          id: 3,
+          image: "./project/3.jpg",
+          width: "15rem",
+          class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
+          name: "Confie.id",
+          factoryX: 0.2,
+          factoryY: 0.2,
+        },
+        {
+          id: 4,
+          image: "./project/4.jpg",
+          width: "17rem",
+          class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
+          name: "Confie.id",
+          factoryX: 0.4,
+          factoryY: 0.4,
+        },
+        {
+          id: 5,
+          image: "./project/5.jpg",
+          width: "20rem",
+          class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
+          name: "Confie.id",
+          factoryX: 0.3,
+          factoryY: 0.3,
+        },
+      ],
+      section2: [
+        {
+          id: 6,
+          image: "./project/1.jpg",
+          width: "20rem",
+          class: "inset-[8rem] w-[20rem] hover:w-[23rem]",
+          name: "Confie.id",
+          factoryX: 0.3,
+          factoryY: 0.3,
+        },
+        {
+          id: 7,
+          image: "./project/2.jpg",
+          width: "20rem",
+          class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
+          name: "Confie.id",
+          factoryX: 0.5,
+          factoryY: 0.5,
+        },
+        {
+          id: 8,
+          image: "./project/3.jpg",
+          width: "15rem",
+          class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
+          name: "Confie.id",
+          factoryX: 0.2,
+          factoryY: 0.2,
+        },
+        {
+          id: 9,
+          image: "./project/4.jpg",
+          width: "17rem",
+          class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
+          name: "Confie.id",
+          factoryX: 0.3,
+          factoryY: 0.4,
+        },
+        {
+          id: 10,
+          image: "./project/5.jpg",
+          width: "20rem",
+          class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
+          name: "Confie.id",
+          factoryX: 0.4,
+          factoryY: 0.6,
+        },
+        {
+          id: 11,
+          image: "./project/6.jpg",
+          width: "20rem",
+          class: "inset-[33rem] top-[17rem] w-[20rem] hover:w-[23rem]",
+          name: "Confie.id",
+          factoryX: 0.4,
+          factoryY: 0.6,
+        },
+      ],
+    },
+  ];
+
   // transition with motion
-  const transition = { duration: .1, ease: [1, 1, 1, 1] };
+  const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.9] };
   // slider
   const slideLeft = () => {
     console.log("left");
@@ -59,15 +168,19 @@ export default function Main() {
     console.log("hoverig" + e.target.id);
     const id = parseInt(e.target.id);
     setIdProject(id);
+    setHoverId(parseInt(e.target.id));
   };
   const handleLeave = (e) => {
     console.log("hoverig" + e.target.id);
     setIdProject(null);
   };
+
+  console.log(hoverId);
   return (
-    <div>
+    // <div className="snap-y snap-mandatory h-screen w-screen overflow-scroll">
+    <div >
       {/* navbar */}
-      <div className="flex items-center justify-around text-[#353435] z-10">
+      <div className="flex items-center justify-around text-[#353435] z-10 sticky top-0">
         <nav className="flex items-center justify-between w-[80%] h-[3rem] realtive z-10">
           <div>
             <h1 className="font-bold text-[20px]">AGUNG</h1>
@@ -201,9 +314,8 @@ export default function Main() {
               <img src="./icon/custom-arrow.png" className="rotate-[250deg]" />
             </div>
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{opacity:0}}
+              initial={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               transition={transition}
               className="summary-container"
             >
@@ -326,15 +438,17 @@ export default function Main() {
                       key={key}
                       factorX={data.factoryX}
                       factorY={data.factoryY}
+                      width={data.width}
                       className={`absolute ${data.class} ease-out duration-500`}
                     >
-                      <div
-                        className="w-full relative cursor-pointer bg-gray-200"
-                        id={data.id}
-                        onMouseEnter={handleHover}
-                        onMouseLeave={handleLeave}
-                      >
-                        <Link to={"/portofolio"}>
+                      <Link to={`/portofolio/${data.id}`} state={data.width}>
+                        <motion.div
+                          exit={hoverId !== data.id && { opacity: 0 }}
+                          className="w-full relative cursor-pointer bg-gray-200"
+                          id={data.id}
+                          onMouseEnter={handleHover}
+                          onMouseLeave={handleLeave}
+                        >
                           <img
                             // onClick={handleShowModal}
                             id={data.id}
@@ -350,17 +464,17 @@ export default function Main() {
                             } absolute ease-out left-[50%] top-[50%] z-0`}
                           >
                             {data.name}
+                            {data.id}
                           </p>
-                        </Link>
-                      </div>
+                        </motion.div>
+                      </Link>
                     </MouseParallaxChild>
                   ))
                 )}
                 <motion.div
-                initial={{opacity:0}}
-                animate={{opacity:1}}
+                  initial={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{delay:.25, duration:.5, ease:'easeOut'}}
+                  transition={{ transition }}
                   className="text-container h-full flex items-center justify-around text-right"
                 >
                   <div className="text-[2rem] ml-[15rem] mt-[5rem] border-b-[2px] border-[#353435]">

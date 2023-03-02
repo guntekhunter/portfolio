@@ -4,6 +4,7 @@
         {
           "id":1,
           "image": "./project/1.jpg",
+          "width": "20rem",
           "class": "inset-[8rem] w-[20rem] hover:w-[23rem]",
           "name":"Persuratan Upana",
           "factoryX": 0.1,
@@ -12,6 +13,7 @@
         {
           "id":2,
           "image": "./project/2.jpg",
+          "width": "20rem",
           "class": "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
           "name":"Confie.id",
           "factoryX": 0.2,
@@ -20,6 +22,7 @@
         {
           "id":3,
           "image": "./project/3.jpg",
+          "width": "15rem",
           "class": "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
           "name":"Confie.id",
           "factoryX": 0.2,
@@ -28,6 +31,7 @@
         {
           "id":4,
           "image": "./project/4.jpg",
+          "width": "17rem",
           "class": "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
           "name":"Confie.id",
           "factoryX": 0.4,
@@ -36,6 +40,7 @@
         {
           "id":5,
           "image": "./project/5.jpg",
+          "width": "20rem",
           "class": "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
           "name":"Confie.id",
           "factoryX": 0.3,
@@ -46,6 +51,7 @@
         {
           "id":6,
           "image": "./project/1.jpg",
+          "width": "20rem",
           "class": "inset-[8rem] w-[20rem] hover:w-[23rem]",
           "name":"Confie.id",
           "factoryX": 0.3,
@@ -54,6 +60,7 @@
         {
           "id":7,
           "image": "./project/2.jpg",
+          "width": "20rem",
           "class": "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
           "name":"Confie.id",
           "factoryX": 0.5,
@@ -62,6 +69,7 @@
         {
           "id":8,
           "image": "./project/3.jpg",
+          "width": "15rem",
           "class": "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
           "name":"Confie.id",
           "factoryX": 0.2,
@@ -70,6 +78,7 @@
         {
           "id":9,
           "image": "./project/4.jpg",
+          "width": "17rem",
           "class": "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
           "name":"Confie.id",
           "factoryX": 0.3,
@@ -78,6 +87,7 @@
         {
           "id":10,
           "image": "./project/5.jpg",
+          "width": "20rem",
           "class": "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
           "name":"Confie.id",
           "factoryX": 0.4,
@@ -86,6 +96,7 @@
         {
           "id":11,
           "image": "./project/6.jpg",
+          "width": "20rem",
           "class": "inset-[33rem] top-[17rem] w-[20rem] hover:w-[23rem]",
           "name":"Confie.id",
           "factoryX": 0.4,
