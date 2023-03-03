@@ -7,7 +7,12 @@ import { Link } from "react-router-dom";
 import Experience from "../Component/Experience";
 import ModalProject from "../Component/ModalProject";
 // import projectList from "../Data/ProjectList.json";
-import { motion } from "framer-motion";
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useSpring,
+} from "framer-motion";
 
 export default function Main() {
   const [active, setActive] = useState(false);
@@ -17,6 +22,7 @@ export default function Main() {
   const [showModal, setShowModal] = useState(false);
   const [id, setId] = useState();
   const [hoverId, setHoverId] = useState();
+  const [scrollPosition, setScrollPosition] = useState();
   const containerRef = useRef(null);
   const allRef = useRef(null);
 
@@ -175,12 +181,22 @@ export default function Main() {
     setIdProject(null);
   };
 
-  console.log(hoverId);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    console.log("Page scroll: ", latest);
+    setScrollPosition(latest);
+  });
+  console.log(scrollPosition);
   return (
     // <div className="snap-y snap-mandatory h-screen w-screen overflow-scroll">
-    <div >
+    <div>
       {/* navbar */}
-      <div className="flex items-center justify-around text-[#353435] z-10 sticky top-0">
+      <motion.div
+        className={`flex items-center justify-around text-[#353435] z-50 sticky top-0 ${
+          scrollPosition > 0 ? "bg-black duration-500 text-white" : "duration-500"
+        } `}
+      >
         <nav className="flex items-center justify-between w-[80%] h-[3rem] realtive z-10">
           <div>
             <h1 className="font-bold text-[20px]">AGUNG</h1>
@@ -219,10 +235,14 @@ export default function Main() {
           </div>
           <div className="absolute right-0 w-[31rem] border-b-[2px] h-[3rem]" />
         </nav>
-      </div>
+      </motion.div>
 
       {/* summary section */}
-      <div className="flex items-center justify-around realtive">
+      <motion.div
+        initial={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="flex items-center justify-around realtive"
+      >
         <div className="flex absolute z-0 w-full items-center justify-around realtive h-full">
           <MouseParallaxContainer
             useWindowMouseEvents
@@ -339,7 +359,7 @@ export default function Main() {
           </div>
           <div className="w-[15rem]"></div>
         </div>
-      </div>
+      </motion.div>
 
       {/* all the project */}
       <section className="py-[3rem] relative">
