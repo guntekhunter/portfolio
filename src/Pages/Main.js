@@ -156,12 +156,6 @@ export default function Main() {
     setNext(containerRef?.current.scrollLeft);
   };
 
-  const handleShowModal = (e) => {
-    setShowModal(true);
-    setId(e.target.id);
-    console.log("clicked");
-  };
-
   const handleScrollSection = (e) => {
     console.log("clicked" + e.target.id);
     if (e.target.id === "sumary") {
@@ -194,7 +188,9 @@ export default function Main() {
       {/* navbar */}
       <motion.div
         className={`flex items-center justify-around text-[#353435] z-50 sticky top-0 ${
-          scrollPosition > 0 ? "bg-black duration-500 text-white" : "duration-500"
+          scrollPosition > 0
+            ? "bg-black duration-500 text-white"
+            : "duration-500"
         } `}
       >
         <nav className="flex items-center justify-between w-[80%] h-[3rem] realtive z-10">
@@ -484,7 +480,6 @@ export default function Main() {
                             } absolute ease-out left-[50%] top-[50%] z-0`}
                           >
                             {data.name}
-                            {data.id}
                           </p>
                         </motion.div>
                       </Link>

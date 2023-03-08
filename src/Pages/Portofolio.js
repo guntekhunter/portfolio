@@ -6,32 +6,49 @@ import {
   useMotionValueEvent,
   useScroll,
 } from "framer-motion";
-import ScrollToTop from "../Component/ScrollToTop";
+import projectList from "../Data/ProjectList.json";
 export default function Portofolio() {
   const [scrollPosition, setScrollPosition] = useState();
+  const [data, setData] = useState();
+
+  // get the id base on project that was clicked
   const id = useParams();
   const location = useLocation();
 
-  const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
-
-  console.log(id);
-
+  // auto scroll from top using useScroll from motion
   const { scrollY } = useScroll();
 
+  // transition duration for motion animation
+  const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
+
+  // method to automate a scroll from top after changging page
   useMotionValueEvent(scrollY, "change", (latest) => {
     console.log("Page scroll: ", latest);
     setScrollPosition(latest);
   });
-  console.log(scrollPosition);
+
+  // get data from json file base on id that was passing from previous page
+  // const selection = projectList
+  useEffect(() => {
+    const selected = projectList.map((obj) =>
+      obj.section1.filter((item) => item.id === parseInt(id.id))
+    );
+    setData(selected);
+  }, [projectList, id]);
+
+  // console logs
+  // console.log(scrollPosition);
+  // console.log(id.id);
+  console.log(data);
   return (
     <motion.div
       initial="initial"
       animate="animate"
       exit="exit"
-      className="scrollbar-hideflex whitespace-nowrap overflow-auto scrollbar-hide"
+      className="scrollbar-hideflex whitespace-nowrap"
     >
       {/* navbar */}
-      <div
+      <motion.div
         className={`flex items-center justify-around text-[#353435] z-50 sticky top-0 ${
           scrollPosition > 0
             ? "bg-black duration-500 text-white"
@@ -69,41 +86,55 @@ export default function Portofolio() {
           </div>
           <div className="absolute right-0 w-[31rem] border-b-[2px] h-[3rem]" />
         </nav>
-      </div>
+      </motion.div>
       {/* section 1 */}
-      <div className="grid w-full justify-items-center relative">
+      <div className="grid w-full justify-items-center relative h-[100%]">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
           className="m-4"
         >
-          <h1 className="text-[8rem]">Confie.id</h1>
+          {data &&
+            data.map((item, key) =>
+              item.map((item) => <h1 className="text-[8rem]">{item.name}</h1>)
+            )}
         </motion.div>
         <div className="w-full grid justify-items-center">
           <motion.div
-            initial={{ y: "-60%", width: location.state }}
+            initial={{ y: "-50%", width: location.state }}
             animate={{
               y: 0,
-              width: "80%",
-              height: window.innerHeight > 1440 ? 800 : 400,
+              width: "100%",
+              height: window.innerWidth > 1440 ? 400 : 700,
               transition: { delay: 0.1, ...transition },
             }}
           >
             <div className="" />
-            <motion.img
-              // src={`./project/${id}.jpg`}
-              initial={{ scale: 1 }}
-              src={`/project/${id.id}.jpg`}
-              transition={transition}
-              alt=""
-              className=" top-[1rem]"
-            />
+            {data &&
+              data.map((item, key) =>
+                item.map((item) => (
+                  <motion.img
+                    key={key}
+                    initial={{ scale: 1 }}
+                    src={item.image}
+                    transition={transition}
+                    alt=""
+                    className=" top-[1rem]"
+                  />
+                ))
+              )}
           </motion.div>
         </div>
       </div>
 
-      <div>ahhay</div>
+      {/* section 2 */}
+      <div className="grid bg-blue-200 content-around justify-items-center">
+        <div className="flex w-[80%] justify-between">
+          <div className="bg-yellow-200">asd</div>
+          <div className="bg-green-200">asd</div>
+        </div>
+      </div>
     </motion.div>
   );
 }
