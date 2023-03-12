@@ -55,36 +55,40 @@ export default function Portofolio() {
             : "duration-500"
         } `}
       >
-        <nav className="flex items-center justify-between w-[80%] h-[3rem] realtive z-10">
+        <nav className="flex items-center justify-between w-[80%] h-[1rem] realtive z-10 py-4">
           <Link to="/">
-            <h1 className="font-bold text-[20px] cursor-pointer">AGUNG</h1>
+            <h1 className="font-bold text-[15px] cursor-pointer">AGUNG</h1>
           </Link>
           <div className="w-[30%]">
-            <ul className="inline-flex text-[12px] font-bold justify-between w-full z-10">
+            <ul className="inline-flex text-[9px] font-bold justify-between w-full z-10">
               <li className="z-10 cursor-pointer duration-200" id="sumary">
-                SUMMARY
+                Sumary
               </li>
               <li
                 className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
                 id="my work"
               >
-                MY WORK
+                My Work
               </li>
               <li
                 className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
                 id="experience"
               >
-                EXPERIENCE
+                Experience
               </li>
               <li
                 className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
                 id="skills"
               >
-                SKILLS
+                Skills
               </li>
             </ul>
           </div>
-          <div className="absolute right-0 w-[31rem] border-b-[2px] h-[3rem]" />
+          <div
+            className={`absolute right-0 w-[31rem] border-b-[2px] h-[2rem] ${
+              scrollPosition > 0 ? "hidden" : ""
+            }`}
+          />
         </nav>
       </motion.div>
       {/* section 1 */}

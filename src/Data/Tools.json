@@ -1,0 +1,37 @@
+[
+    {
+        "langguange":[
+            {
+                "id":1,
+                "name":"HTML",
+                "description":"I know this is't a programing languange but i don't know where to put it, hahaha",
+                "loog":"src"
+            },
+            {
+                "id":2,
+                "name":"CSS",
+                "description":"This one is not a programing languange, i know but i just going to put it here aniway",
+                "loog":"src"
+            },
+            {
+                "id":3,
+                "name":"HTML",
+                "description":"I know this is't a programing languange but i don't know where to put it, hahaha",
+                "loog":"src"
+            },
+            {
+                "id":4,
+                "name":"HTML",
+                "description":"I know this is't a programing languange but i don't know where to put it, hahaha",
+                "loog":"src"
+            },
+            {
+                "id":5,
+                "name":"HTML",
+                "description":"I know this is't a programing languange but i don't know where to put it, hahaha",
+                "loog":"src"
+            }
+
+        ]
+    }
+]

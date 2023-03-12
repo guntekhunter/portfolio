@@ -33,7 +33,7 @@ export default function Main() {
           id: 1,
           image: "./project/1.jpg",
           width: "20rem",
-          class: "inset-[8rem] w-[20rem] hover:w-[23rem]",
+          class: "inset-[9rem] w-[15rem] hover:w-[17rem]",
           name: "Persuratan Upana",
           factoryX: 0.1,
           factoryY: 0.1,
@@ -42,7 +42,7 @@ export default function Main() {
           id: 2,
           image: "./project/2.jpg",
           width: "20rem",
-          class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
+          class: "inset-[7rem] left-[35rem] w-[18rem] hover:w-[19rem]",
           name: "Confie.id",
           factoryX: 0.2,
           factoryY: 0.2,
@@ -51,7 +51,7 @@ export default function Main() {
           id: 3,
           image: "./project/3.jpg",
           width: "15rem",
-          class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
+          class: "inset-[17rem] left-[60rem] w-[15rem] hover:w-[17rem]",
           name: "Confie.id",
           factoryX: 0.2,
           factoryY: 0.2,
@@ -60,7 +60,7 @@ export default function Main() {
           id: 4,
           image: "./project/4.jpg",
           width: "17rem",
-          class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
+          class: "right-[19rem] top-[28rem] w-[15rem] hover:w-[17rem]",
           name: "Confie.id",
           factoryX: 0.4,
           factoryY: 0.4,
@@ -69,7 +69,7 @@ export default function Main() {
           id: 5,
           image: "./project/5.jpg",
           width: "20rem",
-          class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
+          class: "inset-[15rem] top-[25rem] w-[16rem] hover:w-[17rem]",
           name: "Confie.id",
           factoryX: 0.3,
           factoryY: 0.3,
@@ -80,7 +80,7 @@ export default function Main() {
           id: 6,
           image: "./project/1.jpg",
           width: "20rem",
-          class: "inset-[8rem] w-[20rem] hover:w-[23rem]",
+          class: "inset-[8rem] w-[14rem] hover:w-[17rem]",
           name: "Confie.id",
           factoryX: 0.3,
           factoryY: 0.3,
@@ -89,7 +89,7 @@ export default function Main() {
           id: 7,
           image: "./project/2.jpg",
           width: "20rem",
-          class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
+          class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[17rem]",
           name: "Confie.id",
           factoryX: 0.5,
           factoryY: 0.5,
@@ -98,7 +98,7 @@ export default function Main() {
           id: 8,
           image: "./project/3.jpg",
           width: "15rem",
-          class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
+          class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[17rem]",
           name: "Confie.id",
           factoryX: 0.2,
           factoryY: 0.2,
@@ -107,7 +107,7 @@ export default function Main() {
           id: 9,
           image: "./project/4.jpg",
           width: "17rem",
-          class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
+          class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[17rem]",
           name: "Confie.id",
           factoryX: 0.3,
           factoryY: 0.4,
@@ -116,7 +116,7 @@ export default function Main() {
           id: 10,
           image: "./project/5.jpg",
           width: "20rem",
-          class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
+          class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[17rem]",
           name: "Confie.id",
           factoryX: 0.4,
           factoryY: 0.6,
@@ -125,7 +125,7 @@ export default function Main() {
           id: 11,
           image: "./project/6.jpg",
           width: "20rem",
-          class: "inset-[33rem] top-[17rem] w-[20rem] hover:w-[23rem]",
+          class: "inset-[33rem] top-[17rem] w-[20rem] hover:w-[17rem]",
           name: "Confie.id",
           factoryX: 0.4,
           factoryY: 0.6,
@@ -193,43 +193,47 @@ export default function Main() {
             : "duration-500"
         } `}
       >
-        <nav className="flex items-center justify-between w-[80%] h-[3rem] realtive z-10">
+        <nav className="flex items-center justify-between w-[80%] h-[1rem] realtive z-10 py-4">
           <div>
-            <h1 className="font-bold text-[20px]">AGUNG</h1>
+            <h1 className="font-bold text-[15px]">AGUNG</h1>
           </div>
           <div className="w-[30%]">
-            <ul className="inline-flex text-[12px] font-bold justify-between w-full z-10">
+            <ul className="inline-flex text-[9px] font-bold justify-between w-full z-10">
               <li
                 className="z-10 cursor-pointer duration-200"
                 id="sumary"
                 onClick={handleScrollSection}
               >
-                SUMMARY
+                Sumary
               </li>
               <li
                 className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
                 id="my work"
                 onClick={handleScrollSection}
               >
-                MY WORK
+                My Work
               </li>
               <li
                 className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
                 id="experience"
                 onClick={handleScrollSection}
               >
-                EXPERIENCE
+                Experience
               </li>
               <li
                 className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
                 id="skills"
                 onClick={handleScrollSection}
               >
-                SKILLS
+                Skils
               </li>
             </ul>
           </div>
-          <div className="absolute right-0 w-[31rem] border-b-[2px] h-[3rem]" />
+          <div
+            className={`absolute right-0 w-[31rem] border-b-[2px] h-[2rem] ${
+              scrollPosition > 0 ? "hidden" : ""
+            }`}
+          />
         </nav>
       </motion.div>
 
@@ -306,7 +310,7 @@ export default function Main() {
         </div>
 
         {/* socialmedia */}
-        <div className="sumary w-[80%] flex items-center justify-between h-[70vh] z-10 relative">
+        <div className="sumary w-[80%] flex items-center justify-between h-[70vh] z-10 relative sicky">
           <div className="media-social">
             <ul className="space-y-[1rem]">
               <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
@@ -356,9 +360,10 @@ export default function Main() {
           <div className="w-[15rem]"></div>
         </div>
       </motion.div>
+      <div className="h-[3rem] bg-gray-200"></div>
 
       {/* all the project */}
-      <section className="py-[3rem] relative">
+      <section className="relative">
         {/* background paralax */}
         <div className="flex absolute z-0 w-full items-center justify-around realtive h-full">
           <MouseParallaxContainer
@@ -477,7 +482,7 @@ export default function Main() {
                               idProject === data.id
                                 ? "flex duration-500"
                                 : "hidden"
-                            } absolute ease-out left-[50%] top-[50%] z-0`}
+                            } absolute ease-out left-[50%] top-[50%] z-0 text-[.6rem] bg-black text-white duration-300 px-2`}
                           >
                             {data.name}
                           </p>
@@ -492,7 +497,7 @@ export default function Main() {
                   transition={{ transition }}
                   className="text-container h-full flex items-center justify-around text-right"
                 >
-                  <div className="text-[2rem] ml-[15rem] mt-[5rem] border-b-[2px] border-[#353435]">
+                  <div className="text-[2rem] ml-[15rem] mt-[1rem] border-b-[2px] border-[#353435]">
                     <p className="">SOME OF</p>
                     <p className="font-bold">MY WORK.</p>
                   </div>
@@ -584,44 +589,246 @@ export default function Main() {
       <section className="flex justify-around w-full pb-[5rem] pt-[2rem]">
         <div className=" w-[80%]">
           <h1 className="text-[1.8rem] font-bold flex justify-center">
-            SKILLS
+            TOOLS & SKILLS
           </h1>
-          <div className="grid grid-cols-6 gap-4 mt-[1.5rem]">
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
-              HTML
+          <div className="mt-6">
+            <div className="grid w-full bg-black place-content-center">
+              <p className="font-light text-white">Languange</p>
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
-              CSS
+            <div className="grid grid-cols-4 border-[.1rem] border-black row-span-3 py-4 gap-y-3">
+              {/* will be change with looping */}
+              <div className="flex justify-around">
+                <div className="flex space-x-1 text-[.8rem] font-bold">
+                  <div className="flex content-center flex-wrap ">
+                    <img
+                      src="./icon/github.png"
+                      alt=""
+                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                    ></img>
+                  </div>
+                  <div className="grid content-center">
+                    <p>HTML</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-around">
+                <div className="flex space-x-1 text-[.8rem] font-bold">
+                  <div className="flex content-center flex-wrap ">
+                    <img
+                      src="./icon/github.png"
+                      alt=""
+                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                    ></img>
+                  </div>
+                  <div className="grid content-center">
+                    <p>HTML</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-around">
+                <div className="flex space-x-1 text-[.8rem] font-bold">
+                  <div className="flex content-center flex-wrap ">
+                    <img
+                      src="./icon/github.png"
+                      alt=""
+                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                    ></img>
+                  </div>
+                  <div className="grid content-center">
+                    <p>HTML</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-around">
+                <div className="flex space-x-1 text-[.8rem] font-bold">
+                  <div className="flex content-center flex-wrap ">
+                    <img
+                      src="./icon/github.png"
+                      alt=""
+                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                    ></img>
+                  </div>
+                  <div className="grid content-center">
+                    <p>HTML</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-around">
+                <div className="flex space-x-1 text-[.8rem] font-bold">
+                  <div className="flex content-center flex-wrap ">
+                    <img
+                      src="./icon/github.png"
+                      alt=""
+                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                    ></img>
+                  </div>
+                  <div className="grid content-center">
+                    <p>HTML</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
-              JS
+            <div className="flex bg-black text-white font-lilght bg-white gap-[.1rem]">
+              <div className="grid place-content-center bg-black w-[50%]">
+                Library's
+              </div>
+              <div className="grid place-content-center bg-black w-[50%] border-r-[.1rem] border-black">
+                Frameworks
+              </div>
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
-              REACT
+            <div className=" grid grid-cols-2 bg-black text-white font-bold bg-black gap-[.1rem]">
+              <div className="grid grid-cols-2 bg-white border-l-[.1rem] border-black text-black py-3 gap-y-3">
+                <div className="flex justify-around">
+                  <div className="flex space-x-1 text-[.8rem] font-bold">
+                    <div className="flex content-center flex-wrap ">
+                      <img
+                        src="./icon/github.png"
+                        alt=""
+                        className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                      ></img>
+                    </div>
+                    <div className="grid content-center">
+                      <p>HTML</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex justify-around">
+                  <div className="flex space-x-1 text-[.8rem] font-bold">
+                    <div className="flex content-center flex-wrap ">
+                      <img
+                        src="./icon/github.png"
+                        alt=""
+                        className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                      ></img>
+                    </div>
+                    <div className="grid content-center">
+                      <p>HTML</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 bg-white border-r-[.1rem] border-black text-black py-3 gap-y-3">
+                <div className="flex justify-around">
+                  <div className="flex space-x-1 text-[.8rem] font-bold">
+                    <div className="flex content-center flex-wrap ">
+                      <img
+                        src="./icon/github.png"
+                        alt=""
+                        className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                      ></img>
+                    </div>
+                    <div className="grid content-center">
+                      <p>HTML</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex justify-around">
+                  <div className="flex space-x-1 text-[.8rem] font-bold">
+                    <div className="flex content-center flex-wrap ">
+                      <img
+                        src="./icon/github.png"
+                        alt=""
+                        className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                      ></img>
+                    </div>
+                    <div className="grid content-center">
+                      <p>HTML</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex justify-around">
+                  <div className="flex space-x-1 text-[.8rem] font-bold">
+                    <div className="flex content-center flex-wrap ">
+                      <img
+                        src="./icon/github.png"
+                        alt=""
+                        className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                      ></img>
+                    </div>
+                    <div className="grid content-center">
+                      <p>HTML</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
-              TAILWIND
+
+            <div className="grid w-full bg-black place-content-center">
+              <p className="font-light text-white">Languange</p>
             </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
-              AXIOS
-            </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
-              HTML
-            </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
-              CSS
-            </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
-              JS
-            </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
-              REACT
-            </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
-              TAILWIND
-            </div>
-            <div className="justify-center flex border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-black cursor-pointer">
-              AXIOS
+
+            <div className="grid grid-cols-4 border-[.1rem] border-black row-span-3 py-3 gap-y-3">
+              {/* will be change with looping */}
+              <div className="flex justify-around">
+                <div className="flex space-x-1 text-[.8rem] font-bold">
+                  <div className="flex content-center flex-wrap ">
+                    <img
+                      src="./icon/github.png"
+                      alt=""
+                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                    ></img>
+                  </div>
+                  <div className="grid content-center">
+                    <p>HTML</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-around">
+                <div className="flex space-x-1 text-[.8rem] font-bold">
+                  <div className="flex content-center flex-wrap ">
+                    <img
+                      src="./icon/github.png"
+                      alt=""
+                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                    ></img>
+                  </div>
+                  <div className="grid content-center">
+                    <p>HTML</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-around">
+                <div className="flex space-x-1 text-[.8rem] font-bold">
+                  <div className="flex content-center flex-wrap ">
+                    <img
+                      src="./icon/github.png"
+                      alt=""
+                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                    ></img>
+                  </div>
+                  <div className="grid content-center">
+                    <p>HTML</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-around">
+                <div className="flex space-x-1 text-[.8rem] font-bold">
+                  <div className="flex content-center flex-wrap ">
+                    <img
+                      src="./icon/github.png"
+                      alt=""
+                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                    ></img>
+                  </div>
+                  <div className="grid content-center">
+                    <p>HTML</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-around">
+                <div className="flex space-x-1 text-[.8rem] font-bold">
+                  <div className="flex content-center flex-wrap ">
+                    <img
+                      src="./icon/github.png"
+                      alt=""
+                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                    ></img>
+                  </div>
+                  <div className="grid content-center">
+                    <p>HTML</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
