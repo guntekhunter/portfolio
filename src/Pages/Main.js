@@ -6,7 +6,7 @@ import {
 import { Link } from "react-router-dom";
 import Experience from "../Component/Experience";
 import ModalProject from "../Component/ModalProject";
-// import projectList from "../Data/ProjectList.json";
+import toolsList from "../Data/Tools.json";
 import {
   motion,
   useMotionValueEvent,
@@ -25,6 +25,10 @@ export default function Main() {
   const [scrollPosition, setScrollPosition] = useState();
   const containerRef = useRef(null);
   const allRef = useRef(null);
+  const languange = toolsList[0].langguange;
+  const library = toolsList[1].library;
+  const frameworks = toolsList[2].frameworks;
+  const other = toolsList[3].other;
 
   const projectList = [
     {
@@ -182,6 +186,10 @@ export default function Main() {
     setScrollPosition(latest);
   });
   console.log(scrollPosition);
+
+  console.log(other);
+  console.log(other);
+  // console.log(toolsList);
   return (
     // <div className="snap-y snap-mandatory h-screen w-screen overflow-scroll">
     <div>
@@ -229,11 +237,6 @@ export default function Main() {
               </li>
             </ul>
           </div>
-          <div
-            className={`absolute right-0 w-[31rem] border-b-[2px] h-[2rem] ${
-              scrollPosition > 0 ? "hidden" : ""
-            }`}
-          />
         </nav>
       </motion.div>
 
@@ -339,16 +342,16 @@ export default function Main() {
               transition={transition}
               className="summary-container"
             >
-              <p className="hy text-[.7rem]">Hi there! My name is</p>
+              <p className="hy text-[.7rem] font-light"></p>
               <p className="name text-[1.8rem] font-bold">
-                MUH. AGUNG HAERUDDIN
+                I WILL MAKE A SUPER COSTUM WEBSITE THAT FIT YOUR PERSONALITY
               </p>
               <p className="descriptions text-[.7rem]">
-                I am a front-end developer with a passion for creating visually
+                {/* I am a front-end developer with a passion for creating visually
                 appealing and user-friendly web experiences. With a strong
                 background in React and a desire to stay up-to-date with the
                 latest development technologies, I am dedicated to delivering
-                high-quality and impactful projects.
+                high-quality and impactful projects. */}
               </p>
               <div className="flex">
                 <button className="px-6 py-2 mt-3 border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-[#000000] cursor-pointer">
@@ -597,76 +600,23 @@ export default function Main() {
             </div>
             <div className="grid grid-cols-4 border-[.1rem] border-black row-span-3 py-4 gap-y-3">
               {/* will be change with looping */}
-              <div className="flex justify-around">
-                <div className="flex space-x-1 text-[.8rem] font-bold">
-                  <div className="flex content-center flex-wrap ">
-                    <img
-                      src="./icon/github.png"
-                      alt=""
-                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                    ></img>
+              {languange &&
+                library.map((data, key) => (
+                  <div className="flex justify-around">
+                    <div className="flex space-x-1 text-[.8rem] font-bold">
+                      <div className="flex content-center flex-wrap ">
+                        <img
+                          src="./icon/github.png"
+                          alt=""
+                          className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                        ></img>
+                      </div>
+                      <div className="grid content-center">
+                        <p>{data.name}</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="grid content-center">
-                    <p>HTML</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-around">
-                <div className="flex space-x-1 text-[.8rem] font-bold">
-                  <div className="flex content-center flex-wrap ">
-                    <img
-                      src="./icon/github.png"
-                      alt=""
-                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                    ></img>
-                  </div>
-                  <div className="grid content-center">
-                    <p>HTML</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-around">
-                <div className="flex space-x-1 text-[.8rem] font-bold">
-                  <div className="flex content-center flex-wrap ">
-                    <img
-                      src="./icon/github.png"
-                      alt=""
-                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                    ></img>
-                  </div>
-                  <div className="grid content-center">
-                    <p>HTML</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-around">
-                <div className="flex space-x-1 text-[.8rem] font-bold">
-                  <div className="flex content-center flex-wrap ">
-                    <img
-                      src="./icon/github.png"
-                      alt=""
-                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                    ></img>
-                  </div>
-                  <div className="grid content-center">
-                    <p>HTML</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-around">
-                <div className="flex space-x-1 text-[.8rem] font-bold">
-                  <div className="flex content-center flex-wrap ">
-                    <img
-                      src="./icon/github.png"
-                      alt=""
-                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                    ></img>
-                  </div>
-                  <div className="grid content-center">
-                    <p>HTML</p>
-                  </div>
-                </div>
-              </div>
+                ))}
             </div>
             <div className="flex bg-black text-white font-lilght bg-white gap-[.1rem]">
               <div className="grid place-content-center bg-black w-[50%]">
@@ -678,78 +628,42 @@ export default function Main() {
             </div>
             <div className=" grid grid-cols-2 bg-black text-white font-bold bg-black gap-[.1rem]">
               <div className="grid grid-cols-2 bg-white border-l-[.1rem] border-black text-black py-3 gap-y-3">
-                <div className="flex justify-around">
-                  <div className="flex space-x-1 text-[.8rem] font-bold">
-                    <div className="flex content-center flex-wrap ">
-                      <img
-                        src="./icon/github.png"
-                        alt=""
-                        className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                      ></img>
+                {library &&
+                  library.map((data, key) => (
+                    <div className="flex justify-around">
+                      <div className="flex space-x-1 text-[.8rem] font-bold">
+                        <div className="flex content-center flex-wrap ">
+                          <img
+                            src="./icon/github.png"
+                            alt=""
+                            className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                          ></img>
+                        </div>
+                        <div className="grid content-center">
+                          <p>{data.name}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="grid content-center">
-                      <p>HTML</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-around">
-                  <div className="flex space-x-1 text-[.8rem] font-bold">
-                    <div className="flex content-center flex-wrap ">
-                      <img
-                        src="./icon/github.png"
-                        alt=""
-                        className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                      ></img>
-                    </div>
-                    <div className="grid content-center">
-                      <p>HTML</p>
-                    </div>
-                  </div>
-                </div>
+                  ))}
               </div>
               <div className="grid grid-cols-2 bg-white border-r-[.1rem] border-black text-black py-3 gap-y-3">
-                <div className="flex justify-around">
-                  <div className="flex space-x-1 text-[.8rem] font-bold">
-                    <div className="flex content-center flex-wrap ">
-                      <img
-                        src="./icon/github.png"
-                        alt=""
-                        className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                      ></img>
+                {frameworks &&
+                  frameworks.map((data, key) => (
+                    <div className="flex justify-around">
+                      <div className="flex space-x-1 text-[.8rem] font-bold">
+                        <div className="flex content-center flex-wrap ">
+                          <img
+                            src="./icon/github.png"
+                            alt=""
+                            className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                          ></img>
+                        </div>
+                        <div className="grid content-center">
+                          <p>{data.name}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="grid content-center">
-                      <p>HTML</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-around">
-                  <div className="flex space-x-1 text-[.8rem] font-bold">
-                    <div className="flex content-center flex-wrap ">
-                      <img
-                        src="./icon/github.png"
-                        alt=""
-                        className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                      ></img>
-                    </div>
-                    <div className="grid content-center">
-                      <p>HTML</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-around">
-                  <div className="flex space-x-1 text-[.8rem] font-bold">
-                    <div className="flex content-center flex-wrap ">
-                      <img
-                        src="./icon/github.png"
-                        alt=""
-                        className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                      ></img>
-                    </div>
-                    <div className="grid content-center">
-                      <p>HTML</p>
-                    </div>
-                  </div>
-                </div>
+                  ))}
               </div>
             </div>
 
@@ -759,76 +673,23 @@ export default function Main() {
 
             <div className="grid grid-cols-4 border-[.1rem] border-black row-span-3 py-3 gap-y-3">
               {/* will be change with looping */}
-              <div className="flex justify-around">
-                <div className="flex space-x-1 text-[.8rem] font-bold">
-                  <div className="flex content-center flex-wrap ">
-                    <img
-                      src="./icon/github.png"
-                      alt=""
-                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                    ></img>
+              {other &&
+                other.map((data, key) => (
+                  <div className="flex justify-around">
+                    <div className="flex space-x-1 text-[.8rem] font-bold">
+                      <div className="flex content-center flex-wrap ">
+                        <img
+                          src="./icon/github.png"
+                          alt=""
+                          className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
+                        ></img>
+                      </div>
+                      <div className="grid content-center">
+                        <p>{data.name}</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="grid content-center">
-                    <p>HTML</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-around">
-                <div className="flex space-x-1 text-[.8rem] font-bold">
-                  <div className="flex content-center flex-wrap ">
-                    <img
-                      src="./icon/github.png"
-                      alt=""
-                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                    ></img>
-                  </div>
-                  <div className="grid content-center">
-                    <p>HTML</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-around">
-                <div className="flex space-x-1 text-[.8rem] font-bold">
-                  <div className="flex content-center flex-wrap ">
-                    <img
-                      src="./icon/github.png"
-                      alt=""
-                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                    ></img>
-                  </div>
-                  <div className="grid content-center">
-                    <p>HTML</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-around">
-                <div className="flex space-x-1 text-[.8rem] font-bold">
-                  <div className="flex content-center flex-wrap ">
-                    <img
-                      src="./icon/github.png"
-                      alt=""
-                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                    ></img>
-                  </div>
-                  <div className="grid content-center">
-                    <p>HTML</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-around">
-                <div className="flex space-x-1 text-[.8rem] font-bold">
-                  <div className="flex content-center flex-wrap ">
-                    <img
-                      src="./icon/github.png"
-                      alt=""
-                      className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                    ></img>
-                  </div>
-                  <div className="grid content-center">
-                    <p>HTML</p>
-                  </div>
-                </div>
-              </div>
+                ))}
             </div>
           </div>
         </div>
