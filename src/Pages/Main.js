@@ -274,96 +274,69 @@ export default function Main() {
                 />
               </MouseParallaxChild>
             </div>
-            <div className="w-[20rem]">
-              <MouseParallaxChild
-                factorX={0.1}
-                factorY={0.1}
-                className="w-[1rem]"
-              >
-                <div className="border-[2px] border-[#D9D9D9] w-[10rem] h-[15rem] realtive border-dashed">
-                  <MouseParallaxChild
-                    factorX={0.1}
-                    factorY={0.1}
-                    className="w-[1rem]"
-                  >
-                    <img
-                      alt=""
-                      src="./icon/background/2.png"
-                      className="ml-[14rem] w-2"
-                    />
-                  </MouseParallaxChild>
-                  <MouseParallaxChild factorX={0.5} factorY={0.5}>
-                    <img
-                      alt=""
-                      src="./icon/background/1.png"
-                      className="mt-[2rem] ml-[8rem] w-[6rem]"
-                    />
-                  </MouseParallaxChild>
-                </div>
-              </MouseParallaxChild>
-              <MouseParallaxChild factorX={0.1} factorY={0.5}>
-                <img
-                  alt=""
-                  src="./icon/background/2.png"
-                  className="ml-[15rem] w-[.51rem]"
-                />
-              </MouseParallaxChild>
-            </div>
           </MouseParallaxContainer>
         </div>
 
         {/* socialmedia */}
-        <div className="sumary w-[80%] flex items-center justify-between h-[70vh] z-10 relative sicky">
-          <div className="media-social">
-            <ul className="space-y-[1rem]">
-              <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-                <img alt="" src="./icon/instagram.png"></img>
-              </li>
-              <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-                <img alt="" src="./icon/github.png"></img>
-              </li>
-              <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-                <img alt="" src="./icon/linkedin.png"></img>
-              </li>
-              <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-                <img alt="" src="./icon/twitter.png"></img>
-              </li>
-            </ul>
-          </div>
-
-          {/* content */}
-          <div className="summary-content w-[30rem] flex">
-            <div className="w-[8rem] pt-[7rem] pr-2">
-              <img src="./icon/custom-arrow.png" className="rotate-[250deg]" />
+        <div className="w-[80%]">
+          <div className="flex justify-between w-full pt-[5rem]">
+            <div className="media-social w-[10rem] mt-[4rem]">
+              <ul className="space-y-[1rem]">
+                <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
+                  <img alt="" src="./icon/instagram.png"></img>
+                </li>
+                <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
+                  <img alt="" src="./icon/github.png"></img>
+                </li>
+                <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
+                  <img alt="" src="./icon/linkedin.png"></img>
+                </li>
+                <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
+                  <img alt="" src="./icon/twitter.png"></img>
+                </li>
+              </ul>
             </div>
-            <motion.div
-              initial={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={transition}
-              className="summary-container"
-            >
-              <p className="hy text-[.7rem] font-light"></p>
-              <p className="name text-[1.8rem] font-bold">
-                I WILL MAKE A SUPER COSTUM WEBSITE THAT FIT YOUR PERSONALITY
+
+            {/* content */}
+            <div className="summary-content w-[40rem] flex ">
+              <motion.div
+                initial={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={transition}
+                className="summary-container"
+              >
+                <p className="hy text-[.7rem] font-light"></p>
+                <p className="name text-[.7rem]">Hello There</p>
+
+                <p className="name text-[4.8rem] font-bold">I'M A</p>
+                <p className="name text-[4.8rem] font-bold">JUNIOR</p>
+              </motion.div>
+            </div>
+            <div className="w-[30rem]">
+              <p className="descriptions text-[.7rem] w-[15rem]">
+                I will create stunning, user-friendly experience, & responsive
+                websites to deliver an exceptional browsing experience for your
+                audience using clean code.
               </p>
-              <p className="descriptions text-[.7rem]">
-                {/* I am a front-end developer with a passion for creating visually
-                appealing and user-friendly web experiences. With a strong
-                background in React and a desire to stay up-to-date with the
-                latest development technologies, I am dedicated to delivering
-                high-quality and impactful projects. */}
-              </p>
-              <div className="flex">
-                <button className="px-6 py-2 mt-3 border-[#353435] border-dashed border-[2px] duration-300 font-bold hover:text-white hover:bg-[#000000] hover:border-[#000000] cursor-pointer">
-                  Contact Me
-                </button>
-              </div>
-            </motion.div>
+              {/* <img src="./icon/arrow.png" alt="" className="w-14"></img> */}
+            </div>
           </div>
-          <div className="w-[15rem]"></div>
+          <p className="name text-[4.8rem] font-bold ml-[7.8rem]">FRONTEND DEVELOPER</p>
         </div>
       </motion.div>
-      <div className="h-[3rem] bg-gray-200"></div>
+      <motion.div
+        className="flex justify-around"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+      >
+        <div className="mt-6">
+          <p className="">See My Portfolio</p>
+          <div className="w-full flex justify-center mt-2">
+            <img alt="" src="./icon/arrow.png" className="rotate-[90deg] w-5" />
+          </div>
+        </div>
+      </motion.div>
 
       {/* all the project */}
       <section className="relative">
@@ -604,13 +577,13 @@ export default function Main() {
                 library.map((data, key) => (
                   <div className="flex justify-around">
                     <div className="flex space-x-1 text-[.8rem] font-bold">
-                      <div className="flex content-center flex-wrap ">
+                      {/* <div className="flex content-center flex-wrap ">
                         <img
                           src="./icon/github.png"
                           alt=""
                           className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
                         ></img>
-                      </div>
+                      </div> */}
                       <div className="grid content-center">
                         <p>{data.name}</p>
                       </div>
@@ -632,13 +605,13 @@ export default function Main() {
                   library.map((data, key) => (
                     <div className="flex justify-around">
                       <div className="flex space-x-1 text-[.8rem] font-bold">
-                        <div className="flex content-center flex-wrap ">
+                        {/* <div className="flex content-center flex-wrap ">
                           <img
                             src="./icon/github.png"
                             alt=""
                             className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
                           ></img>
-                        </div>
+                        </div> */}
                         <div className="grid content-center">
                           <p>{data.name}</p>
                         </div>
@@ -651,13 +624,13 @@ export default function Main() {
                   frameworks.map((data, key) => (
                     <div className="flex justify-around">
                       <div className="flex space-x-1 text-[.8rem] font-bold">
-                        <div className="flex content-center flex-wrap ">
+                        {/* <div className="flex content-center flex-wrap ">
                           <img
                             src="./icon/github.png"
                             alt=""
                             className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
                           ></img>
-                        </div>
+                        </div> */}
                         <div className="grid content-center">
                           <p>{data.name}</p>
                         </div>
@@ -677,13 +650,13 @@ export default function Main() {
                 other.map((data, key) => (
                   <div className="flex justify-around">
                     <div className="flex space-x-1 text-[.8rem] font-bold">
-                      <div className="flex content-center flex-wrap ">
+                      {/* <div className="flex content-center flex-wrap ">
                         <img
                           src="./icon/github.png"
                           alt=""
                           className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
                         ></img>
-                      </div>
+                      </div> */}
                       <div className="grid content-center">
                         <p>{data.name}</p>
                       </div>
