@@ -7,9 +7,12 @@ import {
   useScroll,
 } from "framer-motion";
 import projectList from "../Data/ProjectList.json";
+import YouTube from "react-youtube";
+
 export default function Portofolio() {
   const [scrollPosition, setScrollPosition] = useState();
   const [data, setData] = useState();
+  const [videoId, setVideoId] = useState();
 
   // get the id base on project that was clicked
   const id = useParams();
@@ -33,20 +36,40 @@ export default function Portofolio() {
     const selected = projectList.map((obj) =>
       obj.section1.filter((item) => item.id === parseInt(id.id))
     );
+    // get id for youtube
+    setData(selected);
+  }, [projectList, id]);
+  
+  useEffect(() => {
+    const selected = projectList.map((obj) =>
+      obj.section2.filter((item) => item.id === parseInt(id.id))
+    );
+    // get id for youtube
     setData(selected);
   }, [projectList, id]);
 
-  // console logs
-  // console.log(scrollPosition);
-  // console.log(id.id);
-  console.log(data);
+  // react youtube
+  const opts = {
+    height: "390",
+    width: "640",
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 1,
+    },
+  };
+
+  React.useEffect(() => {
+    const getVideo = async () => {
+      console.log(data[0][0].url);
+      const dataUrl = data[0][0].url;
+      const idVideo = dataUrl.split("v=")[1];
+      setVideoId(idVideo);
+    };
+    getVideo();
+  }, [data]);
+  console.log(videoId);
   return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      className="scrollbar-hideflex whitespace-nowrap"
-    >
+    <motion.div initial="initial" animate="animate" exit="exit">
       {/* navbar */}
       <motion.div
         className={`flex items-center justify-around text-[#353435] z-50 sticky top-0 ${
@@ -133,10 +156,44 @@ export default function Portofolio() {
       </div>
 
       {/* section 2 */}
-      <div className="grid bg-blue-200 content-around justify-items-center">
-        <div className="flex w-[80%] justify-between">
-          <div className="bg-yellow-200">asd</div>
-          <div className="bg-green-200">asd</div>
+      <div className="grid content-around justify-items-center py-[5rem] bg-black text-white">
+        <div className="w-[80%] grid grid-cols-2 gap-8">
+          <div className="grid content-center">
+            <div className="grid content-center  ">
+              <p className="grid content-center font-bold text-[2rem]">
+                Here's what
+              </p>
+              <p className="grid content-center font-bold text-[2rem]">
+                I did in this project
+              </p>
+            </div>
+          </div>
+          <div className="">
+            <p>
+              I was responsible for developing the interface of Upana Studio's
+              mailing website, based on a stunning UI/UX design. To make sure
+              the website is easy to use and looks great, I used React.js and
+              tailwind. I also connected the website to the necessary API using
+              axios, so everything works as it should. After three months of
+              hard work, I successfully completed this project and I'm excited
+              to share it with you.
+            </p>
+          </div>
+        </div>
+      </div>
+      {/* section 3 */}
+      <div className="grid content-around justify-items-center py-9">
+        <div className="w-[80%]">
+          <div className="grid content-center">
+            <div className="flex justify-around">
+              <p className="grid content-center font-bold text-[2rem] pb-[2rem]">
+                OVERVIEW
+              </p>
+            </div>
+          </div>
+          <div className="flex justify-around">
+            <YouTube videoId={videoId} opts={opts} />
+          </div>
         </div>
       </div>
     </motion.div>

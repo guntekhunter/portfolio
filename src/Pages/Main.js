@@ -13,6 +13,7 @@ import {
   useScroll,
   useSpring,
 } from "framer-motion";
+import projectList from "../Data/ProjectList.json";
 
 export default function Main() {
   const [active, setActive] = useState(false);
@@ -30,113 +31,113 @@ export default function Main() {
   const frameworks = toolsList[2].frameworks;
   const other = toolsList[3].other;
 
-  const projectList = [
-    {
-      section1: [
-        {
-          id: 1,
-          image: "./project/1.jpg",
-          width: "20rem",
-          class: "inset-[9rem] w-[15rem] hover:w-[17rem]",
-          name: "Persuratan Upana",
-          factoryX: 0.1,
-          factoryY: 0.1,
-        },
-        {
-          id: 2,
-          image: "./project/2.jpg",
-          width: "20rem",
-          class: "inset-[7rem] left-[35rem] w-[18rem] hover:w-[19rem]",
-          name: "Confie.id",
-          factoryX: 0.2,
-          factoryY: 0.2,
-        },
-        {
-          id: 3,
-          image: "./project/3.jpg",
-          width: "15rem",
-          class: "inset-[17rem] left-[60rem] w-[15rem] hover:w-[17rem]",
-          name: "Confie.id",
-          factoryX: 0.2,
-          factoryY: 0.2,
-        },
-        {
-          id: 4,
-          image: "./project/4.jpg",
-          width: "17rem",
-          class: "right-[19rem] top-[28rem] w-[15rem] hover:w-[17rem]",
-          name: "Confie.id",
-          factoryX: 0.4,
-          factoryY: 0.4,
-        },
-        {
-          id: 5,
-          image: "./project/5.jpg",
-          width: "20rem",
-          class: "inset-[15rem] top-[25rem] w-[16rem] hover:w-[17rem]",
-          name: "Confie.id",
-          factoryX: 0.3,
-          factoryY: 0.3,
-        },
-      ],
-      section2: [
-        {
-          id: 6,
-          image: "./project/1.jpg",
-          width: "20rem",
-          class: "inset-[8rem] w-[14rem] hover:w-[17rem]",
-          name: "Confie.id",
-          factoryX: 0.3,
-          factoryY: 0.3,
-        },
-        {
-          id: 7,
-          image: "./project/2.jpg",
-          width: "20rem",
-          class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[17rem]",
-          name: "Confie.id",
-          factoryX: 0.5,
-          factoryY: 0.5,
-        },
-        {
-          id: 8,
-          image: "./project/3.jpg",
-          width: "15rem",
-          class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[17rem]",
-          name: "Confie.id",
-          factoryX: 0.2,
-          factoryY: 0.2,
-        },
-        {
-          id: 9,
-          image: "./project/4.jpg",
-          width: "17rem",
-          class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[17rem]",
-          name: "Confie.id",
-          factoryX: 0.3,
-          factoryY: 0.4,
-        },
-        {
-          id: 10,
-          image: "./project/5.jpg",
-          width: "20rem",
-          class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[17rem]",
-          name: "Confie.id",
-          factoryX: 0.4,
-          factoryY: 0.6,
-        },
-        {
-          id: 11,
-          image: "./project/6.jpg",
-          width: "20rem",
-          class: "inset-[33rem] top-[17rem] w-[20rem] hover:w-[17rem]",
-          name: "Confie.id",
-          factoryX: 0.4,
-          factoryY: 0.6,
-        },
-      ],
-    },
-  ];
+  // const projectList = [
+  //   {
+  //     section1: [
+  //       {
+  //         id: 1,
+  //         image: "./project/1.jpg",
+  //         width: "20rem",
+  //         class: "inset-[9rem] w-[15rem] hover:w-[17rem]",
+  //         name: "Persuratan Upana",
+  //         factoryX: 0.1,
+  //         factoryY: 0.1,
+  //       },
+  //       {
+  //         id: 2,
+  //         image: "./project/2.jpg",
+  //         width: "20rem",
+  //         class: "inset-[7rem] left-[35rem] w-[18rem] hover:w-[19rem]",
+  //         name: "Confie.id",
+  //         factoryX: 0.2,
+  //         factoryY: 0.2,
+  //       },
+  //       {
+  //         id: 3,
+  //         image: "./project/3.jpg",
+  //         width: "15rem",
+  //         class: "inset-[17rem] left-[60rem] w-[15rem] hover:w-[17rem]",
+  //         name: "Confie.id",
+  //         factoryX: 0.2,
+  //         factoryY: 0.2,
+  //       },
+  //       {
+  //         id: 4,
+  //         image: "./project/4.jpg",
+  //         width: "17rem",
+  //         class: "right-[19rem] top-[28rem] w-[15rem] hover:w-[17rem]",
+  //         name: "Confie.id",
+  //         factoryX: 0.4,
+  //         factoryY: 0.4,
+  //       },
+  //       {
+  //         id: 5,
+  //         image: "./project/5.jpg",
+  //         width: "20rem",
+  //         class: "inset-[15rem] top-[25rem] w-[16rem] hover:w-[17rem]",
+  //         name: "Confie.id",
+  //         factoryX: 0.3,
+  //         factoryY: 0.3,
+  //       },
+  //     ],
+  //     section2: [
+  //       {
+  //         id: 6,
+  //         image: "./project/1.jpg",
+  //         width: "20rem",
+  //         class: "inset-[8rem] w-[14rem] hover:w-[17rem]",
+  //         name: "Confie.id",
+  //         factoryX: 0.3,
+  //         factoryY: 0.3,
+  //       },
+  //       {
+  //         id: 7,
+  //         image: "./project/2.jpg",
+  //         width: "20rem",
+  //         class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[17rem]",
+  //         name: "Confie.id",
+  //         factoryX: 0.5,
+  //         factoryY: 0.5,
+  //       },
+  //       {
+  //         id: 8,
+  //         image: "./project/3.jpg",
+  //         width: "15rem",
+  //         class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[17rem]",
+  //         name: "Confie.id",
+  //         factoryX: 0.2,
+  //         factoryY: 0.2,
+  //       },
+  //       {
+  //         id: 9,
+  //         image: "./project/4.jpg",
+  //         width: "17rem",
+  //         class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[17rem]",
+  //         name: "Confie.id",
+  //         factoryX: 0.3,
+  //         factoryY: 0.4,
+  //       },
+  //       {
+  //         id: 10,
+  //         image: "./project/5.jpg",
+  //         width: "20rem",
+  //         class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[17rem]",
+  //         name: "Confie.id",
+  //         factoryX: 0.4,
+  //         factoryY: 0.6,
+  //       },
+  //       {
+  //         id: 11,
+  //         image: "./project/6.jpg",
+  //         width: "20rem",
+  //         class: "inset-[33rem] top-[17rem] w-[20rem] hover:w-[17rem]",
+  //         name: "Confie.id",
+  //         factoryX: 0.4,
+  //         factoryY: 0.6,
+  //       },
+  //     ],
+  //   },
+  // ];
 
   // transition with motion
   const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.9] };
@@ -185,6 +186,11 @@ export default function Main() {
     console.log("Page scroll: ", latest);
     setScrollPosition(latest);
   });
+
+  React.useEffect(() => {
+    const section1 = projectList[0].section1;
+    console.log("ahhay "+section1);
+  }, [projectList]);
   console.log(scrollPosition);
 
   console.log(other);
@@ -496,13 +502,35 @@ export default function Main() {
                       key={key}
                       factorX={data.factoryX}
                       factorY={data.factoryY}
+                      width={data.width}
                       className={`absolute ${data.class} ease-out duration-500`}
                     >
-                      <img
-                        alt=""
-                        src={data.image}
-                        className="border-[#353435] border-dashed border-[2px]"
-                      ></img>
+                      <Link to={`/portofolio/${data.id}`} state={data.width}>
+                        <motion.div
+                          exit={hoverId !== data.id && { opacity: 0 }}
+                          className="w-full relative cursor-pointer bg-gray-200"
+                          id={data.id}
+                          onMouseEnter={handleHover}
+                          onMouseLeave={handleLeave}
+                        >
+                          <img
+                            // onClick={handleShowModal}
+                            id={data.id}
+                            alt=""
+                            src={data.image}
+                            className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed hover:opacity-70 duration-500"
+                          ></img>
+                          <p
+                            className={`${
+                              idProject === data.id
+                                ? "flex duration-500"
+                                : "hidden"
+                            } absolute ease-out left-[50%] top-[50%] z-0 text-[.6rem] bg-black text-white duration-300 px-2`}
+                          >
+                            {data.name}
+                          </p>
+                        </motion.div>
+                      </Link>
                     </MouseParallaxChild>
                   ))
                 )}
