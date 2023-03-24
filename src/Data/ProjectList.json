@@ -14,7 +14,7 @@
         },
         {
           "id":2,
-          "image": "/project/2.jpg",
+          "image": "/project/3.jpg",
           "width": "20rem",
           "class": "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
           "name":"Confie.id",
@@ -25,7 +25,7 @@
         },
         {
           "id":3,
-          "image": "/project/3.jpg",
+          "image": "/project/7.jpg",
           "width": "15rem",
           "class": "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
           "name":"Car Rental",
@@ -36,7 +36,7 @@
         },
         {
           "id":4,
-          "image": "/project/4.jpg",
+          "image": "/project/9.jpg",
           "width": "17rem",
           "class": "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
           "name":"Personal website",
@@ -47,7 +47,7 @@
         },
         {
           "id":5,
-          "image": "/project/5.jpg",
+          "image": "/project/6.jpg",
           "width": "20rem",
           "class": "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
           "name":"Digides FAQ",
@@ -60,7 +60,7 @@
       "section2": [
         {
           "id":6,
-          "image": "/project/1.jpg",
+          "image": "/project/10.jpg",
           "width": "20rem",
           "class": "inset-[8rem] w-[20rem] hover:w-[23rem]",
           "name":"Pisangji",
@@ -71,7 +71,7 @@
         },
         {
           "id":7,
-          "image": "/project/2.jpg",
+          "image": "/project/11.jpg",
           "width": "20rem",
           "class": "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
           "name":"Titik Temu",
@@ -82,7 +82,7 @@
         },
         {
           "id":8,
-          "image": "/project/3.jpg",
+          "image": "/project/8.jpg",
           "width": "15rem",
           "class": "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
           "name":"Kampusku",
@@ -94,7 +94,7 @@
         {
           "id":9,
           "image": "/project/4.jpg",
-          "width": "17rem",
+          "width": "12rem",
           "class": "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
           "name":"Indobild",
           "description":"I developed a website using HTML and CSS as a part of my internship program application for Indo Bild. The program required applicants to create a website based on a given design. I was able to create the website within seven days. However, at the time of development, I was not able to incorporate responsiveness in the website. Nonetheless, the project was a valuable learning experience that helped me to develop my web development skills and prepare me for future projects",

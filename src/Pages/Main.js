@@ -143,59 +143,45 @@ export default function Main() {
   const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.9] };
   // slider
   const slideLeft = () => {
-    console.log("left");
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft - 1800;
     setNext(false);
   };
 
   const slideRight = () => {
-    console.log("right");
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft + 1800;
     setNext(true);
   };
 
   const handleScroll = () => {
-    console.log(containerRef?.current.scrollLeft);
     setNext(containerRef?.current.scrollLeft);
   };
 
   const handleScrollSection = (e) => {
-    console.log("clicked" + e.target.id);
     if (e.target.id === "sumary") {
-      console.log(allRef?.current.scrollTop);
       setScroll(allRef?.current.scrollTop);
     }
   };
 
   const handleHover = (e) => {
-    console.log("hoverig" + e.target.id);
     const id = parseInt(e.target.id);
     setIdProject(id);
     setHoverId(parseInt(e.target.id));
   };
   const handleLeave = (e) => {
-    console.log("hoverig" + e.target.id);
     setIdProject(null);
   };
 
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    console.log("Page scroll: ", latest);
     setScrollPosition(latest);
   });
 
-  React.useEffect(() => {
-    const section1 = projectList[0].section1;
-    console.log("ahhay "+section1);
-  }, [projectList]);
-  console.log(scrollPosition);
-
-  console.log(other);
-  console.log(other);
-  // console.log(toolsList);
+  // React.useEffect(() => {
+  //   const section1 = projectList[0].section1;
+  // }, [projectList]);
   return (
     // <div className="snap-y snap-mandatory h-screen w-screen overflow-scroll">
     <div>

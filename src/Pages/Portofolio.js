@@ -26,26 +26,26 @@ export default function Portofolio() {
 
   // method to automate a scroll from top after changging page
   useMotionValueEvent(scrollY, "change", (latest) => {
-    console.log("Page scroll: ", latest);
     setScrollPosition(latest);
   });
 
   // get data from json file base on id that was passing from previous page
   // const selection = projectList
+  const section1 = projectList[0].section1;
+  const section2 = projectList[0].section2;
+  const gabung = [...section1, ...section2];
+  console.log(gabung);
+
   useEffect(() => {
-    const selected = projectList.map((obj) =>
-      obj.section1.filter((item) => item.id === parseInt(id.id))
-    );
-    // get id for youtube
+    console.log(gabung);
+    const selected = gabung.filter((data) => data.id === parseInt(id.id));
+    console.log(selected);
+    // const selected = projectList.map(
+    //   (obj) => obj.section1.filter((item) => item.id === parseInt(id.id))
+    //   // obj.section2.filter((item) => item.id === parseInt(id.id))
+    // );
     setData(selected);
-  }, [projectList, id]);
-  
-  useEffect(() => {
-    const selected = projectList.map((obj) =>
-      obj.section2.filter((item) => item.id === parseInt(id.id))
-    );
-    // get id for youtube
-    setData(selected);
+    // console.log(`ini bisa ${selected}`);
   }, [projectList, id]);
 
   // react youtube
@@ -60,14 +60,13 @@ export default function Portofolio() {
 
   React.useEffect(() => {
     const getVideo = async () => {
-      console.log(data[0][0].url);
-      const dataUrl = data[0][0].url;
+      console.log(data);
+      const dataUrl = data[0].url;
       const idVideo = dataUrl.split("v=")[1];
       setVideoId(idVideo);
     };
     getVideo();
   }, [data]);
-  console.log(videoId);
   return (
     <motion.div initial="initial" animate="animate" exit="exit">
       {/* navbar */}
@@ -123,9 +122,11 @@ export default function Portofolio() {
           className="m-4"
         >
           {data &&
-            data.map((item, key) =>
-              item.map((item) => <h1 className="text-[8rem]">{item.name}</h1>)
-            )}
+            data.map((item, key) => (
+              <h1 className="text-[8rem]" key={key}>
+                {item.name}
+              </h1>
+            ))}
         </motion.div>
         <div className="w-full grid justify-items-center">
           <motion.div
@@ -139,18 +140,16 @@ export default function Portofolio() {
           >
             <div className="" />
             {data &&
-              data.map((item, key) =>
-                item.map((item) => (
-                  <motion.img
-                    key={key}
-                    initial={{ scale: 1 }}
-                    src={item.image}
-                    transition={transition}
-                    alt=""
-                    className=" top-[1rem]"
-                  />
-                ))
-              )}
+              data.map((item, key) => (
+                <motion.img
+                  key={key}
+                  initial={{ scale: 1 }}
+                  src={item.image}
+                  transition={transition}
+                  alt=""
+                  className=" top-[1rem]"
+                />
+              ))}
           </motion.div>
         </div>
       </div>
