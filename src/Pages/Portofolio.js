@@ -37,15 +37,8 @@ export default function Portofolio() {
   console.log(gabung);
 
   useEffect(() => {
-    console.log(gabung);
     const selected = gabung.filter((data) => data.id === parseInt(id.id));
-    console.log(selected);
-    // const selected = projectList.map(
-    //   (obj) => obj.section1.filter((item) => item.id === parseInt(id.id))
-    //   // obj.section2.filter((item) => item.id === parseInt(id.id))
-    // );
     setData(selected);
-    // console.log(`ini bisa ${selected}`);
   }, [projectList, id]);
 
   // react youtube
@@ -53,20 +46,20 @@ export default function Portofolio() {
     height: "390",
     width: "640",
     playerVars: {
-      // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
     },
   };
 
   React.useEffect(() => {
     const getVideo = async () => {
-      console.log(data);
       const dataUrl = data[0].url;
       const idVideo = dataUrl.split("v=")[1];
       setVideoId(idVideo);
     };
     getVideo();
   }, [data]);
+
+  console.log(videoId)
   return (
     <motion.div initial="initial" animate="animate" exit="exit">
       {/* navbar */}
@@ -123,8 +116,8 @@ export default function Portofolio() {
         >
           {data &&
             data.map((item, key) => (
-              <h1 className="text-[8rem]" key={key}>
-                {item.name}
+              <h1 className="text-[5rem] font-bold" key={key}>
+                {item.name.toUpperCase()}
               </h1>
             ))}
         </motion.div>

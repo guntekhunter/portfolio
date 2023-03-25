@@ -4,19 +4,21 @@ import {
   MouseParallaxChild,
 } from "react-parallax-mouse";
 import { Link } from "react-router-dom";
-import Experience from "../Component/Experience";
 import ModalProject from "../Component/ModalProject";
-import toolsList from "../Data/Tools.json";
+
 import {
   motion,
+  useAnimation,
   useMotionValueEvent,
   useScroll,
-  useSpring,
+  useTransform,
 } from "framer-motion";
 import projectList from "../Data/ProjectList.json";
+import { useInView } from "react-intersection-observer";
+import ExperienceSection from "../Component/ExperienceSection";
+import SkillsSection from "../Component/SkillsSection";
 
 export default function Main() {
-  const [active, setActive] = useState(false);
   const [next, setNext] = useState(0);
   const [scroll, setScroll] = useState(0);
   const [idProject, setIdProject] = useState();
@@ -26,118 +28,15 @@ export default function Main() {
   const [scrollPosition, setScrollPosition] = useState();
   const containerRef = useRef(null);
   const allRef = useRef(null);
-  const languange = toolsList[0].langguange;
-  const library = toolsList[1].library;
-  const frameworks = toolsList[2].frameworks;
-  const other = toolsList[3].other;
 
-  // const projectList = [
-  //   {
-  //     section1: [
-  //       {
-  //         id: 1,
-  //         image: "./project/1.jpg",
-  //         width: "20rem",
-  //         class: "inset-[9rem] w-[15rem] hover:w-[17rem]",
-  //         name: "Persuratan Upana",
-  //         factoryX: 0.1,
-  //         factoryY: 0.1,
-  //       },
-  //       {
-  //         id: 2,
-  //         image: "./project/2.jpg",
-  //         width: "20rem",
-  //         class: "inset-[7rem] left-[35rem] w-[18rem] hover:w-[19rem]",
-  //         name: "Confie.id",
-  //         factoryX: 0.2,
-  //         factoryY: 0.2,
-  //       },
-  //       {
-  //         id: 3,
-  //         image: "./project/3.jpg",
-  //         width: "15rem",
-  //         class: "inset-[17rem] left-[60rem] w-[15rem] hover:w-[17rem]",
-  //         name: "Confie.id",
-  //         factoryX: 0.2,
-  //         factoryY: 0.2,
-  //       },
-  //       {
-  //         id: 4,
-  //         image: "./project/4.jpg",
-  //         width: "17rem",
-  //         class: "right-[19rem] top-[28rem] w-[15rem] hover:w-[17rem]",
-  //         name: "Confie.id",
-  //         factoryX: 0.4,
-  //         factoryY: 0.4,
-  //       },
-  //       {
-  //         id: 5,
-  //         image: "./project/5.jpg",
-  //         width: "20rem",
-  //         class: "inset-[15rem] top-[25rem] w-[16rem] hover:w-[17rem]",
-  //         name: "Confie.id",
-  //         factoryX: 0.3,
-  //         factoryY: 0.3,
-  //       },
-  //     ],
-  //     section2: [
-  //       {
-  //         id: 6,
-  //         image: "./project/1.jpg",
-  //         width: "20rem",
-  //         class: "inset-[8rem] w-[14rem] hover:w-[17rem]",
-  //         name: "Confie.id",
-  //         factoryX: 0.3,
-  //         factoryY: 0.3,
-  //       },
-  //       {
-  //         id: 7,
-  //         image: "./project/2.jpg",
-  //         width: "20rem",
-  //         class: "inset-[3rem] left-[35rem] w-[20rem] hover:w-[17rem]",
-  //         name: "Confie.id",
-  //         factoryX: 0.5,
-  //         factoryY: 0.5,
-  //       },
-  //       {
-  //         id: 8,
-  //         image: "./project/3.jpg",
-  //         width: "15rem",
-  //         class: "inset-[18rem] left-[60rem] w-[15rem] hover:w-[17rem]",
-  //         name: "Confie.id",
-  //         factoryX: 0.2,
-  //         factoryY: 0.2,
-  //       },
-  //       {
-  //         id: 9,
-  //         image: "./project/4.jpg",
-  //         width: "17rem",
-  //         class: "right-[19rem] top-[30rem] w-[17rem] hover:w-[17rem]",
-  //         name: "Confie.id",
-  //         factoryX: 0.3,
-  //         factoryY: 0.4,
-  //       },
-  //       {
-  //         id: 10,
-  //         image: "./project/5.jpg",
-  //         width: "20rem",
-  //         class: "inset-[10rem] top-[25rem] w-[20rem] hover:w-[17rem]",
-  //         name: "Confie.id",
-  //         factoryX: 0.4,
-  //         factoryY: 0.6,
-  //       },
-  //       {
-  //         id: 11,
-  //         image: "./project/6.jpg",
-  //         width: "20rem",
-  //         class: "inset-[33rem] top-[17rem] w-[20rem] hover:w-[17rem]",
-  //         name: "Confie.id",
-  //         factoryX: 0.4,
-  //         factoryY: 0.6,
-  //       },
-  //     ],
-  //   },
-  // ];
+  // animation on scroll
+  const ref1 = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref1,
+    offset: ["end end", "end start"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0.2, 0.8], [1, 0]);
 
   // transition with motion
   const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.9] };
@@ -179,11 +78,31 @@ export default function Main() {
     setScrollPosition(latest);
   });
 
-  // React.useEffect(() => {
-  //   const section1 = projectList[0].section1;
-  // }, [projectList]);
+  // animation on view
+  const { ref, inView } = useInView({
+    threshold: 0.2,
+  });
+  const animation = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      animation.start({
+        x: 0,
+        opacity: 100,
+        transition: {
+          type: "spring",
+          duration: 2,
+          bounce: 0.3,
+        },
+      });
+    }
+    if (!inView) {
+      animation.start({ x: "-100vw", opacity: 0 });
+    }
+    console.log(`inview ${inView}`);
+  }, [inView]);
+
   return (
-    // <div className="snap-y snap-mandatory h-screen w-screen overflow-scroll">
     <div>
       {/* navbar */}
       <motion.div
@@ -233,12 +152,12 @@ export default function Main() {
       </motion.div>
 
       {/* summary section */}
-      <motion.div
-        initial={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="flex items-center justify-around realtive"
-      >
-        <div className="flex absolute z-0 w-full items-center justify-around realtive h-full">
+      <div ref={ref1} className="flex items-center justify-around realtive">
+        <motion.div
+          style={{ opacity: opacity }}
+          transition={{ delay: 2 }}
+          className="flex absolute z-0 w-full items-center justify-around realtive h-full"
+        >
           <MouseParallaxContainer
             useWindowMouseEvents
             className="flex w-full h-full items-center justify-around paralax z-0"
@@ -267,7 +186,7 @@ export default function Main() {
               </MouseParallaxChild>
             </div>
           </MouseParallaxContainer>
-        </div>
+        </motion.div>
 
         {/* socialmedia */}
         <div className="w-[80%]">
@@ -290,7 +209,10 @@ export default function Main() {
             </div>
 
             {/* content */}
-            <div className="summary-content w-[40rem] flex ">
+            <motion.div
+              style={{ opacity: opacity }}
+              className="summary-content w-[40rem] flex "
+            >
               <motion.div
                 initial={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -298,36 +220,48 @@ export default function Main() {
                 className="summary-container"
               >
                 <p className="hy text-[.7rem] font-light"></p>
-                <p className="name text-[.7rem]">Hello There</p>
+                <motion.p
+                  style={{ opacity: opacity }}
+                  className="name text-[.7rem]"
+                >
+                  Hello There
+                </motion.p>
 
                 <p className="name text-[4.8rem] font-bold">I'M A</p>
                 <p className="name text-[4.8rem] font-bold">JUNIOR</p>
               </motion.div>
-            </div>
+            </motion.div>
             <div className="w-[30rem]">
-              <p className="descriptions text-[.7rem] w-[15rem]">
-                I will create stunning, user-friendly experience, & responsive
-                websites to deliver an exceptional browsing experience for your
-                audience using clean code.
+              <img src="./foto_agung.jpg" alt="" className="w-[8rem] pb-[1.6rem]"></img>
+              <p className="descriptions text-[.7rem] w-[20rem]">
+                I am passionate about creating visually stunning and
+                user-friendly websites that deliver exceptional browsing
+                experiences to audiences. I am proficient in writing clean and
+                efficient code to ensure optimal performance and responsiveness
+                across all devices.
               </p>
-              {/* <img src="./icon/arrow.png" alt="" className="w-14"></img> */}
             </div>
           </div>
-          <p className="name text-[4.8rem] font-bold ml-[7.8rem]">FRONTEND DEVELOPER</p>
+          <motion.p
+            style={{ opacity: opacity }}
+            className="name text-[4.8rem] font-bold ml-[7.8rem]"
+          >
+            FRONTEND DEVELOPER
+          </motion.p>
         </div>
-      </motion.div>
+      </div>
       <motion.div
         className="flex justify-around"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
       >
-        <div className="mt-6">
+        <motion.div style={{ opacity: opacity }} className="mt-6">
           <p className="">See My Portfolio</p>
           <div className="w-full flex justify-center mt-2">
             <img alt="" src="./icon/arrow.png" className="rotate-[90deg] w-5" />
           </div>
-        </div>
+        </motion.div>
       </motion.div>
 
       {/* all the project */}
@@ -412,8 +346,11 @@ export default function Main() {
           onScroll={handleScroll}
           className="flex overflow-scroll scroll whitespace-nowrap hover:overflow-x-scroll scrollbar-hide scroll-smooth"
         >
-          <div>
-            <div className="container w-[100vw] h-[120vh] relative">
+          <div ref={ref}>
+            <motion.div
+              className="container w-[100vw] h-[120vh] relative"
+              animate={animation}
+            >
               <MouseParallaxContainer
                 useWindowMouseEvents
                 className="flex w-full h-full items-center justify-around paralax "
@@ -471,7 +408,7 @@ export default function Main() {
                   </div>
                 </motion.div>
               </MouseParallaxContainer>
-            </div>
+            </motion.div>
           </div>
           <div>
             <div className="container w-[100vw] h-[120vh] relative">
@@ -562,125 +499,10 @@ export default function Main() {
         id={id}
       />
       {/* expirience section */}
-      <section className="flex justify-around w-full pb-[5rem]">
-        <div className="w-[80%]">
-          <div>
-            <h1 className="text-[1.8rem] font-bold">EXPIRIENCE</h1>
-          </div>
-          {/* <div className="flex justify-between space-x-[3rem] mt-[2rem]"> */}
-          <div className="grid grid-cols-2 gap-14 mt-[2rem]">
-            <Experience />
-            <Experience />
-          </div>
-        </div>
-      </section>
+      <ExperienceSection />
 
       {/* skills section */}
-      <section className="flex justify-around w-full pb-[5rem] pt-[2rem]">
-        <div className=" w-[80%]">
-          <h1 className="text-[1.8rem] font-bold flex justify-center">
-            TOOLS & SKILLS
-          </h1>
-          <div className="mt-6">
-            <div className="grid w-full bg-black place-content-center">
-              <p className="font-light text-white">Languange</p>
-            </div>
-            <div className="grid grid-cols-4 border-[.1rem] border-black row-span-3 py-4 gap-y-3">
-              {/* will be change with looping */}
-              {languange &&
-                library.map((data, key) => (
-                  <div className="flex justify-around">
-                    <div className="flex space-x-1 text-[.8rem] font-bold">
-                      {/* <div className="flex content-center flex-wrap ">
-                        <img
-                          src="./icon/github.png"
-                          alt=""
-                          className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                        ></img>
-                      </div> */}
-                      <div className="grid content-center">
-                        <p>{data.name}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-            </div>
-            <div className="flex bg-black text-white font-lilght bg-white gap-[.1rem]">
-              <div className="grid place-content-center bg-black w-[50%]">
-                Library's
-              </div>
-              <div className="grid place-content-center bg-black w-[50%] border-r-[.1rem] border-black">
-                Frameworks
-              </div>
-            </div>
-            <div className=" grid grid-cols-2 bg-black text-white font-bold bg-black gap-[.1rem]">
-              <div className="grid grid-cols-2 bg-white border-l-[.1rem] border-black text-black py-3 gap-y-3">
-                {library &&
-                  library.map((data, key) => (
-                    <div className="flex justify-around">
-                      <div className="flex space-x-1 text-[.8rem] font-bold">
-                        {/* <div className="flex content-center flex-wrap ">
-                          <img
-                            src="./icon/github.png"
-                            alt=""
-                            className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                          ></img>
-                        </div> */}
-                        <div className="grid content-center">
-                          <p>{data.name}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-              </div>
-              <div className="grid grid-cols-2 bg-white border-r-[.1rem] border-black text-black py-3 gap-y-3">
-                {frameworks &&
-                  frameworks.map((data, key) => (
-                    <div className="flex justify-around">
-                      <div className="flex space-x-1 text-[.8rem] font-bold">
-                        {/* <div className="flex content-center flex-wrap ">
-                          <img
-                            src="./icon/github.png"
-                            alt=""
-                            className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                          ></img>
-                        </div> */}
-                        <div className="grid content-center">
-                          <p>{data.name}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-              </div>
-            </div>
-
-            <div className="grid w-full bg-black place-content-center">
-              <p className="font-light text-white">Languange</p>
-            </div>
-
-            <div className="grid grid-cols-4 border-[.1rem] border-black row-span-3 py-3 gap-y-3">
-              {/* will be change with looping */}
-              {other &&
-                other.map((data, key) => (
-                  <div className="flex justify-around">
-                    <div className="flex space-x-1 text-[.8rem] font-bold">
-                      {/* <div className="flex content-center flex-wrap ">
-                        <img
-                          src="./icon/github.png"
-                          alt=""
-                          className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                        ></img>
-                      </div> */}
-                      <div className="grid content-center">
-                        <p>{data.name}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <SkillsSection/>
     </div>
   );
 }
