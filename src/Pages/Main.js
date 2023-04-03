@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   MouseParallaxContainer,
   MouseParallaxChild,
@@ -19,6 +19,10 @@ import ExperienceSection from "../Component/ExperienceSection";
 import SkillsSection from "../Component/SkillsSection";
 
 export default function Main() {
+  const refSumary = useRef(null);
+  const refMyWork = useRef(null);
+  const refExperience = useRef(null);
+  const refSkills = useRef(null);
   const [next, setNext] = useState(0);
   const [scroll, setScroll] = useState(0);
   const [idProject, setIdProject] = useState();
@@ -28,6 +32,108 @@ export default function Main() {
   const [scrollPosition, setScrollPosition] = useState();
   const containerRef = useRef(null);
   const allRef = useRef(null);
+
+  const projectList = [
+    {
+      section1: [
+        {
+          id: 1,
+          image: "./project/1.jpg",
+          width: "20rem",
+          class: "inset-[9rem] w-[15rem] hover:w-[17rem]",
+          name: "Persuratan Upana",
+          factoryX: 0.1,
+          factoryY: 0.1,
+        },
+        {
+          id: 2,
+          image: "./project/3.jpg",
+          width: "20rem",
+          class: "inset-[7rem] left-[35rem] w-[18rem] hover:w-[19rem]",
+          name: "Confie.id",
+          factoryX: 0.2,
+          factoryY: 0.2,
+        },
+        {
+          id: 3,
+          image: "./project/7.jpg",
+          width: "15rem",
+          class: "inset-[17rem] left-[60rem] w-[15rem] hover:w-[17rem]",
+          name: "Car Rental",
+          factoryX: 0.2,
+          factoryY: 0.2,
+        },
+        {
+          id: 4,
+          image: "./project/9.jpg",
+          width: "17rem",
+          class: "right-[19rem] top-[28rem] w-[15rem] hover:w-[17rem]",
+          name: "Personal Website",
+          factoryX: 0.4,
+          factoryY: 0.4,
+        },
+        {
+          id: 5,
+          image: "./project/6.jpg",
+          width: "20rem",
+          class: "inset-[15rem] top-[25rem] w-[16rem] hover:w-[17rem]",
+          name: "Digides FAQ",
+          factoryX: 0.3,
+          factoryY: 0.3,
+        },
+      ],
+      section2: [
+        {
+          id: 6,
+          image: "/project/10.jpg",
+          width: "20rem",
+          class: "inset-[9rem] w-[15rem] hover:w-[17rem]",
+          name: "Pisangji",
+          description:
+            "Pisangji is a personal project that I created to improve my web programming skills. I designed the website using only HTML and CSS to gain a better understanding of the basics of web programming. To enhance the website's functionality, I incorporated a library that allows users to locate the brand based on its physical location. Furthermore, I utilized CSS grid to create an aesthetically pleasing and organized layout for the website. Overall, this project served as a valuable learning experience that helped me to strengthen my web programming skills",
+          url: "https://www.youtube.com/watch?v=9e1jGNzXI3o",
+          factoryX: 0.3,
+          factoryY: 0.3,
+        },
+        {
+          id: 7,
+          image: "/project/11.jpg",
+          width: "20rem",
+          class: "inset-[7rem] left-[35rem] w-[18rem] hover:w-[19rem]",
+          name: "Titik Temu",
+          description:
+            "I created a project that involves cloning an existing website called 'Titik Temu. The project was designed using only HTML and CSS. My primary goal was to gain a better understanding of web layouting by attempting to recreate an already existing website. Through this project, I was able to study the design principles, layout, and features of 'Titik Temu' and successfully replicate them. Overall, this project was a challenging yet fulfilling learning experience that helped me to develop my skills in web development",
+          url: "https://www.youtube.com/watch?v=9e1jGNzXI3o",
+          factoryX: 0.5,
+          factoryY: 0.5,
+        },
+        {
+          id: 8,
+          image: "/project/8.jpg",
+          width: "15rem",
+          class: "inset-[18rem] left-[60rem] w-[13rem] hover:w-[17rem]",
+          name: "Kampusku",
+          description:
+            "This full-stack project was developed using PHP as the primary programming language. It comprises of a server-side and a user-side, where the user-side is dynamic and can be updated from the server-side. I created an interface for the project and also built a database to manage the configuration with the interface. To ensure an aesthetically pleasing and user-friendly interface, I utilized the Bootstrap framework and incorporated AOS animation to enhance the user experience. Additionally, I used the Codigniter framework to streamline the development process and MySQL to manage the database effectively. Overall, this project served as an excellent opportunity for me to hone my full-stack development skills and create a functional and interactive website.",
+          url: "https://www.youtube.com/watch?v=9e1jGNzXI3o",
+          factoryX: 0.2,
+          factoryY: 0.2,
+        },
+        {
+          id: 9,
+          image: "/project/4.jpg",
+          width: "12rem",
+          class: "right-[19rem] top-[28rem] w-[15rem] hover:w-[17rem]",
+          name: "Indobild",
+          description:
+            "I developed a website using HTML and CSS as a part of my internship program application for Indo Bild. The program required applicants to create a website based on a given design. I was able to create the website within seven days. However, at the time of development, I was not able to incorporate responsiveness in the website. Nonetheless, the project was a valuable learning experience that helped me to develop my web development skills and prepare me for future projects",
+          url: "https://www.youtube.com/watch?v=9e1jGNzXI3o",
+          factoryX: 0.3,
+          factoryY: 0.4,
+        },
+      ],
+    },
+  ];
 
   // animation on scroll
   const ref1 = useRef(null);
@@ -102,6 +208,21 @@ export default function Main() {
     console.log(`inview ${inView}`);
   }, [inView]);
 
+  // scroll to component with navbar
+  const clickSumary = () => {
+    refSumary.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const clickMyWork = () => {
+    refMyWork.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const clickExperience = () => {
+    refExperience.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const clickSkills = () => {
+    refSkills.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div>
       {/* navbar */}
@@ -121,28 +242,28 @@ export default function Main() {
               <li
                 className="z-10 cursor-pointer duration-200"
                 id="sumary"
-                onClick={handleScrollSection}
+                onClick={clickSumary}
               >
                 Sumary
               </li>
               <li
                 className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
                 id="my work"
-                onClick={handleScrollSection}
+                onClick={clickMyWork}
               >
                 My Work
               </li>
               <li
                 className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
                 id="experience"
-                onClick={handleScrollSection}
+                onClick={clickExperience}
               >
                 Experience
               </li>
               <li
                 className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
                 id="skills"
-                onClick={handleScrollSection}
+                onClick={clickSkills}
               >
                 Skils
               </li>
@@ -154,6 +275,7 @@ export default function Main() {
       {/* summary section */}
       <div ref={ref1} className="flex items-center justify-around realtive">
         <motion.div
+          ref={refSumary}
           style={{ opacity: opacity }}
           transition={{ delay: 2 }}
           className="flex absolute z-0 w-full items-center justify-around realtive h-full"
@@ -232,7 +354,11 @@ export default function Main() {
               </motion.div>
             </motion.div>
             <div className="w-[30rem]">
-              <img src="./foto_agung.jpg" alt="" className="w-[8rem] pb-[1.6rem]"></img>
+              <img
+                src="./foto_agung.jpg"
+                alt=""
+                className="w-[8rem] pb-[1.6rem]"
+              ></img>
               <p className="descriptions text-[.7rem] w-[20rem]">
                 I am passionate about creating visually stunning and
                 user-friendly websites that deliver exceptional browsing
@@ -346,69 +472,71 @@ export default function Main() {
           onScroll={handleScroll}
           className="flex overflow-scroll scroll whitespace-nowrap hover:overflow-x-scroll scrollbar-hide scroll-smooth"
         >
-          <div ref={ref}>
-            <motion.div
-              className="container w-[100vw] h-[120vh] relative"
-              animate={animation}
-            >
-              <MouseParallaxContainer
-                useWindowMouseEvents
-                className="flex w-full h-full items-center justify-around paralax "
-                globalFactorX={0.3}
-                globalFactorY={0.3}
-                resetOnLeave
+          <div ref={refMyWork}>
+            <div ref={ref}>
+              <motion.div
+                className="container w-[100vw] h-[120vh] relative"
+                animate={animation}
               >
-                {projectList.map((item) =>
-                  item.section1.map((data, key) => (
-                    <MouseParallaxChild
-                      key={key}
-                      factorX={data.factoryX}
-                      factorY={data.factoryY}
-                      width={data.width}
-                      className={`absolute ${data.class} ease-out duration-500`}
-                    >
-                      <Link to={`/portofolio/${data.id}`} state={data.width}>
-                        <motion.div
-                          exit={hoverId !== data.id && { opacity: 0 }}
-                          className="w-full relative cursor-pointer bg-gray-200"
-                          id={data.id}
-                          onMouseEnter={handleHover}
-                          onMouseLeave={handleLeave}
-                        >
-                          <img
-                            // onClick={handleShowModal}
-                            id={data.id}
-                            alt=""
-                            src={data.image}
-                            className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed hover:opacity-70 duration-500"
-                          ></img>
-                          <p
-                            className={`${
-                              idProject === data.id
-                                ? "flex duration-500"
-                                : "hidden"
-                            } absolute ease-out left-[50%] top-[50%] z-0 text-[.6rem] bg-black text-white duration-300 px-2`}
-                          >
-                            {data.name}
-                          </p>
-                        </motion.div>
-                      </Link>
-                    </MouseParallaxChild>
-                  ))
-                )}
-                <motion.div
-                  initial={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ transition }}
-                  className="text-container h-full flex items-center justify-around text-right"
+                <MouseParallaxContainer
+                  useWindowMouseEvents
+                  className="flex w-full h-full items-center justify-around paralax "
+                  globalFactorX={0.3}
+                  globalFactorY={0.3}
+                  resetOnLeave
                 >
-                  <div className="text-[2rem] ml-[15rem] mt-[1rem] border-b-[2px] border-[#353435]">
-                    <p className="">SOME OF</p>
-                    <p className="font-bold">MY WORK.</p>
-                  </div>
-                </motion.div>
-              </MouseParallaxContainer>
-            </motion.div>
+                  {projectList.map((item) =>
+                    item.section1.map((data, key) => (
+                      <MouseParallaxChild
+                        key={key}
+                        factorX={data.factoryX}
+                        factorY={data.factoryY}
+                        width={data.width}
+                        className={`absolute ${data.class} ease-out duration-500`}
+                      >
+                        <Link to={`/portofolio/${data.id}`} state={data.width}>
+                          <motion.div
+                            exit={hoverId !== data.id && { opacity: 0 }}
+                            className="w-full relative cursor-pointer bg-gray-200"
+                            id={data.id}
+                            onMouseEnter={handleHover}
+                            onMouseLeave={handleLeave}
+                          >
+                            <img
+                              // onClick={handleShowModal}
+                              id={data.id}
+                              alt=""
+                              src={data.image}
+                              className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed hover:opacity-70 duration-500"
+                            ></img>
+                            <p
+                              className={`${
+                                idProject === data.id
+                                  ? "flex duration-500"
+                                  : "hidden"
+                              } absolute ease-out left-[50%] top-[50%] z-0 text-[.6rem] bg-black text-white duration-300 px-2`}
+                            >
+                              {data.name}
+                            </p>
+                          </motion.div>
+                        </Link>
+                      </MouseParallaxChild>
+                    ))
+                  )}
+                  <motion.div
+                    initial={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ transition }}
+                    className="text-container h-full flex items-center justify-around text-right"
+                  >
+                    <div className="text-[2rem] ml-[15rem] mt-[1rem] border-b-[2px] border-[#353435]">
+                      <p className="">SOME OF</p>
+                      <p className="font-bold">MY WORK.</p>
+                    </div>
+                  </motion.div>
+                </MouseParallaxContainer>
+              </motion.div>
+            </div>
           </div>
           <div>
             <div className="container w-[100vw] h-[120vh] relative">
@@ -499,10 +627,14 @@ export default function Main() {
         id={id}
       />
       {/* expirience section */}
-      <ExperienceSection />
+      <div ref={refExperience} className="pt-[3rem]">
+        <ExperienceSection />
+      </div>
 
       {/* skills section */}
-      <SkillsSection/>
+      <div ref={refSkills}>
+        <SkillsSection />
+      </div>
     </div>
   );
 }

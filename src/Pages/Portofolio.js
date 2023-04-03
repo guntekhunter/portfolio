@@ -99,11 +99,7 @@ export default function Portofolio() {
               </li>
             </ul>
           </div>
-          <div
-            className={`absolute right-0 w-[31rem] border-b-[2px] h-[2rem] ${
-              scrollPosition > 0 ? "hidden" : ""
-            }`}
-          />
+          
         </nav>
       </motion.div>
       {/* section 1 */}

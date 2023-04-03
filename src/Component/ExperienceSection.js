@@ -10,7 +10,7 @@ export default function ExperienceSection() {
     offset: ["end end", "end start"]
   });
   
-  const opacity = useTransform(scrollYProgress, [0.2, 0.9], [1, 0]);
+  const opacity = useTransform(scrollYProgress, [.5, 1], [1, 0]);
 
   return (
     <section ref={ref1} className="flex justify-around w-full pb-[5rem]">

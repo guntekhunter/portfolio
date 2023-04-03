@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function Experience() {
-    const [active, setActive] = useState(false);
+    const [active, setActive] = useState(true);
 
     // dropdown
   const dropDown = () => {

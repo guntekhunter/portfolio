@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 import toolsList from "../Data/Tools.json";
 
-export default function SkillsSection() {
+export default function SkillsSection({ref}) {
   const languange = toolsList[0].langguange;
   const library = toolsList[1].library;
   const frameworks = toolsList[2].frameworks;
@@ -10,14 +10,18 @@ export default function SkillsSection() {
 
   const ref1 = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: (ref1),
-    offset: ["end end", "start end"]
+    target: ref1,
+    offset: ["end end", "start end"],
   });
-  
+
   const opacity = useTransform(scrollYProgress, [0.2, 0.9], [1, 0]);
   return (
-    <section ref={ref1}className="flex justify-around w-full pb-[5rem] pt-[2rem]">
-      <motion.div style={{opacity:opacity}}className=" w-[80%]">
+    <section
+      // ref={ref1}
+      ref={ref}
+      className="flex justify-around w-full pb-[5rem] pt-[2rem]"
+    >
+      <motion.div style={{ opacity: opacity }} className=" w-[80%]">
         <h1 className="text-[1.8rem] font-bold flex justify-center">
           TOOLS & SKILLS
         </h1>
