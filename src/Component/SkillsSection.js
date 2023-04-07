@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 import toolsList from "../Data/Tools.json";
 
-export default function SkillsSection({ref}) {
+export default function SkillsSection({ ref }) {
   const languange = toolsList[0].langguange;
   const library = toolsList[1].library;
   const frameworks = toolsList[2].frameworks;
@@ -27,21 +27,14 @@ export default function SkillsSection({ref}) {
         </h1>
         <div className="mt-6">
           <div className="grid w-full bg-black place-content-center">
-            <p className="font-light text-white">Languange</p>
+            <p className="font-light text-white w-[50%]">Languange</p>
           </div>
           <div className="grid grid-cols-4 border-[.1rem] border-black row-span-3 py-4 gap-y-3">
             {/* will be change with looping */}
             {languange &&
-              library.map((data, key) => (
+              languange.map((data, key) => (
                 <div className="flex justify-around">
                   <div className="flex space-x-1 text-[.8rem] font-bold">
-                    {/* <div className="flex content-center flex-wrap ">
-                        <img
-                          src="./icon/github.png"
-                          alt=""
-                          className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                        ></img>
-                      </div> */}
                     <div className="grid content-center">
                       <p>{data.name}</p>
                     </div>
@@ -63,13 +56,6 @@ export default function SkillsSection({ref}) {
                 library.map((data, key) => (
                   <div className="flex justify-around">
                     <div className="flex space-x-1 text-[.8rem] font-bold">
-                      {/* <div className="flex content-center flex-wrap ">
-                          <img
-                            src="./icon/github.png"
-                            alt=""
-                            className="w-[.7rem] h-[.71rem] mt-[-.1rem]"
-                          ></img>
-                        </div> */}
                       <div className="grid content-center">
                         <p>{data.name}</p>
                       </div>
