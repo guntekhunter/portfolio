@@ -32,6 +32,7 @@ export default function Main() {
   const [scrollPosition, setScrollPosition] = useState();
   const containerRef = useRef(null);
   const allRef = useRef(null);
+  let [activeNav, setActiveNav] = useState(false);
 
   const projectList = [
     {
@@ -223,6 +224,17 @@ export default function Main() {
     refSkills.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // navbar mobile function
+  const handleNavbar = () => {
+    console.log("clicked");
+    if (activeNav === false) {
+      setActiveNav(true);
+    } else {
+      setActiveNav(false);
+    }
+    console.log(activeNav);
+  };
+
   // make 2 section data into one data
   const section1 = projectList2[0].section1;
   const section2 = projectList2[0].section2;
@@ -284,26 +296,81 @@ export default function Main() {
           scrollPosition > 0
             ? "bg-black duration-500 text-white"
             : "duration-500"
-        }`}
+        } h-[2.5rem] `}
       >
-        <div className="w-[80%] justify-between flex">
+        <div className="w-[80%] justify-between flex pt-[.5rem]">
           <div className="font-bold">
             <p>AGUNG</p>
           </div>
-          <div className="w-[1rem] pt-[.5rem] duration-500">
+          <div
+            className={`${
+              activeNav
+                ? "w-[.9rem] pt-[.5rem] duration-100"
+                : "w-[1rem] pt-[.5rem] duration-100"
+            }`}
+          >
             {scrollPosition > 0 ? (
-              <img src="./icon/hamburger-white.png" className="" alt="" />
+              <img
+                src={`${
+                  activeNav
+                    ? "./icon/x-white.png"
+                    : "./icon/hamburger-white.png"
+                }`}
+                className=""
+                alt=""
+                onClick={handleNavbar}
+              />
             ) : (
-              <img src="./icon/hamburger.png" className="" alt="" />
+              <img
+                src={`${activeNav ? "./icon/x.png" : "./icon/hamburger.png"}`}
+                alt=""
+              />
             )}
           </div>
+        </div>
+        {/* page selector mobile */}
+        <div
+          className={`absolute left-0 pl-[1.9rem] pt-[2rem] bg-black w-full z-[-1] transition-all duration-500 ease-in ${
+            activeNav ? "top-0" : "top-[-20rem]"
+          }`}
+        >
+          <ul className=" text-[9px] font-bold justify-between w-full z-10 space-y-[1rem] py-[1rem]">
+            <li
+              className="z-10 cursor-pointer duration-200 text-white"
+              id="sumary"
+              onClick={clickSumary}
+            >
+              Sumary
+            </li>
+            <li
+              className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
+              id="my work"
+              onClick={clickMyWork}
+            >
+              My Work
+            </li>
+            <li
+              className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
+              id="experience"
+              onClick={clickExperience}
+            >
+              Experience
+            </li>
+            <li
+              className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
+              id="skills"
+              onClick={clickSkills}
+            >
+              Skils
+            </li>
+          </ul>
         </div>
       </nav>
 
       {/* summary section */}
       <div
         ref={ref1}
-        className="flex items-center justify-around realtive block md:mt-0 mt-[3rem]"
+        className="flex items-center justify-around realtive block md:mt-0 mt-[4rem]"
       >
         <motion.div
           ref={refSumary}
