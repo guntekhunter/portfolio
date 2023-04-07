@@ -13,7 +13,7 @@ export default function Experience() {
   };
   return (
     <div
-      className="flex text-[.73rem] w-full cursor-pointer"
+      className="text-[.73rem] md:w-full cursor-pointer md:flex block"
       onClick={dropDown}
     >
       <div className="flex w-[100%] align-center">
@@ -26,7 +26,7 @@ export default function Experience() {
           </p>
           <div className="flex space-x-2">
             <p
-              className={`description w-[18rem] ${
+              className={`description md:w-[18rem] w-[16rem] ${
                 active ? `duration-500` : `truncate overflow-hidden pr-2 duration-500`
               }`}
             >

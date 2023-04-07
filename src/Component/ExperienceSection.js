@@ -18,8 +18,7 @@ export default function ExperienceSection() {
         <div>
           <h1 className="text-[1.8rem] font-bold">EXPIRIENCE</h1>
         </div>
-        {/* <div className="flex justify-between space-x-[3rem] mt-[2rem]"> */}
-        <div className="grid grid-cols-2 gap-14 mt-[2rem]">
+        <div className="md:grid grid-cols-2 md:gap-14 mt-[2rem] w-[100%] space-y-[2rem] md:space-y-0">
           <Experience />
           <Experience />
         </div>
