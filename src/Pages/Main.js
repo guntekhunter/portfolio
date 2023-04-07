@@ -230,8 +230,8 @@ export default function Main() {
   console.log(gabung);
 
   return (
-    <div className="overflow-hidden md:overflow-visible">
-      {/* navbar */}
+    <div className="overflow-hidden md:overflow-visible relative">
+      {/* navbar desktop*/}
       <motion.div
         className={`flex items-center justify-around text-[#353435] z-50 sticky top-0 ${
           scrollPosition > 0
@@ -239,7 +239,7 @@ export default function Main() {
             : "duration-500"
         } `}
       >
-        <nav className="flex items-center justify-between w-[80%] h-[1rem] realtive z-10 py-4">
+        <nav className="md:flex items-center justify-between w-[80%] h-[1rem] realtive z-10 py-4 hidden">
           <div>
             <h1 className="font-bold text-[15px]">AGUNG</h1>
           </div>
@@ -278,10 +278,32 @@ export default function Main() {
         </nav>
       </motion.div>
 
+      {/* navbar mobile */}
+      <nav
+        className={`justify-around flex fixed top-0 right-0 left-0 md:hidden z-50 ${
+          scrollPosition > 0
+            ? "bg-black duration-500 text-white"
+            : "duration-500"
+        }`}
+      >
+        <div className="w-[80%] justify-between flex">
+          <div className="font-bold">
+            <p>AGUNG</p>
+          </div>
+          <div className="w-[1rem] pt-[.5rem] duration-500">
+            {scrollPosition > 0 ? (
+              <img src="./icon/hamburger-white.png" className="" alt="" />
+            ) : (
+              <img src="./icon/hamburger.png" className="" alt="" />
+            )}
+          </div>
+        </div>
+      </nav>
+
       {/* summary section */}
       <div
         ref={ref1}
-        className="flex items-center justify-around realtive block"
+        className="flex items-center justify-around realtive block md:mt-0 mt-[3rem]"
       >
         <motion.div
           ref={refSumary}
