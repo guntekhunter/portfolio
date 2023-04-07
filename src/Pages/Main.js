@@ -38,7 +38,7 @@ export default function Main() {
       section1: [
         {
           id: 1,
-          image: "./project/1.jpg",
+          image: "/project/1.jpg",
           width: "20rem",
           class: "inset-[9rem] w-[15rem] hover:w-[17rem]",
           name: "Persuratan Upana",
@@ -47,7 +47,7 @@ export default function Main() {
         },
         {
           id: 2,
-          image: "./project/3.jpg",
+          image: "/project/3.jpg",
           width: "20rem",
           class: "inset-[7rem] left-[35rem] w-[18rem] hover:w-[19rem]",
           name: "Confie.id",
@@ -56,7 +56,7 @@ export default function Main() {
         },
         {
           id: 3,
-          image: "./project/7.jpg",
+          image: "/project/7.jpg",
           width: "15rem",
           class: "inset-[17rem] left-[60rem] w-[15rem] hover:w-[17rem]",
           name: "Car Rental",
@@ -65,7 +65,7 @@ export default function Main() {
         },
         {
           id: 4,
-          image: "./project/9.jpg",
+          image: "/project/9.jpg",
           width: "17rem",
           class: "right-[19rem] top-[28rem] w-[15rem] hover:w-[17rem]",
           name: "Personal Website",
@@ -74,7 +74,7 @@ export default function Main() {
         },
         {
           id: 5,
-          image: "./project/6.jpg",
+          image: "/project/6.jpg",
           width: "20rem",
           class: "inset-[15rem] top-[25rem] w-[16rem] hover:w-[17rem]",
           name: "Digides FAQ",
@@ -224,7 +224,7 @@ export default function Main() {
   };
 
   return (
-    <div>
+    <div className="overflow-hidden md:overflow-visible">
       {/* navbar */}
       <motion.div
         className={`flex items-center justify-around text-[#353435] z-50 sticky top-0 ${
@@ -273,12 +273,15 @@ export default function Main() {
       </motion.div>
 
       {/* summary section */}
-      <div ref={ref1} className="flex items-center justify-around realtive">
+      <div
+        ref={ref1}
+        className="flex items-center justify-around realtive block"
+      >
         <motion.div
           ref={refSumary}
           style={{ opacity: opacity }}
           transition={{ delay: 2 }}
-          className="flex absolute z-0 w-full items-center justify-around realtive h-full"
+          className="absolute z-0 w-full items-center justify-around realtive h-full md:flex hidden"
         >
           <MouseParallaxContainer
             useWindowMouseEvents
@@ -310,11 +313,11 @@ export default function Main() {
           </MouseParallaxContainer>
         </motion.div>
 
-        {/* socialmedia */}
         <div className="w-[80%]">
-          <div className="flex justify-between w-full pt-[5rem]">
-            <div className="media-social w-[10rem] mt-[4rem]">
-              <ul className="space-y-[1rem]">
+          <div className="justify-between w-full md:pt-[5rem] block md:flex ">
+            {/* socialmedia */}
+            <div className="media-social w-[10rem] md:mt-[4rem] hidden md:flex">
+              <ul className="space-y-[1rem] flex md:block">
                 <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
                   <img alt="" src="./icon/instagram.png"></img>
                 </li>
@@ -333,33 +336,40 @@ export default function Main() {
             {/* content */}
             <motion.div
               style={{ opacity: opacity }}
-              className="summary-content w-[40rem] flex "
+              className="summary-content md:w-[40rem] w-[100%] flex relative"
             >
+              <div className="absolute z-0 w-[10rem] ml-100% right-0 md:hidden w-[100%] hight-[100%]">
+                <img src="./foto_agung.jpg" alt=""></img>
+              </div>
               <motion.div
                 initial={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={transition}
-                className="summary-container"
+                className="summary-container z-10"
               >
                 <p className="hy text-[.7rem] font-light"></p>
                 <motion.p
                   style={{ opacity: opacity }}
-                  className="name text-[.7rem]"
+                  className="name text-[1rem]"
                 >
                   Hello There
                 </motion.p>
 
-                <p className="name text-[4.8rem] font-bold">I'M A</p>
-                <p className="name text-[4.8rem] font-bold">JUNIOR</p>
+                <p className="name text-[1.9rem] font-bold lg:text-[4.8rem]">
+                  I'M A
+                </p>
+                <p className="name text-[1.9rem] font-bold lg:text-[4.8rem]">
+                  JUNIOR
+                </p>
               </motion.div>
             </motion.div>
             <div className="w-[30rem]">
               <img
                 src="./foto_agung.jpg"
                 alt=""
-                className="w-[8rem] pb-[1.6rem]"
+                className="w-[8rem] pb-[1.6rem] md:flex hidden"
               ></img>
-              <p className="descriptions text-[.7rem] w-[20rem]">
+              <p className="descriptions text-[.7rem] w-[20rem] md-flex hidden md:flex hidden">
                 I am passionate about creating visually stunning and
                 user-friendly websites that deliver exceptional browsing
                 experiences to audiences. I am proficient in writing clean and
@@ -370,10 +380,25 @@ export default function Main() {
           </div>
           <motion.p
             style={{ opacity: opacity }}
-            className="name text-[4.8rem] font-bold ml-[7.8rem]"
+            className="name font-bold md:ml-[7.8rem] text-[1.8rem] font-bold lg:text-[4.8rem] text-[2rem]"
           >
             FRONTEND DEVELOPER
           </motion.p>
+          {/* socialmedia */}
+          <div className="media-social w-[100%] md:mt-[4rem] block md:hidden flex w-full justify-between mt-[1rem]">
+            <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
+              <img alt="" src="./icon/instagram.png"></img>
+            </div>
+            <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
+              <img alt="" src="./icon/github.png"></img>
+            </div>
+            <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
+              <img alt="" src="./icon/linkedin.png"></img>
+            </div>
+            <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
+              <img alt="" src="./icon/twitter.png"></img>
+            </div>
+          </div>
         </div>
       </div>
       <motion.div
