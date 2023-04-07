@@ -13,7 +13,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import projectList from "../Data/ProjectList.json";
+import projectList2 from "../Data/ProjectList.json";
 import { useInView } from "react-intersection-observer";
 import ExperienceSection from "../Component/ExperienceSection";
 import SkillsSection from "../Component/SkillsSection";
@@ -223,6 +223,12 @@ export default function Main() {
     refSkills.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // make 2 section data into one data
+  const section1 = projectList2[0].section1;
+  const section2 = projectList2[0].section2;
+  const gabung = [...section1, ...section2];
+  console.log(gabung);
+
   return (
     <div className="overflow-hidden md:overflow-visible">
       {/* navbar */}
@@ -380,7 +386,7 @@ export default function Main() {
           </div>
           <motion.p
             style={{ opacity: opacity }}
-            className="name font-bold md:ml-[7.8rem] text-[1.8rem] font-bold lg:text-[4.8rem] text-[2rem]"
+            className="name font-bold md:ml-[7.8rem] text-[1.8rem] font-bold lg:text-[4.8rem] text-[2rem] z-10"
           >
             FRONTEND DEVELOPER
           </motion.p>
@@ -415,10 +421,26 @@ export default function Main() {
         </motion.div>
       </motion.div>
 
+      {/* project on mobile looks */}
+      <div className="grid grid-cols-2 gap-5 p-[2rem] md:hidden">
+        {gabung &&
+          gabung.map((data) => (
+            <div className="relative shadow-md">
+              <div className="h-[3.8rem] overflow-hidden">
+                <img src={data.image} alt=""></img>
+              </div>
+              <div className="text-[.5rem] px-[.5rem] py-[.5rem]">
+                <p className="font-bold">{data.name}</p>
+                <p className="truncate ... h-[1rem]">{data.description}</p>
+              </div>
+            </div>
+          ))}
+      </div>
+
       {/* all the project */}
-      <section className="relative">
+      <section className="relative md:block hidden">
         {/* background paralax */}
-        <div className="flex absolute z-0 w-full items-center justify-around realtive h-full">
+        <div className="flex absolute z-0 w-full items-center justify-around realtive h-full ">
           <MouseParallaxContainer
             useWindowMouseEvents
             className="flex w-full h-full items-center justify-around paralax"
