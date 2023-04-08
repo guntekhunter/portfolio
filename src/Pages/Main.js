@@ -21,6 +21,7 @@ import SkillsSection from "../Component/SkillsSection";
 export default function Main() {
   const refSumary = useRef(null);
   const refMyWork = useRef(null);
+  const refMyWorkMobile = useRef(null);
   const refExperience = useRef(null);
   const refSkills = useRef(null);
   const [next, setNext] = useState(0);
@@ -216,6 +217,9 @@ export default function Main() {
   const clickMyWork = () => {
     refMyWork.current?.scrollIntoView({ behavior: "smooth" });
   };
+  const clickMyWorkMobile = () => {
+    refMyWorkMobile.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const clickExperience = () => {
     refExperience.current?.scrollIntoView({ behavior: "smooth" });
@@ -251,7 +255,7 @@ export default function Main() {
             : "duration-500"
         } `}
       >
-        <nav className="md:flex items-center justify-between w-[80%] h-[1rem] realtive z-10 py-4 hidden">
+        <nav className="md:flex items-center justify-between w-[80%] h-[1rem] realtive z-10 py-5 hidden">
           <div>
             <h1 className="font-bold text-[15px]">AGUNG</h1>
           </div>
@@ -299,7 +303,11 @@ export default function Main() {
         } h-[2.5rem] `}
       >
         <div className="w-[80%] justify-between flex pt-[.5rem]">
-          <div className="font-bold">
+          <div
+            className={`${
+              activeNav ? "text-white duration-100 ease-in" : ""
+            } font-bold`}
+          >
             <p>AGUNG</p>
           </div>
           <div
@@ -315,15 +323,19 @@ export default function Main() {
                   activeNav
                     ? "./icon/x-white.png"
                     : "./icon/hamburger-white.png"
-                }`}
-                className=""
+                } `}
+                className="duration-100"
                 alt=""
                 onClick={handleNavbar}
               />
             ) : (
               <img
-                src={`${activeNav ? "./icon/x.png" : "./icon/hamburger.png"}`}
+                src={`${
+                  activeNav ? "./icon/x-white.png" : "./icon/hamburger.png"
+                }`}
                 alt=""
+                className="duration-100"
+                onClick={handleNavbar}
               />
             )}
           </div>
@@ -373,7 +385,6 @@ export default function Main() {
         className="flex items-center justify-around realtive block md:mt-0 mt-[4rem]"
       >
         <motion.div
-          ref={refSumary}
           style={{ opacity: opacity }}
           transition={{ delay: 2 }}
           className="absolute z-0 w-full items-center justify-around realtive h-full md:flex hidden"
@@ -408,7 +419,7 @@ export default function Main() {
           </MouseParallaxContainer>
         </motion.div>
 
-        <div className="w-[80%]">
+        <div className="w-[80%]" ref={refSumary}>
           <div className="justify-between w-full md:pt-[5rem] block md:flex ">
             {/* socialmedia */}
             <div className="media-social w-[10rem] md:mt-[4rem] hidden md:flex">
@@ -511,118 +522,184 @@ export default function Main() {
       </motion.div>
 
       {/* project on mobile looks */}
-      <div className="grid grid-cols-2 gap-5 p-[2rem] md:hidden">
-        {gabung &&
-          gabung.map((data) => (
-            <div className="relative shadow-md">
-              <div className="h-[3.8rem] overflow-hidden">
-                <img src={data.image} alt=""></img>
-              </div>
-              <div className="text-[.5rem] px-[.5rem] py-[.5rem]">
-                <p className="font-bold">{data.name}</p>
-                <p className="truncate ... h-[1rem]">{data.description}</p>
-              </div>
-            </div>
-          ))}
-      </div>
-
-      {/* all the project */}
-      <section className="relative md:block hidden">
-        {/* background paralax */}
-        <div className="flex absolute z-0 w-full items-center justify-around realtive h-full ">
-          <MouseParallaxContainer
-            useWindowMouseEvents
-            className="flex w-full h-full items-center justify-around paralax"
-            globalFactorX={0.3}
-            globalFactorY={0.3}
-            resetOnLeave
-          >
-            <div className="w-[20rem]">
-              <MouseParallaxChild
-                factorX={0.1}
-                factorY={0.1}
-                className="w-[1rem]"
-              >
-                <img
-                  alt=""
-                  src="./icon/background/2.2.png"
-                  className="mt-[1rem] w-2"
-                />
-              </MouseParallaxChild>
-              <MouseParallaxChild factorX={0.5} factorY={0.5}>
-                <img
-                  alt=""
-                  src="./icon/background/2.1.png"
-                  className="pt-[7rem] ml-[25rem] w-[5rem]"
-                />
-              </MouseParallaxChild>
-            </div>
-            <div className="w-[20rem]">
-              <MouseParallaxChild
-                factorX={0.1}
-                factorY={0.1}
-                className="w-[1rem]"
-              >
-                <div className="w-[10rem] h-[15rem]">
-                  <MouseParallaxChild factorX={0.1} factorY={0.1}>
-                    <img
-                      alt=""
-                      src="./icon/background/2.2.png"
-                      className="mt-[-14rem] ml-[15rem] w-2"
-                    />
-                  </MouseParallaxChild>
-                  <MouseParallaxChild factorX={0.5} factorY={0.5}>
-                    <img
-                      alt=""
-                      src="./icon/background/2.1.png"
-                      className="mt-[2rem] ml-[8rem] w-[5rem]"
-                    />
-                  </MouseParallaxChild>
+      <div ref={refMyWork}>
+        <div className="grid grid-cols-2 gap-5 p-[2rem] md:hidden">
+          {gabung &&
+            gabung.map((data) => (
+              <div className="relative shadow-md">
+                <div className="h-[3.8rem] overflow-hidden">
+                  <img src={data.image} alt=""></img>
                 </div>
-              </MouseParallaxChild>
-              <MouseParallaxChild factorX={0.1} factorY={0.5}>
-                <img
-                  alt=""
-                  src="./icon/background/2.2.png"
-                  className="ml-[15rem] mt-[5rem] w-[.51rem]"
-                />
-              </MouseParallaxChild>
+                <div className="text-[.5rem] px-[.5rem] py-[.5rem]">
+                  <p className="font-bold">{data.name}</p>
+                  <p className="truncate ... h-[1rem]">{data.description}</p>
+                </div>
+              </div>
+            ))}
+        </div>
+
+        {/* all the project */}
+        <section className="relative md:block hidden">
+          {/* background paralax */}
+          <div className="flex absolute z-0 w-full items-center justify-around realtive h-full ">
+            <MouseParallaxContainer
+              useWindowMouseEvents
+              className="flex w-full h-full items-center justify-around paralax"
+              globalFactorX={0.3}
+              globalFactorY={0.3}
+              resetOnLeave
+            >
+              <div className="w-[20rem]">
+                <MouseParallaxChild
+                  factorX={0.1}
+                  factorY={0.1}
+                  className="w-[1rem]"
+                >
+                  <img
+                    alt=""
+                    src="./icon/background/2.2.png"
+                    className="mt-[1rem] w-2"
+                  />
+                </MouseParallaxChild>
+                <MouseParallaxChild factorX={0.5} factorY={0.5}>
+                  <img
+                    alt=""
+                    src="./icon/background/2.1.png"
+                    className="pt-[7rem] ml-[25rem] w-[5rem]"
+                  />
+                </MouseParallaxChild>
+              </div>
+              <div className="w-[20rem]">
+                <MouseParallaxChild
+                  factorX={0.1}
+                  factorY={0.1}
+                  className="w-[1rem]"
+                >
+                  <div className="w-[10rem] h-[15rem]">
+                    <MouseParallaxChild factorX={0.1} factorY={0.1}>
+                      <img
+                        alt=""
+                        src="./icon/background/2.2.png"
+                        className="mt-[-14rem] ml-[15rem] w-2"
+                      />
+                    </MouseParallaxChild>
+                    <MouseParallaxChild factorX={0.5} factorY={0.5}>
+                      <img
+                        alt=""
+                        src="./icon/background/2.1.png"
+                        className="mt-[2rem] ml-[8rem] w-[5rem]"
+                      />
+                    </MouseParallaxChild>
+                  </div>
+                </MouseParallaxChild>
+                <MouseParallaxChild factorX={0.1} factorY={0.5}>
+                  <img
+                    alt=""
+                    src="./icon/background/2.2.png"
+                    className="ml-[15rem] mt-[5rem] w-[.51rem]"
+                  />
+                </MouseParallaxChild>
+              </div>
+            </MouseParallaxContainer>
+          </div>
+          <div
+            className={`hover:opacity-100 opacity-0 duration-500 absolute left-[-1.5rem] grid content-center h-[75%] align-center z-10 p-[1rem] ${
+              next >= 1296 ? "border-[#353435]" : "hidden duration-200"
+            } cursor-pointer transition ease-in-out hover:translate-x-5`}
+            onClick={slideLeft}
+          >
+            <img
+              alt=""
+              src="./icon/arrow.png"
+              className="w-[1rem] h-[100%] bg-red rotate-180"
+            />
+          </div>
+          <div
+            id="slider"
+            ref={containerRef}
+            onScroll={handleScroll}
+            className="flex overflow-scroll scroll whitespace-nowrap hover:overflow-x-scroll scrollbar-hide scroll-smooth"
+          >
+            <div>
+              <div ref={ref}>
+                <motion.div
+                  className="container w-[100vw] h-[120vh] relative"
+                  animate={animation}
+                >
+                  <MouseParallaxContainer
+                    useWindowMouseEvents
+                    className="flex w-full h-full items-center justify-around paralax "
+                    globalFactorX={0.3}
+                    globalFactorY={0.3}
+                    resetOnLeave
+                  >
+                    {projectList.map((item) =>
+                      item.section1.map((data, key) => (
+                        <MouseParallaxChild
+                          key={key}
+                          factorX={data.factoryX}
+                          factorY={data.factoryY}
+                          width={data.width}
+                          className={`absolute ${data.class} ease-out duration-500`}
+                        >
+                          <Link
+                            to={`/portofolio/${data.id}`}
+                            state={data.width}
+                          >
+                            <motion.div
+                              exit={hoverId !== data.id && { opacity: 0 }}
+                              className="w-full relative cursor-pointer bg-gray-200"
+                              id={data.id}
+                              onMouseEnter={handleHover}
+                              onMouseLeave={handleLeave}
+                            >
+                              <img
+                                // onClick={handleShowModal}
+                                id={data.id}
+                                alt=""
+                                src={data.image}
+                                className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed hover:opacity-70 duration-500"
+                              ></img>
+                              <p
+                                className={`${
+                                  idProject === data.id
+                                    ? "flex duration-500"
+                                    : "hidden"
+                                } absolute ease-out left-[50%] top-[50%] z-0 text-[.6rem] bg-black text-white duration-300 px-2`}
+                              >
+                                {data.name}
+                              </p>
+                            </motion.div>
+                          </Link>
+                        </MouseParallaxChild>
+                      ))
+                    )}
+                    <motion.div
+                      initial={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ transition }}
+                      className="text-container h-full flex items-center justify-around text-right"
+                    >
+                      <div className="text-[2rem] ml-[15rem] mt-[1rem] border-b-[2px] border-[#353435]">
+                        <p className="">SOME OF</p>
+                        <p className="font-bold">MY WORK.</p>
+                      </div>
+                    </motion.div>
+                  </MouseParallaxContainer>
+                </motion.div>
+              </div>
             </div>
-          </MouseParallaxContainer>
-        </div>
-        <div
-          className={`hover:opacity-100 opacity-0 duration-500 absolute left-[-1.5rem] grid content-center h-[75%] align-center z-10 p-[1rem] ${
-            next >= 1296 ? "border-[#353435]" : "hidden duration-200"
-          } cursor-pointer transition ease-in-out hover:translate-x-5`}
-          onClick={slideLeft}
-        >
-          <img
-            alt=""
-            src="./icon/arrow.png"
-            className="w-[1rem] h-[100%] bg-red rotate-180"
-          />
-        </div>
-        <div
-          id="slider"
-          ref={containerRef}
-          onScroll={handleScroll}
-          className="flex overflow-scroll scroll whitespace-nowrap hover:overflow-x-scroll scrollbar-hide scroll-smooth"
-        >
-          <div ref={refMyWork}>
-            <div ref={ref}>
-              <motion.div
-                className="container w-[100vw] h-[120vh] relative"
-                animate={animation}
-              >
+            <div>
+              <div className="container w-[100vw] h-[120vh] relative">
                 <MouseParallaxContainer
                   useWindowMouseEvents
-                  className="flex w-full h-full items-center justify-around paralax "
+                  className="flex w-full h-full items-center justify-around paralax"
                   globalFactorX={0.3}
                   globalFactorY={0.3}
                   resetOnLeave
                 >
                   {projectList.map((item) =>
-                    item.section1.map((data, key) => (
+                    item.section2.map((data, key) => (
                       <MouseParallaxChild
                         key={key}
                         factorX={data.factoryX}
@@ -659,103 +736,42 @@ export default function Main() {
                       </MouseParallaxChild>
                     ))
                   )}
-                  <motion.div
-                    initial={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ transition }}
-                    className="text-container h-full flex items-center justify-around text-right"
-                  >
-                    <div className="text-[2rem] ml-[15rem] mt-[1rem] border-b-[2px] border-[#353435]">
-                      <p className="">SOME OF</p>
-                      <p className="font-bold">MY WORK.</p>
-                    </div>
-                  </motion.div>
                 </MouseParallaxContainer>
-              </motion.div>
+              </div>
             </div>
           </div>
-          <div>
-            <div className="container w-[100vw] h-[120vh] relative">
-              <MouseParallaxContainer
-                useWindowMouseEvents
-                className="flex w-full h-full items-center justify-around paralax"
-                globalFactorX={0.3}
-                globalFactorY={0.3}
-                resetOnLeave
-              >
-                {projectList.map((item) =>
-                  item.section2.map((data, key) => (
-                    <MouseParallaxChild
-                      key={key}
-                      factorX={data.factoryX}
-                      factorY={data.factoryY}
-                      width={data.width}
-                      className={`absolute ${data.class} ease-out duration-500`}
-                    >
-                      <Link to={`/portofolio/${data.id}`} state={data.width}>
-                        <motion.div
-                          exit={hoverId !== data.id && { opacity: 0 }}
-                          className="w-full relative cursor-pointer bg-gray-200"
-                          id={data.id}
-                          onMouseEnter={handleHover}
-                          onMouseLeave={handleLeave}
-                        >
-                          <img
-                            // onClick={handleShowModal}
-                            id={data.id}
-                            alt=""
-                            src={data.image}
-                            className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed hover:opacity-70 duration-500"
-                          ></img>
-                          <p
-                            className={`${
-                              idProject === data.id
-                                ? "flex duration-500"
-                                : "hidden"
-                            } absolute ease-out left-[50%] top-[50%] z-0 text-[.6rem] bg-black text-white duration-300 px-2`}
-                          >
-                            {data.name}
-                          </p>
-                        </motion.div>
-                      </Link>
-                    </MouseParallaxChild>
-                  ))
-                )}
-              </MouseParallaxContainer>
+          <div
+            className={`hover:opacity-100 opacity-0 duration-500 absolute padding-auto grid content-center left-[76rem] h-[85%] top-0 flex justify-around align-center p-[1rem] ${
+              next >= 1296 ? "hidden duration-200" : "border-[#353435]"
+            }  cursor-pointer`}
+            onClick={slideRight}
+          >
+            <img alt="" src="./icon/arrow.png" className="w-[1rem] h-[1rem]" />
+          </div>
+          <div className="container w-full items-center justify-around flex">
+            <div className="w-[85%]">
+              <div className="grid justify-items-end">
+                <ul className="flex gap-x-5">
+                  <li
+                    className={`${
+                      next ? "text-[#D9D9D9]" : "text-[#353435]"
+                    } duration-200`}
+                  >
+                    01
+                  </li>
+                  <li
+                    className={`${
+                      !next ? "text-[#D9D9D9]" : "text-[#353435]"
+                    } duration-200`}
+                  >
+                    02
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          className={`hover:opacity-100 opacity-0 duration-500 absolute padding-auto grid content-center left-[76rem] h-[85%] top-0 flex justify-around align-center p-[1rem] ${
-            next >= 1296 ? "hidden duration-200" : "border-[#353435]"
-          }  cursor-pointer`}
-          onClick={slideRight}
-        >
-          <img alt="" src="./icon/arrow.png" className="w-[1rem] h-[1rem]" />
-        </div>
-        <div className="container w-full items-center justify-around flex">
-          <div className="w-[85%]">
-            <div className="grid justify-items-end">
-              <ul className="flex gap-x-5">
-                <li
-                  className={`${
-                    next ? "text-[#D9D9D9]" : "text-[#353435]"
-                  } duration-200`}
-                >
-                  01
-                </li>
-                <li
-                  className={`${
-                    !next ? "text-[#D9D9D9]" : "text-[#353435]"
-                  } duration-200`}
-                >
-                  02
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <ModalProject
         isVisible={showModal}
