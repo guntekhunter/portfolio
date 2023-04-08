@@ -93,12 +93,14 @@ export default function Portofolio() {
             <h1 className="font-bold text-[15px]">AGUNG</h1>
           </div>
           <div className="w-[30%] relative">
-            <p
-              className="text-[9px] font-bold z-10 cursor-pointer duration-200 absolute right-0 top-[-.4rem]"
-              id="sumary"
-            >
-              Main Menu
-            </p>
+            <Link to="/">
+              <p
+                className="text-[9px] font-bold z-10 cursor-pointer duration-200 absolute right-0 top-[-.4rem]"
+                id="sumary"
+              >
+                Main Menu
+              </p>
+            </Link>
           </div>
         </nav>
       </motion.div>
@@ -157,12 +159,12 @@ export default function Portofolio() {
           }`}
         >
           <ul className="text-[9px] font-bold justify-between w-full z-10 space-y-[1rem] py-[1rem] ml-[1rem]">
-            <li
+            <Link to="/"
               className="z-10 cursor-pointer duration-200 text-white"
               id="sumary"
             >
               Main Menu
-            </li>
+            </Link>
           </ul>
         </div>
       </div>
