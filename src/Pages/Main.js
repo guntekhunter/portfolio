@@ -526,15 +526,17 @@ export default function Main() {
         <div className="grid grid-cols-2 gap-5 p-[2rem] md:hidden">
           {gabung &&
             gabung.map((data) => (
-              <div className="relative shadow-md">
-                <div className="h-[3.8rem] overflow-hidden">
-                  <img src={data.image} alt=""></img>
+              <Link to={`/portofolio/${data.id}`}>
+                <div className="relative shadow-md">
+                  <div className="h-[3.8rem] overflow-hidden">
+                    <img src={data.image} alt=""></img>
+                  </div>
+                  <div className="text-[.5rem] px-[.5rem] py-[.5rem]">
+                    <p className="font-bold">{data.name}</p>
+                    <p className="truncate ... h-[1rem]">{data.description}</p>
+                  </div>
                 </div>
-                <div className="text-[.5rem] px-[.5rem] py-[.5rem]">
-                  <p className="font-bold">{data.name}</p>
-                  <p className="truncate ... h-[1rem]">{data.description}</p>
-                </div>
-              </div>
+              </Link>
             ))}
         </div>
 

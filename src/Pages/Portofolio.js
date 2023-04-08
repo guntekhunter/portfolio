@@ -13,6 +13,7 @@ export default function Portofolio() {
   const [scrollPosition, setScrollPosition] = useState();
   const [data, setData] = useState();
   const [videoId, setVideoId] = useState();
+  const [activeNav, setActiveNav] = useState(false);
 
   // get the id base on project that was clicked
   const id = useParams();
@@ -59,10 +60,27 @@ export default function Portofolio() {
     getVideo();
   }, [data]);
 
-  console.log(videoId)
+  console.log(videoId);
+
+  // navbar mobile handle
+  const handleNavbar = () => {
+    console.log("clicked");
+    if (activeNav === false) {
+      setActiveNav(true);
+    } else {
+      setActiveNav(false);
+    }
+    console.log(activeNav);
+  };
   return (
-    <motion.div initial="initial" animate="animate" exit="exit">
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="overflow-hidden md:overflow-visible"
+    >
       {/* navbar */}
+      {/* navbar desktop*/}
       <motion.div
         className={`flex items-center justify-around text-[#353435] z-50 sticky top-0 ${
           scrollPosition > 0
@@ -70,38 +88,84 @@ export default function Portofolio() {
             : "duration-500"
         } `}
       >
-        <nav className="flex items-center justify-between w-[80%] h-[1rem] realtive z-10 py-4">
-          <Link to="/">
-            <h1 className="font-bold text-[15px] cursor-pointer">AGUNG</h1>
-          </Link>
-          <div className="w-[30%]">
-            <ul className="inline-flex text-[9px] font-bold justify-between w-full z-10">
-              <li className="z-10 cursor-pointer duration-200" id="sumary">
-                Sumary
-              </li>
-              <li
-                className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
-                id="my work"
-              >
-                My Work
-              </li>
-              <li
-                className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
-                id="experience"
-              >
-                Experience
-              </li>
-              <li
-                className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
-                id="skills"
-              >
-                Skills
-              </li>
-            </ul>
+        <nav className="md:flex items-center justify-between w-[80%] h-[1rem] realtive z-10 py-5 hidden">
+          <div>
+            <h1 className="font-bold text-[15px]">AGUNG</h1>
           </div>
-          
+          <div className="w-[30%] relative">
+            <p
+              className="text-[9px] font-bold z-10 cursor-pointer duration-200 absolute right-0 top-[-.4rem]"
+              id="sumary"
+            >
+              Main Menu
+            </p>
+          </div>
         </nav>
       </motion.div>
+      {/* navbar mobile */}
+      <div
+        className={`justify-around flex fixed top-0 right-0 left-0 md:hidden z-50 ${
+          scrollPosition > 0
+            ? "bg-black duration-500 text-white"
+            : "duration-500"
+        }`}
+      >
+        <div className="w-[80%] flex justify-between">
+          <div>
+            <h1
+              className={`${
+                activeNav ? "text-white duration-100 ease-in" : ""
+              } font-bold`}
+            >
+              AGUNG
+            </h1>
+          </div>
+          <div
+            className={`mt-[-.2rem] ${
+              activeNav
+                ? "w-[.9rem] pt-[.5rem] duration-100"
+                : "w-[1rem] pt-[.5rem] duration-100"
+            }`}
+          >
+            {scrollPosition > 0 ? (
+              <img
+                src={`${
+                  activeNav
+                    ? "../icon/x-white.png"
+                    : "../icon/hamburger-white.png"
+                } `}
+                className="duration-100"
+                alt=""
+                onClick={handleNavbar}
+              />
+            ) : (
+              <img
+                src={`${
+                  activeNav ? "../icon/x-white.png" : "../icon/hamburger.png"
+                }`}
+                alt=""
+                className="duration-100"
+                onClick={handleNavbar}
+              />
+            )}
+          </div>
+        </div>
+        {/* page selector mobile */}
+        <div
+          className={`absolute left-0 pl-[1.9rem] pt-[2rem] bg-black w-full z-[-1] transition-all duration-500 ease-in ${
+            activeNav ? "top-0" : "top-[-20rem]"
+          }`}
+        >
+          <ul className="text-[9px] font-bold justify-between w-full z-10 space-y-[1rem] py-[1rem] ml-[1rem]">
+            <li
+              className="z-10 cursor-pointer duration-200 text-white"
+              id="sumary"
+            >
+              Main Menu
+            </li>
+          </ul>
+        </div>
+      </div>
       {/* section 1 */}
       <div className="grid w-full justify-items-center relative h-[100%]">
         <motion.div
