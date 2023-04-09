@@ -193,7 +193,7 @@ export default function Portofolio() {
           {data &&
             data.map((item, key) => (
               <h1
-                className="md:text-[5rem] text-[3rem] font-bold pt-[2rem] md:mt-0"
+                className="md:text-[5rem] text-[3rem] font-bold pt-[2rem] md:mt-0 text-center"
                 key={key}
               >
                 {item.name.toUpperCase()}
