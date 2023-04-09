@@ -30,6 +30,7 @@ export default function Main() {
   const [showModal, setShowModal] = useState(false);
   const [id, setId] = useState();
   const [hoverId, setHoverId] = useState();
+  const [isMobile, setIsMobile] = useState(false);
   const [scrollPosition, setScrollPosition] = useState();
   const containerRef = useRef(null);
   const allRef = useRef(null);
@@ -193,6 +194,8 @@ export default function Main() {
   const animation = useAnimation();
 
   useEffect(() => {
+    const userAgent = navigator.userAgent.toLowerCase();
+    setIsMobile(/mobile|android|iphone/.test(userAgent));
     if (inView) {
       animation.start({
         x: 0,

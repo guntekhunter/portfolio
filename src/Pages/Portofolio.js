@@ -14,6 +14,8 @@ export default function Portofolio() {
   const [data, setData] = useState();
   const [videoId, setVideoId] = useState();
   const [activeNav, setActiveNav] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // get the id base on project that was clicked
   const id = useParams();
@@ -50,12 +52,23 @@ export default function Portofolio() {
       autoplay: 1,
     },
   };
+  const optsMobile = {
+    height: "190",
+    width: "440",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
 
   React.useEffect(() => {
+    const userAgent = navigator.userAgent.toLowerCase();
+    setIsMobile(/mobile|android|iphone/.test(userAgent));
     const getVideo = async () => {
       const dataUrl = data[0].url;
       const idVideo = dataUrl.split("v=")[1];
       setVideoId(idVideo);
+      setIsLoading(false);
+      console.log(isLoading);
     };
     getVideo();
   }, [data]);
@@ -159,7 +172,8 @@ export default function Portofolio() {
           }`}
         >
           <ul className="text-[9px] font-bold justify-between w-full z-10 space-y-[1rem] py-[1rem] ml-[1rem]">
-            <Link to="/"
+            <Link
+              to="/"
               className="z-10 cursor-pointer duration-200 text-white"
               id="sumary"
             >
@@ -169,7 +183,7 @@ export default function Portofolio() {
         </div>
       </div>
       {/* section 1 */}
-      <div className="grid w-full justify-items-center relative h-[100%]">
+      <div className="grid w-full justify-items-center relative md:h-[100%] h-[20rem]">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -178,7 +192,10 @@ export default function Portofolio() {
         >
           {data &&
             data.map((item, key) => (
-              <h1 className="text-[5rem] font-bold" key={key}>
+              <h1
+                className="md:text-[5rem] text-[3rem] font-bold pt-[2rem] md:mt-0"
+                key={key}
+              >
                 {item.name.toUpperCase()}
               </h1>
             ))}
@@ -211,8 +228,8 @@ export default function Portofolio() {
 
       {/* section 2 */}
       <div className="grid content-around justify-items-center py-[5rem] bg-black text-white">
-        <div className="w-[80%] grid grid-cols-2 gap-8">
-          <div className="grid content-center">
+        <div className="w-[80%] md:grid md:grid-cols-2 md:gap-8">
+          <div className="grid content-center mb-[2rem] md:mb-0">
             <div className="grid content-center  ">
               <p className="grid content-center font-bold text-[2rem]">
                 Here's what
@@ -237,7 +254,7 @@ export default function Portofolio() {
       </div>
       {/* section 3 */}
       <div className="grid content-around justify-items-center py-9">
-        <div className="w-[80%]">
+        <div className="md:w-[80%] w-[20rem]">
           <div className="grid content-center">
             <div className="flex justify-around">
               <p className="grid content-center font-bold text-[2rem] pb-[2rem]">
@@ -246,7 +263,23 @@ export default function Portofolio() {
             </div>
           </div>
           <div className="flex justify-around">
-            <YouTube videoId={videoId} opts={opts} />
+            {isMobile ? (
+              <div>
+                {isLoading ? (
+                  <div className="w-full h-[5rem] bg-grey-200"></div>
+                ) : (
+                  <YouTube videoId={videoId} opts={optsMobile} />
+                )}
+              </div>
+            ) : (
+              <div>
+                {isLoading ? (
+                  <div className="w-full h-[5rem] bg-grey-200"></div>
+                ) : (
+                  <YouTube videoId={videoId} opts={opts} />
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
