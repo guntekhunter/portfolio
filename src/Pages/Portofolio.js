@@ -8,6 +8,8 @@ import {
 } from "framer-motion";
 import projectList from "../Data/ProjectList.json";
 import YouTube from "react-youtube";
+import { AdvancedImage } from "@cloudinary/react";
+import { CloudinaryImage } from "@cloudinary/url-gen";
 
 export default function Portofolio() {
   const [scrollPosition, setScrollPosition] = useState();
@@ -85,6 +87,7 @@ export default function Portofolio() {
     }
     console.log(activeNav);
   };
+  console.log(data);
   return (
     <motion.div
       initial="initial"
@@ -212,16 +215,23 @@ export default function Portofolio() {
           >
             <div className="" />
             {data &&
-              data.map((item, key) => (
-                <motion.img
-                  key={key}
-                  initial={{ scale: 1 }}
-                  src={item.image}
-                  transition={transition}
-                  alt=""
-                  className=" top-[1rem]"
-                />
-              ))}
+              data.map((item, key) => {
+                const myImage = new CloudinaryImage(item.image, {
+                  cloudName: "unm",
+                });
+                return (
+                  // <motion.img
+                  //   key={key}
+                  //   initial={{ scale: 1 }}
+                  //   src={item.image}
+                  //   transition={transition}
+                  //   alt=""
+                  //   className=" top-[1rem]"
+                  // >
+                  <AdvancedImage cldImg={myImage} />
+                  // </motion.img>
+                );
+              })}
           </motion.div>
         </div>
       </div>
@@ -253,7 +263,7 @@ export default function Portofolio() {
         </div>
       </div>
       {/* section 3 */}
-      <div className="grid content-around justify-items-center py-9">
+      {/* <div className="grid content-around justify-items-center py-9">
         <div className="md:w-[80%] w-[20rem]">
           <div className="grid content-center">
             <div className="flex justify-around">
@@ -282,7 +292,7 @@ export default function Portofolio() {
             )}
           </div>
         </div>
-      </div>
+      </div> */}
     </motion.div>
   );
 }

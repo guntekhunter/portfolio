@@ -17,6 +17,8 @@ import projectList2 from "../Data/ProjectList.json";
 import { useInView } from "react-intersection-observer";
 import ExperienceSection from "../Component/ExperienceSection";
 import SkillsSection from "../Component/SkillsSection";
+import { CloudinaryImage } from "@cloudinary/url-gen";
+import { AdvancedImage } from "@cloudinary/react";
 
 export default function Main() {
   const refSumary = useRef(null);
@@ -41,7 +43,7 @@ export default function Main() {
       section1: [
         {
           id: 1,
-          image: "/project/1.jpg",
+          image: "1_w0mgia",
           width: "20rem",
           class: "inset-[9rem] w-[15rem] hover:w-[17rem]",
           name: "Persuratan Upana",
@@ -50,7 +52,7 @@ export default function Main() {
         },
         {
           id: 2,
-          image: "/project/3.jpg",
+          image: "3_rfywro",
           width: "20rem",
           class: "inset-[7rem] left-[35rem] w-[18rem] hover:w-[19rem]",
           name: "Confie.id",
@@ -59,7 +61,7 @@ export default function Main() {
         },
         {
           id: 3,
-          image: "/project/7.jpg",
+          image: "7_pa55e6",
           width: "15rem",
           class: "inset-[17rem] left-[60rem] w-[15rem] hover:w-[17rem]",
           name: "Car Rental",
@@ -68,7 +70,7 @@ export default function Main() {
         },
         {
           id: 4,
-          image: "/project/9.jpg",
+          image: "9_oipnjs",
           width: "17rem",
           class: "right-[19rem] top-[28rem] w-[15rem] hover:w-[17rem]",
           name: "Personal Website",
@@ -77,7 +79,7 @@ export default function Main() {
         },
         {
           id: 5,
-          image: "/project/6.jpg",
+          image: "6_hrk5cq",
           width: "20rem",
           class: "inset-[15rem] top-[25rem] w-[16rem] hover:w-[17rem]",
           name: "Digides FAQ",
@@ -88,7 +90,7 @@ export default function Main() {
       section2: [
         {
           id: 6,
-          image: "/project/10.jpg",
+          image: "10_rr9ele",
           width: "20rem",
           class: "inset-[9rem] w-[15rem] hover:w-[17rem]",
           name: "Pisangji",
@@ -100,7 +102,7 @@ export default function Main() {
         },
         {
           id: 7,
-          image: "/project/11.jpg",
+          image: "11_krafxj",
           width: "20rem",
           class: "inset-[7rem] left-[35rem] w-[18rem] hover:w-[19rem]",
           name: "Titik Temu",
@@ -112,7 +114,7 @@ export default function Main() {
         },
         {
           id: 8,
-          image: "/project/8.jpg",
+          image: "8_j4er3d",
           width: "15rem",
           class: "inset-[18rem] left-[60rem] w-[13rem] hover:w-[17rem]",
           name: "Kampusku",
@@ -124,7 +126,7 @@ export default function Main() {
         },
         {
           id: 9,
-          image: "/project/4.jpg",
+          image: "4_b27ii7",
           width: "12rem",
           class: "right-[19rem] top-[28rem] w-[15rem] hover:w-[17rem]",
           name: "Indobild",
@@ -473,11 +475,13 @@ export default function Main() {
               </motion.div>
             </motion.div>
             <div className="w-[30rem]">
-              <img
-                src="./foto_agung.jpg"
-                alt=""
-                className="w-[8rem] pb-[1.6rem] md:flex hidden"
-              ></img>
+              <div className="md:flex">
+                <img
+                  src="./foto_agung.jpg"
+                  alt=""
+                  className="w-[8rem] pb-[1.6rem] md:flex hidden"
+                ></img>
+              </div>
               <p className="descriptions text-[.7rem] w-[20rem] md-flex hidden md:flex hidden">
                 I am passionate about creating visually stunning and
                 user-friendly websites that deliver exceptional browsing
@@ -639,45 +643,48 @@ export default function Main() {
                     resetOnLeave
                   >
                     {projectList.map((item) =>
-                      item.section1.map((data, key) => (
-                        <MouseParallaxChild
-                          key={key}
-                          factorX={data.factoryX}
-                          factorY={data.factoryY}
-                          width={data.width}
-                          className={`absolute ${data.class} ease-out duration-500`}
-                        >
-                          <Link
-                            to={`/portofolio/${data.id}`}
-                            state={data.width}
+                      item.section1.map((data, key) => {
+                        const myImage = new CloudinaryImage(data.image, {
+                          cloudName: "unm",
+                        });
+
+                        return (
+                          <MouseParallaxChild
+                            key={key}
+                            factorX={data.factoryX}
+                            factorY={data.factoryY}
+                            width={data.width}
+                            className={`absolute ${data.class} ease-out duration-500`}
                           >
-                            <motion.div
-                              exit={hoverId !== data.id && { opacity: 0 }}
-                              className="w-full relative cursor-pointer bg-gray-200"
-                              id={data.id}
-                              onMouseEnter={handleHover}
-                              onMouseLeave={handleLeave}
+                            <Link
+                              to={`/portofolio/${data.id}`}
+                              state={data.width}
                             >
-                              <img
-                                // onClick={handleShowModal}
+                              <motion.div
+                                exit={hoverId !== data.id && { opacity: 0 }}
+                                className="w-full relative cursor-pointer bg-gray-200"
                                 id={data.id}
-                                alt=""
-                                src={data.image}
-                                className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed hover:opacity-70 duration-500"
-                              ></img>
-                              <p
-                                className={`${
-                                  idProject === data.id
-                                    ? "flex duration-500"
-                                    : "hidden"
-                                } absolute ease-out left-[50%] top-[50%] z-0 text-[.6rem] bg-black text-white duration-300 px-2`}
+                                onMouseEnter={handleHover}
+                                onMouseLeave={handleLeave}
                               >
-                                {data.name}
-                              </p>
-                            </motion.div>
-                          </Link>
-                        </MouseParallaxChild>
-                      ))
+                                <AdvancedImage
+                                  cldImg={myImage}
+                                  className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed hover:opacity-70 duration-500"
+                                />
+                                <p
+                                  className={`${
+                                    idProject === data.id
+                                      ? "flex duration-500"
+                                      : "hidden"
+                                  } absolute ease-out left-[50%] top-[50%] z-0 text-[.6rem] bg-black text-white duration-300 px-2`}
+                                >
+                                  {data.name}
+                                </p>
+                              </motion.div>
+                            </Link>
+                          </MouseParallaxChild>
+                        );
+                      })
                     )}
                     <motion.div
                       initial={{ opacity: 1 }}
@@ -704,42 +711,47 @@ export default function Main() {
                   resetOnLeave
                 >
                   {projectList.map((item) =>
-                    item.section2.map((data, key) => (
-                      <MouseParallaxChild
-                        key={key}
-                        factorX={data.factoryX}
-                        factorY={data.factoryY}
-                        width={data.width}
-                        className={`absolute ${data.class} ease-out duration-500`}
-                      >
-                        <Link to={`/portofolio/${data.id}`} state={data.width}>
-                          <motion.div
-                            exit={hoverId !== data.id && { opacity: 0 }}
-                            className="w-full relative cursor-pointer bg-gray-200"
-                            id={data.id}
-                            onMouseEnter={handleHover}
-                            onMouseLeave={handleLeave}
+                    item.section2.map((data, key) => {
+                      const myImage = new CloudinaryImage(data.image, {
+                        cloudName: "unm",
+                      });
+                      return (
+                        <MouseParallaxChild
+                          key={key}
+                          factorX={data.factoryX}
+                          factorY={data.factoryY}
+                          width={data.width}
+                          className={`absolute ${data.class} ease-out duration-500`}
+                        >
+                          <Link
+                            to={`/portofolio/${data.id}`}
+                            state={data.width}
                           >
-                            <img
-                              // onClick={handleShowModal}
+                            <motion.div
+                              exit={hoverId !== data.id && { opacity: 0 }}
+                              className="w-full relative cursor-pointer bg-gray-200"
                               id={data.id}
-                              alt=""
-                              src={data.image}
-                              className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed hover:opacity-70 duration-500"
-                            ></img>
-                            <p
-                              className={`${
-                                idProject === data.id
-                                  ? "flex duration-500"
-                                  : "hidden"
-                              } absolute ease-out left-[50%] top-[50%] z-0 text-[.6rem] bg-black text-white duration-300 px-2`}
+                              onMouseEnter={handleHover}
+                              onMouseLeave={handleLeave}
                             >
-                              {data.name}
-                            </p>
-                          </motion.div>
-                        </Link>
-                      </MouseParallaxChild>
-                    ))
+                              <AdvancedImage
+                                cldImg={myImage}
+                                className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed hover:opacity-70 duration-500"
+                              />
+                              <p
+                                className={`${
+                                  idProject === data.id
+                                    ? "flex duration-500"
+                                    : "hidden"
+                                } absolute ease-out left-[50%] top-[50%] z-0 text-[.6rem] bg-black text-white duration-300 px-2`}
+                              >
+                                {data.name}
+                              </p>
+                            </motion.div>
+                          </Link>
+                        </MouseParallaxChild>
+                      );
+                    })
                   )}
                 </MouseParallaxContainer>
               </div>
