@@ -470,7 +470,7 @@ export default function Main() {
                   I'M A
                 </p>
                 <p className="name text-[1.9rem] font-bold lg:text-[4.8rem]">
-                  JUNIOR
+                  FULLSTACK
                 </p>
               </motion.div>
             </motion.div>
@@ -495,7 +495,7 @@ export default function Main() {
             style={{ opacity: opacity }}
             className="name font-bold md:ml-[7.8rem] text-[1.8rem] font-bold lg:text-[4.8rem] text-[2rem] z-10"
           >
-            FRONTEND DEVELOPER
+            WEB DEVELOPER
           </motion.p>
           {/* socialmedia */}
           <div className="media-social w-[100%] md:mt-[4rem] block md:hidden flex w-full justify-between mt-[1rem]">

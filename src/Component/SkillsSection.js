@@ -85,7 +85,7 @@ export default function SkillsSection({ ref }) {
           </div>
 
           <div className="grid w-full bg-black place-content-center">
-            <p className="font-light text-white">Languange</p>
+            <p className="font-light text-white">Other</p>
           </div>
 
           <div className="grid grid-cols-4 border-[.1rem] border-black row-span-3 py-3 gap-y-3">
