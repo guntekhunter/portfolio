@@ -8,7 +8,7 @@
         "class": "inset-[8rem] w-[20rem] hover:w-[23rem]",
         "name": "Persuratan Upana",
         "description": "I was responsible for developing the interface of Upana Studio's mailing website, based on stunning UI/UX design from UI/UX designer. To make sure the website, based on stunning UI/UX design. To make sure the website is easy to use and looks great, I use React.js and tailwind. I also connected the website to the API create by backend developer using axios, so everything works as it should. After three mounth, I successfully completed this prject and I'm exited to share it with you.",
-        "url": "https://www.youtube.com/watch?v=9e1jGNzXI3o",
+        "url": "https://www.youtube.com/watch?v=00dvNBbjoII",
         "factoryX": 0.1,
         "factoryY": 0.1
       },
@@ -19,7 +19,7 @@
         "class": "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
         "name": "Confie.id",
         "description": "I was Responsible to code six pages interface on the confie.id website along with configuration with the API, using react, tailwind, axios within three mounths. One of the most challenging aspects of this project is creating chat pages that require extensive configuration with APIs and implementing new tools to align the interface with the design. Despite the difficulty, I have learned a great deal from this project.",
-        "url": "https://www.youtube.com/watch?v=9e1jGNzXI3o",
+        "url": "https://www.youtube.com/watch?v=FUt2BKOger0",
         "factoryX": 0.2,
         "factoryY": 0.2
       },
@@ -30,18 +30,18 @@
         "class": "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
         "name": "Car Rental",
         "description": "During my time in the Binar Academy bootcamp, I worked on a project that involved configuring APIs and implementing an interface based on a given design for a chat page. This project presented a significant learning opportunity, as I gained valuable experience in working with API configuration and data filtering",
-        "url": "https://www.youtube.com/watch?v=9e1jGNzXI3o",
+        "url": "https://www.youtube.com/watch?v=JDjx0gIGCfM",
         "factoryX": 0.2,
         "factoryY": 0.2
       },
       {
         "id": 4,
-        "image": "9_oipnjs",
+        "image": "13_gbxvla",
         "width": "17rem",
         "class": "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
-        "name": "Personal website",
+        "name": "TokoKu",
         "description": "I created my first personal website using the Materialize framework, with the goal of showcasing my work in web development and design.",
-        "url": "https://www.youtube.com/watch?v=9e1jGNzXI3o",
+        "url": "https://www.youtube.com/watch?v=DFlAeaHML60",
         "factoryX": 0.4,
         "factoryY": 0.4
       },
@@ -52,7 +52,7 @@
         "class": "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
         "name": "Digides FAQ",
         "description": "As an intern at Upana Studio, I was tasked with creating a FAQ page for Digides. This page provides information on the most commonly asked questions about Digides. To create the interface, I using the Bootstrap framework, and for seamless scrolling animations i was using AOS libarary.",
-        "url": "https://www.youtube.com/watch?v=9e1jGNzXI3o",
+        "url": "https://www.youtube.com/watch?v=l6BhHUXy5wM",
         "factoryX": 0.3,
         "factoryY": 0.3
       }
@@ -65,18 +65,18 @@
         "class": "inset-[8rem] w-[20rem] hover:w-[23rem]",
         "name": "Pisangji",
         "description": "Pisangji is a personal project that I created to improve my web programming skills. I designed the website using only HTML and CSS to gain a better understanding of the basics of web programming. To enhance the website's functionality, I incorporated a library that allows users to locate the brand based on its physical location. Furthermore, I utilized CSS grid to create an aesthetically pleasing and organized layout for the website. Overall, this project served as a valuable learning experience that helped me to strengthen my web programming skills",
-        "url": "https://www.youtube.com/watch?v=9e1jGNzXI3o",
+        "url": "https://www.youtube.com/watch?v=6GNLxFVGyKU",
         "factoryX": 0.3,
         "factoryY": 0.3
       },
       {
         "id": 7,
-        "image": "11_krafxj",
+        "image": "14_glay4v",
         "width": "20rem",
         "class": "inset-[3rem] left-[35rem] w-[20rem] hover:w-[23rem]",
-        "name": "Titik Temu",
+        "name": "E Catalogue",
         "description": "I created a project that involves cloning an existing website called 'Titik Temu. The project was designed using only HTML and CSS. My primary goal was to gain a better understanding of web layouting by attempting to recreate an already existing website. Through this project, I was able to study the design principles, layout, and features of 'Titik Temu' and successfully replicate them. Overall, this project was a challenging yet fulfilling learning experience that helped me to develop my skills in web development",
-        "url": "https://www.youtube.com/watch?v=9e1jGNzXI3o",
+        "url": "https://www.youtube.com/watch?v=vWvoqdmZPkA",
         "factoryX": 0.5,
         "factoryY": 0.5
       },
@@ -87,18 +87,18 @@
         "class": "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
         "name": "Kampusku",
         "description": "This full-stack project was developed using PHP as the primary programming language. It comprises of a server-side and a user-side, where the user-side is dynamic and can be updated from the server-side. I created an interface for the project and also built a database to manage the configuration with the interface. To ensure an aesthetically pleasing and user-friendly interface, I utilized the Bootstrap framework and incorporated AOS animation to enhance the user experience. Additionally, I used the Codigniter framework to streamline the development process and MySQL to manage the database effectively. Overall, this project served as an excellent opportunity for me to hone my full-stack development skills and create a functional and interactive website.",
-        "url": "https://www.youtube.com/watch?v=9e1jGNzXI3o",
+        "url": "https://www.youtube.com/watch?v=2UnfHkWW6c8",
         "factoryX": 0.2,
         "factoryY": 0.2
       },
       {
         "id": 9,
-        "image": "4_b27ii7",
+        "image": "9_oipnjs",
         "width": "12rem",
         "class": "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
-        "name": "Indobild",
+        "name": "Personal website",
         "description": "I developed a website using HTML and CSS as a part of my internship program application for Indo Bild. The program required applicants to create a website based on a given design. I was able to create the website within seven days. However, at the time of development, I was not able to incorporate responsiveness in the website. Nonetheless, the project was a valuable learning experience that helped me to develop my web development skills and prepare me for future projects",
-        "url": "https://www.youtube.com/watch?v=9e1jGNzXI3o",
+        "url": "https://www.youtube.com/watch?v=LVT50dvXvtg",
         "factoryX": 0.3,
         "factoryY": 0.4
       }

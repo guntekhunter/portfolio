@@ -132,6 +132,12 @@
                 "name": "Postgres",
                 "description": "",
                 "logo": "src"
+            },
+            {
+                "id": 6,
+                "name": "Chat GPT",
+                "description": "",
+                "logo": "src"
             }
         ]
     }

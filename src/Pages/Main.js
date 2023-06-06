@@ -70,10 +70,10 @@ export default function Main() {
         },
         {
           id: 4,
-          image: "9_oipnjs",
+          image: "13_gbxvla",
           width: "17rem",
           class: "right-[19rem] top-[28rem] w-[15rem] hover:w-[17rem]",
-          name: "Personal Website",
+          name: "TokoKu",
           factoryX: 0.4,
           factoryY: 0.4,
         },
@@ -126,10 +126,10 @@ export default function Main() {
         },
         {
           id: 9,
-          image: "4_b27ii7",
+          image: "9_oipnjs",
           width: "12rem",
           class: "right-[19rem] top-[28rem] w-[15rem] hover:w-[17rem]",
-          name: "Indobild",
+          name: "Personal Website",
           description:
             "I developed a website using HTML and CSS as a part of my internship program application for Indo Bild. The program required applicants to create a website based on a given design. I was able to create the website within seven days. However, at the time of development, I was not able to incorporate responsiveness in the website. Nonetheless, the project was a valuable learning experience that helped me to develop my web development skills and prepare me for future projects",
           url: "https://www.youtube.com/watch?v=9e1jGNzXI3o",
@@ -470,7 +470,7 @@ export default function Main() {
                   I'M A
                 </p>
                 <p className="name text-[1.9rem] font-bold lg:text-[4.8rem]">
-                  FULLSTACK
+                  JUNIOR
                 </p>
               </motion.div>
             </motion.div>

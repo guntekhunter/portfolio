@@ -51,14 +51,14 @@ export default function Portofolio() {
     height: "390",
     width: "640",
     playerVars: {
-      autoplay: 1,
+      autoplay: 0,
     },
   };
   const optsMobile = {
     height: "190",
     width: "440",
     playerVars: {
-      autoplay: 1,
+      autoplay: 0,
     },
   };
 
@@ -263,7 +263,7 @@ export default function Portofolio() {
         </div>
       </div>
       {/* section 3 */}
-      {/* <div className="grid content-around justify-items-center py-9">
+      <div className="grid content-around justify-items-center py-9">
         <div className="md:w-[80%] w-[20rem]">
           <div className="grid content-center">
             <div className="flex justify-around">
@@ -292,7 +292,7 @@ export default function Portofolio() {
             )}
           </div>
         </div>
-      </div> */}
+      </div>
     </motion.div>
   );
 }
