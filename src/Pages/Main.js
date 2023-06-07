@@ -442,7 +442,7 @@ export default function Main() {
                   exit={{ opacity: 0 }}
                   className="absolute z-0 w-[10rem] ml-100% right-0 md:hidden w-[100%] hight-[100%]"
                 >
-                  <img src="./foto_agung.jpg" alt=""></img>
+                  {/* <img src="./foto_agung.jpg" alt=""></img> */}
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 1 }}
@@ -528,8 +528,8 @@ export default function Main() {
               WEB DEVELOPER
             </motion.p>
           )}
-          {/* socialmedia */}
-          <div className="media-social w-[100%] md:mt-[4rem] block md:hidden flex w-full justify-between mt-[1rem]">
+          {/* socialmedia mobile*/}
+          <div className="media-social w-[60%] md:mt-[4rem] block md:hidden flex w-full justify-between mt-[1rem]">
             <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
               <img alt="" src="./icon/instagram.png"></img>
             </div>
