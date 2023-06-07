@@ -98,10 +98,10 @@ export default function Main() {
         },
         {
           id: 7,
-          image: "11_krafxj",
+          image: "14_glay4v",
           width: "20rem",
           class: "inset-[7rem] left-[35rem] w-[18rem] hover:w-[19rem]",
-          name: "Titik Temu",
+          name: "E Katalogue",
           url: "https://www.youtube.com/watch?v=9e1jGNzXI3o",
           factoryX: 0.5,
           factoryY: 0.5,
