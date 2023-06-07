@@ -15,7 +15,7 @@ export default function Portofolio() {
   const [scrollPosition, setScrollPosition] = useState();
   const [data, setData] = useState();
   const [videoId, setVideoId] = useState();
-  const [activeNav, setActiveNav] = useState(false);
+  let [activeNav, setActiveNav] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -80,11 +80,7 @@ export default function Portofolio() {
   // navbar mobile handle
   const handleNavbar = () => {
     console.log("clicked");
-    if (activeNav === false) {
-      setActiveNav(true);
-    } else {
-      setActiveNav(false);
-    }
+    setActiveNav(!activeNav);
     console.log(activeNav);
   };
   console.log(data);
@@ -114,58 +110,34 @@ export default function Portofolio() {
                 className="text-[9px] font-bold z-10 cursor-pointer duration-200 absolute right-0 top-[-.4rem]"
                 id="sumary"
               >
-                Main Menu
+                BACK
               </p>
             </Link>
           </div>
         </nav>
       </motion.div>
       {/* navbar mobile */}
-      <div
+      <nav
         className={`justify-around flex fixed top-0 right-0 left-0 md:hidden z-50 ${
           scrollPosition > 0
-            ? "bg-black duration-100 text-white"
-            : "duration-100"
-        }`}
+            ? "bg-black duration-500 text-white"
+            : "duration-500"
+        } h-[2.5rem] `}
       >
-        <div className="w-[80%] flex justify-between">
-          <div>
-            <h1
-              className={`${
-                activeNav ? "text-white duration-100 ease-in" : ""
-              } font-bold`}
-            >
-              AGUNG
-            </h1>
+        <div className="w-[80%] justify-between flex pt-[.5rem]">
+          <div
+            className={`${
+              activeNav ? "text-white duration-100 ease-in" : ""
+            } font-bold`}
+          >
+            <p>AGUNG</p>
           </div>
           <div
-            className={`mt-[-.2rem] ${
-              activeNav
-                ? "w-[.9rem] pt-[.5rem] duration-100"
-                : "w-[1rem] pt-[.5rem] duration-100"
-            }`}
+            className={`${
+              activeNav ? "text-white duration-100 ease-in" : ""
+            } font-bold`}
           >
-            {scrollPosition > 0 ? (
-              <img
-                src={`${
-                  activeNav
-                    ? "../icon/x-white.png"
-                    : "../icon/hamburger-white.png"
-                } `}
-                className="duration-100"
-                alt=""
-                onClick={handleNavbar}
-              />
-            ) : (
-              <img
-                src={`${
-                  activeNav ? "../icon/x-white.png" : "../icon/hamburger.png"
-                }`}
-                alt=""
-                className="duration-100"
-                onClick={handleNavbar}
-              />
-            )}
+            <Link to="/">BACK</Link>
           </div>
         </div>
         {/* page selector mobile */}
@@ -174,17 +146,17 @@ export default function Portofolio() {
             activeNav ? "top-0" : "top-[-20rem]"
           }`}
         >
-          <ul className="text-[9px] font-bold justify-between w-full z-10 space-y-[1rem] py-[1rem] ml-[1rem]">
+          <ul className=" text-[9px] font-bold justify-between w-full z-10 space-y-[1rem] py-[1rem]">
             <Link
               to="/"
               className="z-10 cursor-pointer duration-200 text-white"
               id="sumary"
             >
-              Main Menu
+              Sumary
             </Link>
           </ul>
         </div>
-      </div>
+      </nav>
       {/* section 1 */}
       <div className="grid w-full justify-items-center relative md:h-[100%] h-[20rem]">
         <motion.div

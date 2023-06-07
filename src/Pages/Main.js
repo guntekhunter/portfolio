@@ -462,9 +462,13 @@ export default function Main() {
             {/* content */}
             {mobile ? (
               <div className="summary-content md:w-[40rem] w-[100%] flex relative">
-                <div className="absolute z-0 w-[10rem] ml-100% right-0 md:hidden w-[100%] hight-[100%]">
+                <motion.div
+                  initial={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute z-0 w-[10rem] ml-100% right-0 md:hidden w-[100%] hight-[100%]"
+                >
                   <img src="./foto_agung.jpg" alt=""></img>
-                </div>
+                </motion.div>
                 <motion.div
                   initial={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
