@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import {
-  motion,
-  useMotionTemplate,
-  useMotionValueEvent,
-  useScroll,
-} from "framer-motion";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import projectList from "../Data/ProjectList.json";
 import YouTube from "react-youtube";
 import { AdvancedImage } from "@cloudinary/react";
@@ -35,7 +30,6 @@ export default function Portofolio() {
   });
 
   // get data from json file base on id that was passing from previous page
-  // const selection = projectList
   const section1 = projectList[0].section1;
   const section2 = projectList[0].section2;
   const gabung = [...section1, ...section2];
@@ -76,20 +70,12 @@ export default function Portofolio() {
   }, [data]);
 
   console.log(videoId);
-
-  // navbar mobile handle
-  const handleNavbar = () => {
-    console.log("clicked");
-    setActiveNav(!activeNav);
-    console.log(activeNav);
-  };
-  console.log(data);
   return (
     <motion.div
       initial="initial"
       animate="animate"
       exit="exit"
-      className="overflow-hidden md:overflow-visible"
+      className="overflow-hidden md:overflow-visible bg-white"
     >
       {/* navbar */}
       {/* navbar desktop*/}

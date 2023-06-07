@@ -23,11 +23,9 @@ import { AdvancedImage } from "@cloudinary/react";
 export default function Main() {
   const refSumary = useRef(null);
   const refMyWork = useRef(null);
-  const refMyWorkMobile = useRef(null);
   const refExperience = useRef(null);
   const refSkills = useRef(null);
   const [next, setNext] = useState(0);
-  const [scroll, setScroll] = useState(0);
   const [idProject, setIdProject] = useState();
   const [showModal, setShowModal] = useState(false);
   const [id, setId] = useState();
@@ -35,7 +33,6 @@ export default function Main() {
   const [isMobile, setIsMobile] = useState(false);
   const [scrollPosition, setScrollPosition] = useState();
   const containerRef = useRef(null);
-  const allRef = useRef(null);
   const [mobile, setMobile] = useState(false);
   let [activeNav, setActiveNav] = useState(false);
 
@@ -95,8 +92,6 @@ export default function Main() {
           width: "20rem",
           class: "inset-[9rem] w-[15rem] hover:w-[17rem]",
           name: "Pisangji",
-          description:
-            "Pisangji is a personal project that I created to improve my web programming skills. I designed the website using only HTML and CSS to gain a better understanding of the basics of web programming. To enhance the website's functionality, I incorporated a library that allows users to locate the brand based on its physical location. Furthermore, I utilized CSS grid to create an aesthetically pleasing and organized layout for the website. Overall, this project served as a valuable learning experience that helped me to strengthen my web programming skills",
           url: "https://www.youtube.com/watch?v=9e1jGNzXI3o",
           factoryX: 0.3,
           factoryY: 0.3,
@@ -107,8 +102,6 @@ export default function Main() {
           width: "20rem",
           class: "inset-[7rem] left-[35rem] w-[18rem] hover:w-[19rem]",
           name: "Titik Temu",
-          description:
-            "I created a project that involves cloning an existing website called 'Titik Temu. The project was designed using only HTML and CSS. My primary goal was to gain a better understanding of web layouting by attempting to recreate an already existing website. Through this project, I was able to study the design principles, layout, and features of 'Titik Temu' and successfully replicate them. Overall, this project was a challenging yet fulfilling learning experience that helped me to develop my skills in web development",
           url: "https://www.youtube.com/watch?v=9e1jGNzXI3o",
           factoryX: 0.5,
           factoryY: 0.5,
@@ -119,9 +112,6 @@ export default function Main() {
           width: "15rem",
           class: "inset-[18rem] left-[60rem] w-[13rem] hover:w-[17rem]",
           name: "Kampusku",
-          description:
-            "This full-stack project was developed using PHP as the primary programming language. It comprises of a server-side and a user-side, where the user-side is dynamic and can be updated from the server-side. I created an interface for the project and also built a database to manage the configuration with the interface. To ensure an aesthetically pleasing and user-friendly interface, I utilized the Bootstrap framework and incorporated AOS animation to enhance the user experience. Additionally, I used the Codigniter framework to streamline the development process and MySQL to manage the database effectively. Overall, this project served as an excellent opportunity for me to hone my full-stack development skills and create a functional and interactive website.",
-          url: "https://www.youtube.com/watch?v=9e1jGNzXI3o",
           factoryX: 0.2,
           factoryY: 0.2,
         },
@@ -131,8 +121,6 @@ export default function Main() {
           width: "12rem",
           class: "right-[19rem] top-[28rem] w-[15rem] hover:w-[17rem]",
           name: "Personal Website",
-          description:
-            "I developed a website using HTML and CSS as a part of my internship program application for Indo Bild. The program required applicants to create a website based on a given design. I was able to create the website within seven days. However, at the time of development, I was not able to incorporate responsiveness in the website. Nonetheless, the project was a valuable learning experience that helped me to develop my web development skills and prepare me for future projects",
           url: "https://www.youtube.com/watch?v=9e1jGNzXI3o",
           factoryX: 0.3,
           factoryY: 0.4,
@@ -167,12 +155,6 @@ export default function Main() {
 
   const handleScroll = () => {
     setNext(containerRef?.current.scrollLeft);
-  };
-
-  const handleScrollSection = (e) => {
-    if (e.target.id === "sumary") {
-      setScroll(allRef?.current.scrollTop);
-    }
   };
 
   const handleHover = (e) => {
@@ -227,16 +209,12 @@ export default function Main() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  console.log(mobile);
   // scroll to component with navbar
   const clickSumary = () => {
     refSumary.current?.scrollIntoView({ behavior: "smooth" });
   };
   const clickMyWork = () => {
     refMyWork.current?.scrollIntoView({ behavior: "smooth" });
-  };
-  const clickMyWorkMobile = () => {
-    refMyWorkMobile.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const clickExperience = () => {
@@ -248,23 +226,20 @@ export default function Main() {
 
   // navbar mobile function
   const handleNavbar = () => {
-    console.log("clicked");
     if (activeNav === false) {
       setActiveNav(true);
     } else {
       setActiveNav(false);
     }
-    console.log(activeNav);
   };
 
   // make 2 section data into one data
   const section1 = projectList2[0].section1;
   const section2 = projectList2[0].section2;
   const gabung = [...section1, ...section2];
-  console.log(gabung);
 
   return (
-    <div className="overflow-hidden md:overflow-visible relative">
+    <div className="overflow-hidden md:overflow-visible relative bg-white">
       {/* navbar desktop*/}
       <motion.div
         className={`flex items-center justify-around text-[#353435] z-50 sticky top-0 ${
