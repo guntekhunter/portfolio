@@ -55,8 +55,8 @@ export default function Portofolio() {
     },
   };
   const optsMobile = {
-    height: "190",
-    width: "440",
+    height: "180",
+    width: "320",
     playerVars: {
       autoplay: 0,
     },
@@ -124,8 +124,8 @@ export default function Portofolio() {
       <div
         className={`justify-around flex fixed top-0 right-0 left-0 md:hidden z-50 ${
           scrollPosition > 0
-            ? "bg-black duration-500 text-white"
-            : "duration-500"
+            ? "bg-black duration-100 text-white"
+            : "duration-100"
         }`}
       >
         <div className="w-[80%] flex justify-between">
@@ -196,7 +196,7 @@ export default function Portofolio() {
           {data &&
             data.map((item, key) => (
               <h1
-                className="md:text-[5rem] text-[3rem] font-bold pt-[2rem] md:mt-0 text-center"
+                className="md:text-[5rem] text-[2rem] font-bold pt-[2rem] md:mt-0 text-center"
                 key={key}
               >
                 {item.name.toUpperCase()}
@@ -219,18 +219,7 @@ export default function Portofolio() {
                 const myImage = new CloudinaryImage(item.image, {
                   cloudName: "unm",
                 });
-                return (
-                  // <motion.img
-                  //   key={key}
-                  //   initial={{ scale: 1 }}
-                  //   src={item.image}
-                  //   transition={transition}
-                  //   alt=""
-                  //   className=" top-[1rem]"
-                  // >
-                  <AdvancedImage cldImg={myImage} />
-                  // </motion.img>
-                );
+                return <AdvancedImage cldImg={myImage} />;
               })}
           </motion.div>
         </div>

@@ -36,6 +36,7 @@ export default function Main() {
   const [scrollPosition, setScrollPosition] = useState();
   const containerRef = useRef(null);
   const allRef = useRef(null);
+  const [mobile, setMobile] = useState(false);
   let [activeNav, setActiveNav] = useState(false);
 
   const projectList = [
@@ -212,9 +213,21 @@ export default function Main() {
     if (!inView) {
       animation.start({ x: "-100vw", opacity: 0 });
     }
-    console.log(`inview ${inView}`);
-  }, [inView]);
+  }, [inView, animation]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  console.log(mobile);
   // scroll to component with navbar
   const clickSumary = () => {
     refSumary.current?.scrollIntoView({ behavior: "smooth" });
@@ -423,11 +436,13 @@ export default function Main() {
             </div>
           </MouseParallaxContainer>
         </motion.div>
-
         <div className="w-[80%]" ref={refSumary}>
           <div className="justify-between w-full md:pt-[5rem] block md:flex ">
             {/* socialmedia */}
-            <div className="media-social w-[10rem] md:mt-[4rem] hidden md:flex">
+            <motion.div
+              className="media-social w-[10rem] md:mt-[4rem] hidden md:flex"
+              style={{ opacity: opacity }}
+            >
               <ul className="space-y-[1rem] flex md:block">
                 <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
                   <img alt="" src="./icon/instagram.png"></img>
@@ -442,39 +457,70 @@ export default function Main() {
                   <img alt="" src="./icon/twitter.png"></img>
                 </li>
               </ul>
-            </div>
+            </motion.div>
 
             {/* content */}
-            <motion.div
-              style={{ opacity: opacity }}
-              className="summary-content md:w-[40rem] w-[100%] flex relative"
-            >
-              <div className="absolute z-0 w-[10rem] ml-100% right-0 md:hidden w-[100%] hight-[100%]">
-                <img src="./foto_agung.jpg" alt=""></img>
+            {mobile ? (
+              <div className="summary-content md:w-[40rem] w-[100%] flex relative">
+                <div className="absolute z-0 w-[10rem] ml-100% right-0 md:hidden w-[100%] hight-[100%]">
+                  <img src="./foto_agung.jpg" alt=""></img>
+                </div>
+                <motion.div
+                  initial={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={transition}
+                  className="summary-container z-10"
+                >
+                  <p className="hy text-[.7rem] font-light"></p>
+                  <motion.p
+                    // style={{ opacity: opacity }}
+                    className="name text-[1rem]"
+                  >
+                    Hello There
+                  </motion.p>
+
+                  <p className="name text-[1.9rem] font-bold lg:text-[4.8rem]">
+                    I'M A
+                  </p>
+                  <p className="name text-[1.9rem] font-bold lg:text-[4.8rem]">
+                    JUNIOR
+                  </p>
+                </motion.div>
               </div>
+            ) : (
               <motion.div
                 initial={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={transition}
-                className="summary-container z-10"
+                style={{ opacity: opacity }}
+                className="summary-content md:w-[40rem] w-[100%] flex relative"
               >
-                <p className="hy text-[.7rem] font-light"></p>
-                <motion.p
-                  style={{ opacity: opacity }}
-                  className="name text-[1rem]"
+                <div className="absolute z-0 w-[10rem] ml-100% right-0 md:hidden w-[100%] hight-[100%]">
+                  <img src="./foto_agung.jpg" alt=""></img>
+                </div>
+                <motion.div
+                  initial={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={transition}
+                  className="summary-container z-10"
                 >
-                  Hello There
-                </motion.p>
+                  <p className="hy text-[.7rem] font-light"></p>
+                  <motion.p
+                    style={{ opacity: opacity }}
+                    className="name text-[1rem]"
+                  >
+                    Hello There
+                  </motion.p>
 
-                <p className="name text-[1.9rem] font-bold lg:text-[4.8rem]">
-                  I'M A
-                </p>
-                <p className="name text-[1.9rem] font-bold lg:text-[4.8rem]">
-                  JUNIOR
-                </p>
+                  <p className="name text-[1.9rem] font-bold lg:text-[4.8rem]">
+                    I'M A
+                  </p>
+                  <p className="name text-[1.9rem] font-bold lg:text-[4.8rem]">
+                    JUNIOR
+                  </p>
+                </motion.div>
               </motion.div>
-            </motion.div>
-            <div className="w-[30rem]">
+            )}
+            <motion.div className="w-[30rem]" style={{ opacity: opacity }}>
               <div className="md:flex">
                 <img
                   src="./foto_agung.jpg"
@@ -489,14 +535,20 @@ export default function Main() {
                 efficient code to ensure optimal performance and responsiveness
                 across all devices.
               </p>
-            </div>
+            </motion.div>
           </div>
-          <motion.p
-            style={{ opacity: opacity }}
-            className="name font-bold md:ml-[7.8rem] text-[1.8rem] font-bold lg:text-[4.8rem] text-[2rem] z-10"
-          >
-            WEB DEVELOPER
-          </motion.p>
+          {mobile ? (
+            <p className="name font-bold md:ml-[7.8rem] text-[1.8rem] font-bold lg:text-[4.8rem] text-[2rem] z-10">
+              WEB DEVELOPER
+            </p>
+          ) : (
+            <motion.p
+              style={{ opacity: opacity }}
+              className="name font-bold md:ml-[7.8rem] text-[1.8rem] font-bold lg:text-[4.8rem] text-[2rem] z-10"
+            >
+              WEB DEVELOPER
+            </motion.p>
+          )}
           {/* socialmedia */}
           <div className="media-social w-[100%] md:mt-[4rem] block md:hidden flex w-full justify-between mt-[1rem]">
             <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
@@ -520,31 +572,55 @@ export default function Main() {
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
       >
-        <motion.div style={{ opacity: opacity }} className="mt-6">
-          <p className="">See My Portfolio</p>
-          <div className="w-full flex justify-center mt-2">
-            <img alt="" src="./icon/arrow.png" className="rotate-[90deg] w-5" />
+        {mobile ? (
+          <div className="mt-6">
+            <p className="">See My Portfolio</p>
+            <div className="w-full flex justify-center mt-2">
+              <img
+                alt=""
+                src="./icon/arrow.png"
+                className="rotate-[90deg] w-5"
+              />
+            </div>
           </div>
-        </motion.div>
+        ) : (
+          <motion.div style={{ opacity: opacity }} className="mt-6">
+            <p className="">See My Portfolio</p>
+            <div className="w-full flex justify-center mt-2">
+              <img
+                alt=""
+                src="./icon/arrow.png"
+                className="rotate-[90deg] w-5"
+              />
+            </div>
+          </motion.div>
+        )}
       </motion.div>
 
       {/* project on mobile looks */}
       <div ref={refMyWork}>
         <div className="grid grid-cols-2 gap-5 p-[2rem] md:hidden">
           {gabung &&
-            gabung.map((data) => (
-              <Link to={`/portofolio/${data.id}`}>
-                <div className="relative shadow-md">
-                  <div className="h-[3.8rem] overflow-hidden">
-                    <img src={data.image} alt=""></img>
+            gabung.map((data) => {
+              const myImage = new CloudinaryImage(data.image, {
+                cloudName: "unm",
+              });
+              return (
+                <Link to={`/portofolio/${data.id}`}>
+                  <div className="relative shadow-md">
+                    <div className="h-[3.8rem] overflow-hidden">
+                      <AdvancedImage cldImg={myImage} alt=""></AdvancedImage>
+                    </div>
+                    <div className="text-[.5rem] px-[.5rem] py-[.5rem]">
+                      <p className="font-bold">{data.name}</p>
+                      <p className="truncate ... h-[1rem]">
+                        {data.description}
+                      </p>
+                    </div>
                   </div>
-                  <div className="text-[.5rem] px-[.5rem] py-[.5rem]">
-                    <p className="font-bold">{data.name}</p>
-                    <p className="truncate ... h-[1rem]">{data.description}</p>
-                  </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
         </div>
 
         {/* all the project */}
