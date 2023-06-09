@@ -19,12 +19,15 @@ import ExperienceSection from "../Component/ExperienceSection";
 import SkillsSection from "../Component/SkillsSection";
 import { CloudinaryImage } from "@cloudinary/url-gen";
 import { AdvancedImage } from "@cloudinary/react";
+import Contact from "../Component/Contact";
+import Modal from "../Component/Modal";
 
 export default function Main() {
   const refSumary = useRef(null);
   const refMyWork = useRef(null);
   const refExperience = useRef(null);
   const refSkills = useRef(null);
+  const refContact = useRef(null);
   const [next, setNext] = useState(0);
   const [idProject, setIdProject] = useState();
   const [showModal, setShowModal] = useState(false);
@@ -34,6 +37,8 @@ export default function Main() {
   const [scrollPosition, setScrollPosition] = useState();
   const containerRef = useRef(null);
   const [mobile, setMobile] = useState(false);
+  const [emailSend, setEmailSend] = useState(false);
+  const [userName, setUserName] = useState();
   let [activeNav, setActiveNav] = useState(false);
 
   const projectList = [
@@ -223,6 +228,9 @@ export default function Main() {
   const clickSkills = () => {
     refSkills.current?.scrollIntoView({ behavior: "smooth" });
   };
+  const clickContact = () => {
+    refContact.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   // navbar mobile function
   const handleNavbar = () => {
@@ -233,6 +241,22 @@ export default function Main() {
     }
   };
 
+  const goToWhatsup = () => {
+    const phoneNumber = "085241944648";
+    const whatsappURL = `https://wa.me/${phoneNumber}`;
+
+    window.open(whatsappURL, "_blank");
+  };
+
+  const modalActive = (e, name) => {
+    setEmailSend(e);
+    setUserName(name);
+    setTimeout(() => {
+      setEmailSend(false);
+    }, 3000);
+  };
+
+  console.log(emailSend);
   // make 2 section data into one data
   const section1 = projectList2[0].section1;
   const section2 = projectList2[0].section2;
@@ -240,6 +264,7 @@ export default function Main() {
 
   return (
     <div className="overflow-hidden md:overflow-visible relative bg-white">
+      <Modal isActive={emailSend} userName={userName} />
       {/* navbar desktop*/}
       <motion.div
         className={`flex items-center justify-around text-[#353435] z-50 sticky top-0 ${
@@ -281,6 +306,13 @@ export default function Main() {
                 onClick={clickSkills}
               >
                 Skils
+              </li>
+              <li
+                className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
+                id="skills"
+                onClick={clickContact}
+              >
+                Contact
               </li>
             </ul>
           </div>
@@ -368,6 +400,13 @@ export default function Main() {
             >
               Skils
             </li>
+            <li
+              className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
+              id="skills"
+              onClick={clickContact}
+            >
+              Contact
+            </li>
           </ul>
         </div>
       </nav>
@@ -415,21 +454,30 @@ export default function Main() {
           <div className="justify-between w-full md:pt-[5rem] block md:flex ">
             {/* socialmedia */}
             <motion.div
-              className="media-social w-[10rem] md:mt-[4rem] hidden md:flex"
+              className="media-social w-[10rem] md:mt-[4rem] hidden md:flex z-20"
               style={{ opacity: opacity }}
             >
               <ul className="space-y-[1rem] flex md:block">
                 <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-                  <img alt="" src="./icon/instagram.png"></img>
+                  <Link to="https://www.instagram.com/agung_guntek/">
+                    <img alt="" src="./icon/instagram.png"></img>
+                  </Link>
                 </li>
                 <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-                  <img alt="" src="./icon/github.png"></img>
+                  <Link to="https://github.com/guntekhunter">
+                    <img alt="" src="./icon/github.png"></img>
+                  </Link>
                 </li>
                 <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-                  <img alt="" src="./icon/linkedin.png"></img>
+                  <Link to="https://www.linkedin.com/in/muh-agung-haeruddin-a74018186/">
+                    <img alt="" src="./icon/linkedin.png"></img>
+                  </Link>
                 </li>
-                <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-                  <img alt="" src="./icon/twitter.png"></img>
+                <li
+                  onClick={goToWhatsup}
+                  className="rounded-full w-[2rem] bg-[#D9D9D9] p-2 cursor-pointer"
+                >
+                  <img alt="" src="./icon/whatsapp.png"></img>
                 </li>
               </ul>
             </motion.div>
@@ -490,10 +538,10 @@ export default function Main() {
                     Hello There
                   </motion.p>
 
-                  <p className="name text-[1.9rem] font-bold lg:text-[4.8rem]">
+                  <p className="name text-[2rem] font-bold lg:text-[4.8rem]">
                     I'M A
                   </p>
-                  <p className="name text-[1.9rem] font-bold lg:text-[4.8rem]">
+                  <p className="name text-[2rem] font-bold lg:text-[4.8rem]">
                     JUNIOR
                   </p>
                 </motion.div>
@@ -529,18 +577,27 @@ export default function Main() {
             </motion.p>
           )}
           {/* socialmedia mobile*/}
-          <div className="media-social w-[60%] md:mt-[4rem] block md:hidden flex w-full justify-between mt-[1rem]">
+          <div className="media-social w-[40%] md:mt-[4rem] block md:hidden flex w-full space-x-[1.5rem] mt-[1rem]">
             <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-              <img alt="" src="./icon/instagram.png"></img>
+              <Link to="https://www.instagram.com/agung_guntek/">
+                <img alt="" src="./icon/instagram.png"></img>
+              </Link>
             </div>
             <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-              <img alt="" src="./icon/github.png"></img>
+              <Link to="https://github.com/guntekhunter">
+                <img alt="" src="./icon/github.png"></img>
+              </Link>
             </div>
             <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-              <img alt="" src="./icon/linkedin.png"></img>
+              <Link to="https://www.linkedin.com/in/muh-agung-haeruddin-a74018186/">
+                <img alt="" src="./icon/linkedin.png"></img>
+              </Link>
             </div>
-            <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
-              <img alt="" src="./icon/twitter.png"></img>
+            <div
+              className="rounded-full w-[2rem] bg-[#D9D9D9] p-2"
+              onClick={goToWhatsup}
+            >
+              <img alt="" src="./icon/whatsapp.png"></img>
             </div>
           </div>
         </div>
@@ -858,6 +915,11 @@ export default function Main() {
       {/* skills section */}
       <div ref={refSkills}>
         <SkillsSection />
+      </div>
+
+      {/* contact section */}
+      <div ref={refContact}>
+        <Contact callback={modalActive} />
       </div>
     </div>
   );
