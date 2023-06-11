@@ -437,11 +437,11 @@ export default function Main() {
         <motion.div
           style={{ opacity: opacity }}
           transition={{ delay: 2 }}
-          className="absolute z-0 w-full items-center justify-around realtive h-full md:flex hidden"
+          className="absolute z-0 w-full items-center justify-around realtive md:flex hidden"
         >
           <MouseParallaxContainer
             useWindowMouseEvents
-            className="flex w-full h-full items-center justify-around paralax z-0"
+            className="flex w-full items-center justify-around paralax z-0"
             globalFactorX={0.3}
             globalFactorY={0.3}
             resetOnLeave
@@ -514,7 +514,7 @@ export default function Main() {
                 <motion.div
                   initial={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="absolute w-[9rem] ml-100% right-0 md:hidden w-[100%] hight-[100%] top-[2rem] left-[10rem]"
+                  className="absolute w-[9rem] ml-100% right-0 md:hidden w-[100%] hight-[100%] top-[2rem] left-[12rem]"
                 >
                   <LazyLoadImage
                     src="./foto.png"
@@ -951,7 +951,7 @@ export default function Main() {
       </div>
 
       {/* contact section */}
-      <div ref={refContact}>
+      <div ref={refContact} className="z-10">
         <Contact callback={modalActive} />
       </div>
     </div>

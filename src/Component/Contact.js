@@ -74,7 +74,7 @@ export default function Contact({ ref, callback }) {
               type="submit"
               className="bg-black text-white px-[2rem] py-[.5rem] md:w-[48%] w-full mt-[2rem]"
             >
-              Send Email{" "}
+              Send It{" "}
               <span role="img" aria-label="45-degree angled arrow pointing up">
                 &#8599;
               </span>

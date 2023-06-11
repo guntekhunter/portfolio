@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 
-export default function Experience() {
-    const [active, setActive] = useState(true);
+export default function Experience({ date, name, item }) {
+  const [active, setActive] = useState(false);
 
-    // dropdown
+  // dropdown
   const dropDown = () => {
-    setActive(true);
-    if (active === true){
-      setActive(false);
-    }
+    setActive(!active);
   };
   return (
     <div
@@ -16,22 +13,20 @@ export default function Experience() {
       onClick={dropDown}
     >
       <div className="flex w-[100%] align-center">
-        <p className="date w-full mt-[.2rem]">Oct 12 2022 - Jan 12 Jan</p>
+        <p className="date w-full mt-[.2rem]">{date}</p>
       </div>
       <div className="content flex">
         <div>
-          <p className="title text-[1rem] font-bold">
-            Frotend Developer Intern
-          </p>
+          <p className="title text-[1rem] font-bold">{name}</p>
           <div className="flex space-x-2">
             <p
               className={`description md:w-[18rem] w-[16rem] ${
-                active ? `duration-500` : `truncate overflow-hidden pr-2 duration-500`
+                active
+                  ? `duration-500`
+                  : `truncate overflow-hidden pr-2 duration-500`
               }`}
             >
-              Website persuratan upana studio dibuat untuk memudahkan proses
-              administrasi strartup ini, mengubah sistem persuratan dari manual
-              menjadi website akan menghemat waktu kariawan du Upana studio
+              {item}
             </p>
           </div>
         </div>
@@ -39,7 +34,9 @@ export default function Experience() {
           <img
             alt=""
             src="./icon/arrow.png"
-            className={`-rotate-90 w-[1rem] ${active ? `rotate-90 duration-300` : `-rotate-90 duration-300`}`}
+            className={`-rotate-90 w-[1rem] ${
+              active ? `rotate-90 duration-300` : `-rotate-90 duration-300`
+            }`}
           ></img>
         </div>
       </div>
