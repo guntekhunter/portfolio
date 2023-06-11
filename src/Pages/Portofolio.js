@@ -33,7 +33,6 @@ export default function Portofolio() {
   const section1 = projectList[0].section1;
   const section2 = projectList[0].section2;
   const gabung = [...section1, ...section2];
-  console.log(gabung);
 
   useEffect(() => {
     const selected = gabung.filter((data) => data.id === parseInt(id.id));
@@ -64,12 +63,9 @@ export default function Portofolio() {
       const idVideo = dataUrl.split("v=")[1];
       setVideoId(idVideo);
       setIsLoading(false);
-      console.log(isLoading);
     };
     getVideo();
   }, [data]);
-
-  console.log(videoId);
   return (
     <motion.div
       initial="initial"

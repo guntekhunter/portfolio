@@ -2,21 +2,13 @@ import React, { useEffect } from "react";
 import projectList from "../Data/ProjectList.json";
 
 export default function ModalProject({ isVisible, onClose, id }) {
-  console.log(id);
   if (isVisible === false) return null;
 
   const handleBack = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
 
-  // get only one data base on id
-  const data = projectList.map((item) => item.section1);
-
-  const item = data.find((item) => item.id === id);
-  console.log(data);
-  console.log(id);
   return (
-    // <div className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm z-10 justify-center items-center' id="wrapper" onClick={handleBack}>
     <div
       className="fixed inset-0 bg-gray-500 backdrop-blur-sm z-10 justify-center items-center"
       id="wrapper"

@@ -218,28 +218,29 @@ export default function Main() {
   // scroll to component with navbar
   const clickSumary = () => {
     refSumary.current?.scrollIntoView({ behavior: "smooth" });
+    setActiveNav(false);
   };
   const clickMyWork = () => {
     refMyWork.current?.scrollIntoView({ behavior: "smooth" });
+    setActiveNav(false);
   };
 
   const clickExperience = () => {
     refExperience.current?.scrollIntoView({ behavior: "smooth" });
+    setActiveNav(false);
   };
   const clickSkills = () => {
     refSkills.current?.scrollIntoView({ behavior: "smooth" });
+    setActiveNav(false);
   };
   const clickContact = () => {
     refContact.current?.scrollIntoView({ behavior: "smooth" });
+    setActiveNav(false);
   };
 
   // navbar mobile function
   const handleNavbar = () => {
-    if (activeNav === false) {
-      setActiveNav(true);
-    } else {
-      setActiveNav(false);
-    }
+    setActiveNav(!activeNav);
   };
 
   const goToWhatsup = () => {
@@ -257,7 +258,6 @@ export default function Main() {
     }, 3000);
   };
 
-  console.log(emailSend);
   // make 2 section data into one data
   const section1 = projectList2[0].section1;
   const section2 = projectList2[0].section2;
@@ -412,7 +412,9 @@ export default function Main() {
               id="skills"
               onClick={clickContact}
             >
-              Contact
+              <button className="bg-white text-black px-[1rem] py-[.2rem]">
+                Get In Touch
+              </button>
             </li>
           </ul>
         </div>
@@ -507,11 +509,9 @@ export default function Main() {
                 <motion.div
                   initial={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="absolute z-0 w-[10rem] ml-100% right-0 md:hidden w-[100%] hight-[100%] top-[2rem] left-[10rem]"
+                  className="absolute w-[9rem] ml-100% right-0 md:hidden w-[100%] hight-[100%] top-[2rem] left-[10rem]"
                 >
                   <LazyLoadImage
-                    hight="5rem"
-                    width="270rem"
                     src="./foto.png"
                     alt="./foto.png"
                   ></LazyLoadImage>
@@ -546,9 +546,6 @@ export default function Main() {
                 style={{ opacity: opacity }}
                 className="summary-content md:w-[40rem] w-[100%] flex relative"
               >
-                <div className="absolute z-0 w-[10rem] ml-100% right-0 md:hidden w-[100%] hight-[100%]">
-                  <LazyLoadImage src="./foto_agung.jpg" alt=""></LazyLoadImage>
-                </div>
                 <motion.div
                   initial={{ opacity: 1 }}
                   exit={{ opacity: 0 }}

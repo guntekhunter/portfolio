@@ -5,7 +5,6 @@ export default function Experience() {
 
     // dropdown
   const dropDown = () => {
-    console.log("clicked");
     setActive(true);
     if (active === true){
       setActive(false);

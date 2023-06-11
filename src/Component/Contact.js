@@ -15,8 +15,6 @@ export default function Contact({ ref, callback }) {
       )
       .then(
         (result) => {
-          console.log(result.text);
-          console.log("sending message");
           callback(true, e.target.user_name.value);
         },
         (error) => {
