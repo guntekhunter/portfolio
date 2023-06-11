@@ -1,4 +1,10 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, {
+  Suspense,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   MouseParallaxContainer,
   MouseParallaxChild,
@@ -22,6 +28,9 @@ import { AdvancedImage } from "@cloudinary/react";
 import Contact from "../Component/Contact";
 import Modal from "../Component/Modal";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import LazySocialMedia from "../Component/LazySocialMedia";
+
+const LazyLoad = React.lazy(() => import("../Component/LazyLoadingImage"));
 
 export default function Main() {
   const refSumary = useRef(null);
@@ -467,38 +476,34 @@ export default function Main() {
               style={{ opacity: opacity }}
             >
               <ul className="space-y-[1rem] flex md:block">
-                <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
+                <li className="rounded-full w-[2rem] h-[2rem] bg-[#D9D9D9] p-2">
                   <Link to="https://www.instagram.com/agung_guntek/">
-                    <LazyLoadImage
-                      alt=""
-                      src="./icon/instagram.png"
-                    ></LazyLoadImage>
+                    <Suspense fallback={<LazySocialMedia />}>
+                      <LazyLoad src="./icon/instagram.png" />
+                    </Suspense>
                   </Link>
                 </li>
-                <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
+                <li className="rounded-full w-[2rem] h-[2rem] bg-[#D9D9D9] p-2">
                   <Link to="https://github.com/guntekhunter">
-                    <LazyLoadImage
-                      alt=""
-                      src="./icon/github.png"
-                    ></LazyLoadImage>
+                    <Suspense fallback={<LazySocialMedia />}>
+                      <LazyLoad src="./icon/github.png" />
+                    </Suspense>
                   </Link>
                 </li>
-                <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
+                <li className="rounded-full w-[2rem] h-[2rem] bg-[#D9D9D9] p-2">
                   <Link to="https://www.linkedin.com/in/muh-agung-haeruddin-a74018186/">
-                    <LazyLoadImage
-                      alt=""
-                      src="./icon/linkedin.png"
-                    ></LazyLoadImage>
+                    <Suspense fallback={<LazySocialMedia />}>
+                      <LazyLoad src="./icon/linkedin.png" />
+                    </Suspense>
                   </Link>
                 </li>
                 <li
                   onClick={goToWhatsup}
-                  className="rounded-full w-[2rem] bg-[#D9D9D9] p-2 cursor-pointer"
+                  className="rounded-full w-[2rem] h-[2rem] bg-[#D9D9D9] p-2 cursor-pointer"
                 >
-                  <LazyLoadImage
-                    alt=""
-                    src="./icon/whatsapp.png"
-                  ></LazyLoadImage>
+                  <Suspense fallback={<LazySocialMedia />}>
+                    <LazyLoad src="./icon/whatsapp.png" />
+                  </Suspense>
                 </li>
               </ul>
             </motion.div>
@@ -593,7 +598,7 @@ export default function Main() {
           )}
           {/* socialmedia mobile*/}
           <div className="media-social w-[40%] md:mt-[4rem] block md:hidden flex w-full space-x-[1.5rem] mt-[1rem]">
-            <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
+            <div className="rounded-full w-[2rem] h-[2rem] bg-[#D9D9D9] p-2">
               <Link to="https://www.instagram.com/agung_guntek/">
                 <LazyLoadImage
                   alt=""
@@ -601,18 +606,18 @@ export default function Main() {
                 ></LazyLoadImage>
               </Link>
             </div>
-            <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
+            <div className="rounded-full w-[2rem] h-[2rem] bg-[#D9D9D9] p-2">
               <Link to="https://github.com/guntekhunter">
                 <LazyLoadImage alt="" src="./icon/github.png"></LazyLoadImage>
               </Link>
             </div>
-            <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
+            <div className="rounded-full w-[2rem] h-[2rem] bg-[#D9D9D9] p-2">
               <Link to="https://www.linkedin.com/in/muh-agung-haeruddin-a74018186/">
                 <LazyLoadImage alt="" src="./icon/linkedin.png"></LazyLoadImage>
               </Link>
             </div>
             <div
-              className="rounded-full w-[2rem] bg-[#D9D9D9] p-2"
+              className="rounded-full w-[2rem] h-[2rem] bg-[#D9D9D9] p-2"
               onClick={goToWhatsup}
             >
               <LazyLoadImage alt="" src="./icon/whatsapp.png"></LazyLoadImage>

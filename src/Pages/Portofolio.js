@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import projectList from "../Data/ProjectList.json";
 import YouTube from "react-youtube";
 import { AdvancedImage } from "@cloudinary/react";
 import { CloudinaryImage } from "@cloudinary/url-gen";
+import YoutubeFallback from "../Component/YoutubeFallback";
+// import YoutubeVideo from "../Component/YoutubeVideo";
+
+const YoutubeVideo = React.lazy(() => import("../Component/YoutubeVideo"));
 
 export default function Portofolio() {
   const [scrollPosition, setScrollPosition] = useState();
@@ -207,21 +211,13 @@ export default function Portofolio() {
           </div>
           <div className="flex justify-around">
             {isMobile ? (
-              <div>
-                {isLoading ? (
-                  <div className="w-full h-[5rem] bg-grey-200"></div>
-                ) : (
-                  <YouTube videoId={videoId} opts={optsMobile} />
-                )}
-              </div>
+              <Suspense fallback={<YoutubeFallback />}>
+                <YoutubeVideo id={videoId} opts={optsMobile} />
+              </Suspense>
             ) : (
-              <div>
-                {isLoading ? (
-                  <div className="w-full h-[5rem] bg-grey-200"></div>
-                ) : (
-                  <YouTube videoId={videoId} opts={opts} />
-                )}
-              </div>
+              <Suspense fallback={<YoutubeFallback />}>
+                <YoutubeVideo id={videoId} opts={opts} />
+              </Suspense>
             )}
           </div>
         </div>
