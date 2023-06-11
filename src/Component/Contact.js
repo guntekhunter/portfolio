@@ -27,7 +27,7 @@ export default function Contact({ ref, callback }) {
   return (
     <section className="flex justify-center z-10" ref={ref}>
       <div className="md:w-[80%]">
-        <div className="w-full p-[3rem] my-[1.6rem]">
+        <div className="w-full p-[3rem]">
           <div>
             <h1 className="text-[1.8rem] font-bold flex">
               Love to hear from you,

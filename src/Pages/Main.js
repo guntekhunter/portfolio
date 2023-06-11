@@ -21,6 +21,7 @@ import { CloudinaryImage } from "@cloudinary/url-gen";
 import { AdvancedImage } from "@cloudinary/react";
 import Contact from "../Component/Contact";
 import Modal from "../Component/Modal";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Main() {
   const refSumary = useRef(null);
@@ -277,44 +278,50 @@ export default function Main() {
           <div>
             <h1 className="font-bold text-[15px]">AGUNG</h1>
           </div>
-          <div className="w-[30%]">
-            <ul className="inline-flex text-[9px] font-bold justify-between w-full z-10">
-              <li
-                className="z-10 cursor-pointer duration-200"
-                id="sumary"
-                onClick={clickSumary}
-              >
-                Sumary
-              </li>
-              <li
-                className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
-                id="my work"
-                onClick={clickMyWork}
-              >
-                My Work
-              </li>
-              <li
-                className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
-                id="experience"
-                onClick={clickExperience}
-              >
-                Experience
-              </li>
-              <li
-                className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
-                id="skills"
-                onClick={clickSkills}
-              >
-                Skils
-              </li>
-              <li
-                className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
-                id="skills"
-                onClick={clickContact}
-              >
-                Contact
-              </li>
-            </ul>
+          <div className="flex space-x-5">
+            <div>
+              <ul className="inline-flex text-[9px] font-bold justify-between w-full z-10 space-x-5">
+                <li
+                  className="hover:text-[#BEBBB5] z-10 cursor-pointer duration-200"
+                  id="sumary"
+                  onClick={clickSumary}
+                >
+                  Sumary
+                </li>
+                <li
+                  className="hover:text-[#BEBBB5] z-10 cursor-pointer duration-200"
+                  id="my work"
+                  onClick={clickMyWork}
+                >
+                  My Work
+                </li>
+                <li
+                  className="hover:text-[#BEBBB5] z-10 cursor-pointer duration-200"
+                  id="experience"
+                  onClick={clickExperience}
+                >
+                  Experience
+                </li>
+                <li
+                  className="hover:text-[#BEBBB5] z-10 cursor-pointer duration-200"
+                  id="skills"
+                  onClick={clickSkills}
+                >
+                  Skils
+                </li>
+              </ul>
+            </div>
+            <div
+              className={`text-[9px] font-bold hover:text-[#BEBBB5] z-10 cursor-pointer duration-200 p-2 ${
+                scrollPosition > 0
+                  ? "bg-white text-black"
+                  : "bg-black text-white"
+              } `}
+              id="skills"
+              onClick={clickContact}
+            >
+              Get In Touch
+            </div>
           </div>
         </nav>
       </motion.div>
@@ -343,7 +350,7 @@ export default function Main() {
             }`}
           >
             {scrollPosition > 0 ? (
-              <img
+              <LazyLoadImage
                 src={`${
                   activeNav
                     ? "./icon/x-white.png"
@@ -354,7 +361,7 @@ export default function Main() {
                 onClick={handleNavbar}
               />
             ) : (
-              <img
+              <LazyLoadImage
                 src={`${
                   activeNav ? "./icon/x-white.png" : "./icon/hamburger.png"
                 }`}
@@ -380,28 +387,28 @@ export default function Main() {
               Sumary
             </li>
             <li
-              className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
+              className="text-[#BEBBB5] hover:text-[#BEBBB5] z-10 cursor-pointer duration-200"
               id="my work"
               onClick={clickMyWork}
             >
               My Work
             </li>
             <li
-              className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
+              className="text-[#BEBBB5] hover:text-[#BEBBB5] z-10 cursor-pointer duration-200"
               id="experience"
               onClick={clickExperience}
             >
               Experience
             </li>
             <li
-              className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
+              className="text-[#BEBBB5] hover:text-[#BEBBB5] z-10 cursor-pointer duration-200"
               id="skills"
               onClick={clickSkills}
             >
               Skils
             </li>
             <li
-              className="text-[#BEBBB5] hover:text-[#353435] z-10 cursor-pointer duration-200"
+              className="text-[#BEBBB5] hover:text-[#BEBBB5] z-10 cursor-pointer duration-200"
               id="skills"
               onClick={clickContact}
             >
@@ -434,14 +441,14 @@ export default function Main() {
                 factorY={0.1}
                 className="w-[1rem]"
               >
-                <img
+                <LazyLoadImage
                   alt=""
                   src="./icon/background/2.png"
                   className="ml-2 w-2"
                 />
               </MouseParallaxChild>
               <MouseParallaxChild factorX={0.5} factorY={0.5}>
-                <img
+                <LazyLoadImage
                   alt=""
                   src="./icon/background/1.png"
                   className="pt-[7rem] w-[6rem]"
@@ -460,37 +467,54 @@ export default function Main() {
               <ul className="space-y-[1rem] flex md:block">
                 <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
                   <Link to="https://www.instagram.com/agung_guntek/">
-                    <img alt="" src="./icon/instagram.png"></img>
+                    <LazyLoadImage
+                      alt=""
+                      src="./icon/instagram.png"
+                    ></LazyLoadImage>
                   </Link>
                 </li>
                 <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
                   <Link to="https://github.com/guntekhunter">
-                    <img alt="" src="./icon/github.png"></img>
+                    <LazyLoadImage
+                      alt=""
+                      src="./icon/github.png"
+                    ></LazyLoadImage>
                   </Link>
                 </li>
                 <li className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
                   <Link to="https://www.linkedin.com/in/muh-agung-haeruddin-a74018186/">
-                    <img alt="" src="./icon/linkedin.png"></img>
+                    <LazyLoadImage
+                      alt=""
+                      src="./icon/linkedin.png"
+                    ></LazyLoadImage>
                   </Link>
                 </li>
                 <li
                   onClick={goToWhatsup}
                   className="rounded-full w-[2rem] bg-[#D9D9D9] p-2 cursor-pointer"
                 >
-                  <img alt="" src="./icon/whatsapp.png"></img>
+                  <LazyLoadImage
+                    alt=""
+                    src="./icon/whatsapp.png"
+                  ></LazyLoadImage>
                 </li>
               </ul>
             </motion.div>
 
             {/* content */}
             {mobile ? (
-              <div className="summary-content md:w-[40rem] w-[100%] flex relative">
+              <div className="summary-content md:w-[40rem] w-[100%] flex">
                 <motion.div
                   initial={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="absolute z-0 w-[10rem] ml-100% right-0 md:hidden w-[100%] hight-[100%]"
+                  className="absolute z-0 w-[10rem] ml-100% right-0 md:hidden w-[100%] hight-[100%] top-[2rem] left-[10rem]"
                 >
-                  {/* <img src="./foto_agung.jpg" alt=""></img> */}
+                  <LazyLoadImage
+                    hight="5rem"
+                    width="270rem"
+                    src="./foto.png"
+                    alt="./foto.png"
+                  ></LazyLoadImage>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 1 }}
@@ -501,9 +525,10 @@ export default function Main() {
                   <p className="hy text-[.7rem] font-light"></p>
                   <motion.p
                     // style={{ opacity: opacity }}
-                    className="name text-[1rem]"
+                    className="name text-[.7rem]"
                   >
-                    Hello There
+                    Hey, I'm Agung
+                    <br /> and
                   </motion.p>
 
                   <p className="name text-[1.9rem] font-bold lg:text-[4.8rem]">
@@ -522,7 +547,7 @@ export default function Main() {
                 className="summary-content md:w-[40rem] w-[100%] flex relative"
               >
                 <div className="absolute z-0 w-[10rem] ml-100% right-0 md:hidden w-[100%] hight-[100%]">
-                  <img src="./foto_agung.jpg" alt=""></img>
+                  <LazyLoadImage src="./foto_agung.jpg" alt=""></LazyLoadImage>
                 </div>
                 <motion.div
                   initial={{ opacity: 1 }}
@@ -535,7 +560,7 @@ export default function Main() {
                     style={{ opacity: opacity }}
                     className="name text-[1rem]"
                   >
-                    Hello There
+                    Hey, my name is Agung
                   </motion.p>
 
                   <p className="name text-[2rem] font-bold lg:text-[4.8rem]">
@@ -548,20 +573,13 @@ export default function Main() {
               </motion.div>
             )}
             <motion.div className="w-[30rem]" style={{ opacity: opacity }}>
-              <div className="md:flex">
-                <img
-                  src="./foto_agung.jpg"
+              <div className="md:flex absolute top-14 left-[45rem]">
+                <LazyLoadImage
+                  src="./foto.png"
                   alt=""
-                  className="w-[8rem] pb-[1.6rem] md:flex hidden"
-                ></img>
+                  className="w-[20rem] md:flex hidden"
+                ></LazyLoadImage>
               </div>
-              <p className="descriptions text-[.7rem] w-[20rem] md-flex hidden md:flex hidden">
-                I am passionate about creating visually stunning and
-                user-friendly websites that deliver exceptional browsing
-                experiences to audiences. I am proficient in writing clean and
-                efficient code to ensure optimal performance and responsiveness
-                across all devices.
-              </p>
             </motion.div>
           </div>
           {mobile ? (
@@ -580,24 +598,27 @@ export default function Main() {
           <div className="media-social w-[40%] md:mt-[4rem] block md:hidden flex w-full space-x-[1.5rem] mt-[1rem]">
             <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
               <Link to="https://www.instagram.com/agung_guntek/">
-                <img alt="" src="./icon/instagram.png"></img>
+                <LazyLoadImage
+                  alt=""
+                  src="./icon/instagram.png"
+                ></LazyLoadImage>
               </Link>
             </div>
             <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
               <Link to="https://github.com/guntekhunter">
-                <img alt="" src="./icon/github.png"></img>
+                <LazyLoadImage alt="" src="./icon/github.png"></LazyLoadImage>
               </Link>
             </div>
             <div className="rounded-full w-[2rem] bg-[#D9D9D9] p-2">
               <Link to="https://www.linkedin.com/in/muh-agung-haeruddin-a74018186/">
-                <img alt="" src="./icon/linkedin.png"></img>
+                <LazyLoadImage alt="" src="./icon/linkedin.png"></LazyLoadImage>
               </Link>
             </div>
             <div
               className="rounded-full w-[2rem] bg-[#D9D9D9] p-2"
               onClick={goToWhatsup}
             >
-              <img alt="" src="./icon/whatsapp.png"></img>
+              <LazyLoadImage alt="" src="./icon/whatsapp.png"></LazyLoadImage>
             </div>
           </div>
         </div>
@@ -612,7 +633,7 @@ export default function Main() {
           <div className="mt-6">
             <p className="">See My Portfolio</p>
             <div className="w-full flex justify-center mt-2">
-              <img
+              <LazyLoadImage
                 alt=""
                 src="./icon/arrow.png"
                 className="rotate-[90deg] w-5"
@@ -623,7 +644,7 @@ export default function Main() {
           <motion.div style={{ opacity: opacity }} className="mt-6">
             <p className="">See My Portfolio</p>
             <div className="w-full flex justify-center mt-2">
-              <img
+              <LazyLoadImage
                 alt=""
                 src="./icon/arrow.png"
                 className="rotate-[90deg] w-5"
@@ -645,7 +666,11 @@ export default function Main() {
                 <Link to={`/portofolio/${data.id}`}>
                   <div className="relative shadow-md">
                     <div className="h-[3.8rem] overflow-hidden">
-                      <AdvancedImage cldImg={myImage} alt=""></AdvancedImage>
+                      <AdvancedImage
+                        loading="lazy"
+                        cldImg={myImage}
+                        alt=""
+                      ></AdvancedImage>
                     </div>
                     <div className="text-[.5rem] px-[.5rem] py-[.5rem]">
                       <p className="font-bold">{data.name}</p>
@@ -676,14 +701,14 @@ export default function Main() {
                   factorY={0.1}
                   className="w-[1rem]"
                 >
-                  <img
+                  <LazyLoadImage
                     alt=""
                     src="./icon/background/2.2.png"
                     className="mt-[1rem] w-2"
                   />
                 </MouseParallaxChild>
                 <MouseParallaxChild factorX={0.5} factorY={0.5}>
-                  <img
+                  <LazyLoadImage
                     alt=""
                     src="./icon/background/2.1.png"
                     className="pt-[7rem] ml-[25rem] w-[5rem]"
@@ -698,14 +723,14 @@ export default function Main() {
                 >
                   <div className="w-[10rem] h-[15rem]">
                     <MouseParallaxChild factorX={0.1} factorY={0.1}>
-                      <img
+                      <LazyLoadImage
                         alt=""
                         src="./icon/background/2.2.png"
                         className="mt-[-14rem] ml-[15rem] w-2"
                       />
                     </MouseParallaxChild>
                     <MouseParallaxChild factorX={0.5} factorY={0.5}>
-                      <img
+                      <LazyLoadImage
                         alt=""
                         src="./icon/background/2.1.png"
                         className="mt-[2rem] ml-[8rem] w-[5rem]"
@@ -714,7 +739,7 @@ export default function Main() {
                   </div>
                 </MouseParallaxChild>
                 <MouseParallaxChild factorX={0.1} factorY={0.5}>
-                  <img
+                  <LazyLoadImage
                     alt=""
                     src="./icon/background/2.2.png"
                     className="ml-[15rem] mt-[5rem] w-[.51rem]"
@@ -729,7 +754,7 @@ export default function Main() {
             } cursor-pointer transition ease-in-out hover:translate-x-5`}
             onClick={slideLeft}
           >
-            <img
+            <LazyLoadImage
               alt=""
               src="./icon/arrow.png"
               className="w-[1rem] h-[100%] bg-red rotate-180"
@@ -780,6 +805,7 @@ export default function Main() {
                                 onMouseLeave={handleLeave}
                               >
                                 <AdvancedImage
+                                  loading="lazy"
                                   cldImg={myImage}
                                   className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed hover:opacity-70 duration-500"
                                 />
@@ -847,6 +873,7 @@ export default function Main() {
                               onMouseLeave={handleLeave}
                             >
                               <AdvancedImage
+                                loading="lazy"
                                 cldImg={myImage}
                                 className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed hover:opacity-70 duration-500"
                               />
@@ -875,7 +902,11 @@ export default function Main() {
             }  cursor-pointer`}
             onClick={slideRight}
           >
-            <img alt="" src="./icon/arrow.png" className="w-[1rem] h-[1rem]" />
+            <LazyLoadImage
+              alt=""
+              src="./icon/arrow.png"
+              className="w-[1rem] h-[1rem]"
+            />
           </div>
           <div className="container w-full items-center justify-around flex">
             <div className="w-[85%]">

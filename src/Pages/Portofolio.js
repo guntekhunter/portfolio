@@ -189,23 +189,13 @@ export default function Portofolio() {
           <div className="grid content-center mb-[2rem] md:mb-0">
             <div className="grid content-center  ">
               <p className="grid content-center font-bold text-[2rem]">
-                Here's what
-              </p>
-              <p className="grid content-center font-bold text-[2rem]">
-                I did in this project
+                About This Project
               </p>
             </div>
           </div>
           <div className="">
-            <p>
-              I was responsible for developing the interface of Upana Studio's
-              mailing website, based on a stunning UI/UX design. To make sure
-              the website is easy to use and looks great, I used React.js and
-              tailwind. I also connected the website to the necessary API using
-              axios, so everything works as it should. After three months of
-              hard work, I successfully completed this project and I'm excited
-              to share it with you.
-            </p>
+            {data &&
+              data.map((item, key) => <p key={key}>{item.description}</p>)}
           </div>
         </div>
       </div>
@@ -215,7 +205,7 @@ export default function Portofolio() {
           <div className="grid content-center">
             <div className="flex justify-around">
               <p className="grid content-center font-bold text-[2rem] pb-[2rem]">
-                OVERVIEW
+                DEMO
               </p>
             </div>
           </div>
