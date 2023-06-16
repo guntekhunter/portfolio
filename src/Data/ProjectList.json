@@ -101,6 +101,17 @@
         "url": "https://www.youtube.com/watch?v=LVT50dvXvtg",
         "factoryX": 0.3,
         "factoryY": 0.4
+      },
+      {
+        "id": 10,
+        "image": "so_na_f8eeih",
+        "width": "20rem",
+        "class": "inset-[10rem] top-[25rem] w-[20rem] hover:w-[23rem]",
+        "name": "So'na",
+        "description": "In this project, I had the opportunity to explore AI technology for the first time. Using Next.js, Tailwind CSS, and the OpenAI API, I built an application that allowed me to gain practical experience with third-party API integration. It was an enlightening journey where I deepened my understanding of AI technology and its implementation.",
+        "url": "https://www.youtube.com/watch?v=XuqTGP74ik8",
+        "factoryX": 0.3,
+        "factoryY": 0.3
       }
     ]
   }

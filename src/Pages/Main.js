@@ -140,6 +140,16 @@ export default function Main() {
           factoryX: 0.3,
           factoryY: 0.4,
         },
+        {
+          id: 10,
+          image: "so_na_f8eeih",
+          width: "20rem",
+          class: "inset-[15rem] top-[25rem] w-[16rem] hover:w-[17rem]",
+          name: "Personal Website",
+          url: "https://www.youtube.com/watch?v=XuqTGP74ik8",
+          factoryX: 0.3,
+          factoryY: 0.3,
+        },
       ],
     },
   ];
