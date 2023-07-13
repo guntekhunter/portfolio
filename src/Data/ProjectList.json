@@ -96,9 +96,9 @@
         "image": "9_oipnjs",
         "width": "12rem",
         "class": "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
-        "name": "Personal website",
-        "description": "This is my early personal project that I worked on to learn about web programming. For this project, I used Materialize CSS framework along with a bit of custom CSS and JavaScript. It served as a valuable learning experience in web development.",
-        "url": "https://www.youtube.com/watch?v=LVT50dvXvtg",
+        "name": "Sebuah Teman",
+        "description": "This website utilizes Next.js, Tailwind, Axios, Prisma, NextAuth, and the OpenAI API to incorporate advanced AI features, enhancing its functionality and user experience.",
+        "url": "https://www.youtube.com/watch?v=_y2-Er1jxe4",
         "factoryX": 0.3,
         "factoryY": 0.4
       },
