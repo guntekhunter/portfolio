@@ -132,7 +132,7 @@ export default function Main() {
         },
         {
           id: 9,
-          image: "9_oipnjs",
+          image: "6_bwyo8b",
           width: "12rem",
           class: "right-[19rem] top-[28rem] w-[15rem] hover:w-[17rem]",
           name: "Sebuah Teman",
