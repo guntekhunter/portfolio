@@ -25,12 +25,12 @@
       },
       {
         "id": 3,
-        "image": "7_pa55e6",
         "width": "15rem",
+        "image": "6_bwyo8b",
         "class": "inset-[18rem] left-[60rem] w-[15rem] hover:w-[20rem]",
-        "name": "Car Rental",
-        "description": "This website was built using React and CSS. In this project, I implemented filtering functionality using JavaScript",
-        "url": "https://www.youtube.com/watch?v=JDjx0gIGCfM",
+        "name": "Sebuah Teman",
+        "description": "This website utilizes Next.js, Tailwind, Axios, Prisma, NextAuth, and the OpenAI API to incorporate advanced AI features, enhancing its functionality and user experience, i create this website in 1 mounth, you can visit it in sebuahteman.site.",
+        "url": "https://www.youtube.com/watch?v=_y2-Er1jxe4",
         "factoryX": 0.2,
         "factoryY": 0.2
       },
@@ -93,12 +93,12 @@
       },
       {
         "id": 9,
-        "image": "6_bwyo8b",
+        "image": "7_pa55e6",
         "width": "12rem",
         "class": "right-[19rem] top-[30rem] w-[17rem] hover:w-[23rem]",
-        "name": "Sebuah Teman",
-        "description": "This website utilizes Next.js, Tailwind, Axios, Prisma, NextAuth, and the OpenAI API to incorporate advanced AI features, enhancing its functionality and user experience.",
-        "url": "https://www.youtube.com/watch?v=_y2-Er1jxe4",
+        "name": "Car Rental",
+        "description": "This website was built using React and CSS. In this project, I implemented filtering functionality using JavaScript",
+        "url": "https://www.youtube.com/watch?v=JDjx0gIGCfM",
         "factoryX": 0.3,
         "factoryY": 0.4
       },
