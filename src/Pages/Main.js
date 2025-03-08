@@ -103,11 +103,11 @@ export default function Main() {
       section2: [
         {
           id: 6,
-          image: "10_rr9ele",
+          image: "Screenshot_2025-03-09_054145_nn3kzo",
           width: "20rem",
           class: "inset-[9rem] w-[15rem] hover:w-[17rem]",
-          name: "Pisangji",
-          url: "https://www.youtube.com/watch?v=9e1jGNzXI3o",
+          name: "Urban Print",
+          url: "https://youtu.be/bqDV79o-4jY",
           factoryX: 0.3,
           factoryY: 0.3,
         },
