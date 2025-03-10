@@ -65,7 +65,7 @@
         "class": "inset-[8rem] w-[20rem] hover:w-[23rem]",
         "name": "Urban Print",
         "description": "Urban Print is a web application designed to manage and control the order workflow at the Urban Print printing company. This application helps streamline order management, ensuring that each production stage is monitored effectively. Urban Print is built using modern technologies, including: Next.js as a React-based frontend framework for optimal performance and fast rendering. Tailwind CSS for a modern and responsive design with easy styling.PostgreSQL as a robust and reliable database to store order information.Prisma as an ORM (Object-Relational Mapping) to efficiently connect the application with the database.Axios for handling API communication between the frontend and backend.With this technology stack, Urban Print enhances order management, ensuring a smoother and more organized printing process.",
-        "url": "https://youtu.be/bqDV79o-4jY",
+        "url": "www.youtube.com/watch?v=bqDV79o-4jY",
         "factoryX": 0.3,
         "factoryY": 0.3
       },

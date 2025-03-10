@@ -107,7 +107,7 @@ export default function Main() {
           width: "20rem",
           class: "inset-[9rem] w-[15rem] hover:w-[17rem]",
           name: "Urban Print",
-          url: "https://youtu.be/bqDV79o-4jY",
+          url: "www.youtube.com/watch?v=bqDV79o-4jY",
           factoryX: 0.3,
           factoryY: 0.3,
         },
