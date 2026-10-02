@@ -38,14 +38,12 @@ export default function Main() {
   const refExperience = useRef(null);
   const refSkills = useRef(null);
   const refContact = useRef(null);
-  const [next, setNext] = useState(0);
   const [idProject, setIdProject] = useState();
   const [showModal, setShowModal] = useState(false);
   const [id, setId] = useState();
   const [hoverId, setHoverId] = useState();
   const [isMobile, setIsMobile] = useState(false);
   const [scrollPosition, setScrollPosition] = useState();
-  const containerRef = useRef(null);
   const [mobile, setMobile] = useState(false);
   const [emailSend, setEmailSend] = useState(false);
   const [userName, setUserName] = useState();
@@ -165,22 +163,6 @@ export default function Main() {
   // transition with motion
   const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.9] };
   // slider
-  const slideLeft = () => {
-    var slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft - 1800;
-    setNext(false);
-  };
-
-  const slideRight = () => {
-    var slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft + 1800;
-    setNext(true);
-  };
-
-  const handleScroll = () => {
-    setNext(containerRef?.current.scrollLeft);
-  };
-
   const handleHover = (e) => {
     const id = parseInt(e.target.id);
     setIdProject(id);
@@ -549,7 +531,7 @@ export default function Main() {
                     I'M A
                   </p>
                   <p className="name text-[1.9rem] font-bold lg:text-[4.8rem]">
-                    JUNIOR
+                    FULLSTACK
                   </p>
                 </motion.div>
               </div>
@@ -578,7 +560,7 @@ export default function Main() {
                     I'M A
                   </p>
                   <p className="name text-[2rem] font-bold lg:text-[4.8rem]">
-                    JUNIOR
+                    FULLSTACK
                   </p>
                 </motion.div>
               </motion.div>
@@ -696,250 +678,62 @@ export default function Main() {
         </div>
 
         {/* all the project */}
-        <section className="relative md:block hidden">
-          {/* background paralax */}
-          <div className="flex absolute z-0 w-full items-center justify-around realtive h-full ">
+        <section className="relative hidden md:block py-[5rem]">
+          <div className="container mx-auto">
+            <div className="text-[2rem] ml-[10%] mb-[4rem] border-b-[2px] border-[#353435] w-max">
+              <p className="">SOME OF</p>
+              <p className="font-bold">MY WORK.</p>
+            </div>
             <MouseParallaxContainer
               useWindowMouseEvents
-              className="flex w-full h-full items-center justify-around paralax"
+              className="w-full h-full paralax"
               globalFactorX={0.3}
               globalFactorY={0.3}
               resetOnLeave
             >
-              <div className="w-[20rem]">
-                <MouseParallaxChild
-                  factorX={0.1}
-                  factorY={0.1}
-                  className="w-[1rem]"
-                >
-                  <LazyLoadImage
-                    alt=""
-                    src="./icon/background/2.2.png"
-                    className="mt-[1rem] w-2"
-                  />
-                </MouseParallaxChild>
-                <MouseParallaxChild factorX={0.5} factorY={0.5}>
-                  <LazyLoadImage
-                    alt=""
-                    src="./icon/background/2.1.png"
-                    className="pt-[7rem] ml-[25rem] w-[5rem]"
-                  />
-                </MouseParallaxChild>
-              </div>
-              <div className="w-[20rem]">
-                <MouseParallaxChild
-                  factorX={0.1}
-                  factorY={0.1}
-                  className="w-[1rem]"
-                >
-                  <div className="w-[10rem] h-[15rem]">
-                    <MouseParallaxChild factorX={0.1} factorY={0.1}>
-                      <LazyLoadImage
-                        alt=""
-                        src="./icon/background/2.2.png"
-                        className="mt-[-14rem] ml-[15rem] w-2"
-                      />
-                    </MouseParallaxChild>
-                    <MouseParallaxChild factorX={0.5} factorY={0.5}>
-                      <LazyLoadImage
-                        alt=""
-                        src="./icon/background/2.1.png"
-                        className="mt-[2rem] ml-[8rem] w-[5rem]"
-                      />
-                    </MouseParallaxChild>
-                  </div>
-                </MouseParallaxChild>
-                <MouseParallaxChild factorX={0.1} factorY={0.5}>
-                  <LazyLoadImage
-                    alt=""
-                    src="./icon/background/2.2.png"
-                    className="ml-[15rem] mt-[5rem] w-[.51rem]"
-                  />
-                </MouseParallaxChild>
+              <div className="flex flex-wrap justify-center gap-14 px-[2rem]">
+                {gabung &&
+                  gabung.map((data, key) => {
+                    const myImage = new CloudinaryImage(data.image, {
+                      cloudName: "unm",
+                    });
+                    return (
+                      <MouseParallaxChild
+                        key={key}
+                        factorX={data.factoryX}
+                        factorY={data.factoryY}
+                        className="ease-out duration-500 flex items-center justify-center"
+                      >
+                        <Link to={`/portofolio/${data.id}`} state={data.width}>
+                          <motion.div
+                            exit={hoverId !== data.id && { opacity: 0 }}
+                            className="relative cursor-pointer bg-gray-200"
+                            style={{ width: data.width }}
+                            id={data.id}
+                            onMouseEnter={handleHover}
+                            onMouseLeave={handleLeave}
+                          >
+                            <AdvancedImage
+                              loading="lazy"
+                              cldImg={myImage}
+                              className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed hover:opacity-70 duration-500 w-full"
+                            />
+                            <p
+                              className={`${
+                                idProject === data.id
+                                  ? "flex duration-500"
+                                  : "hidden"
+                              } absolute ease-out left-[50%] top-[50%] z-0 text-[1rem] bg-black text-white duration-300 px-3 py-1 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap`}
+                            >
+                              {data.name}
+                            </p>
+                          </motion.div>
+                        </Link>
+                      </MouseParallaxChild>
+                    );
+                  })}
               </div>
             </MouseParallaxContainer>
-          </div>
-          <div
-            className={`hover:opacity-100 opacity-0 duration-500 absolute left-[-1.5rem] grid content-center h-[75%] align-center z-10 p-[1rem] ${
-              next >= 1296 ? "border-[#353435]" : "hidden duration-200"
-            } cursor-pointer transition ease-in-out hover:translate-x-5`}
-            onClick={slideLeft}
-          >
-            <LazyLoadImage
-              alt=""
-              src="./icon/arrow.png"
-              className="w-[1rem] h-[100%] bg-red rotate-180"
-            />
-          </div>
-          <div
-            id="slider"
-            ref={containerRef}
-            onScroll={handleScroll}
-            className="flex overflow-scroll scroll whitespace-nowrap hover:overflow-x-scroll scrollbar-hide scroll-smooth"
-          >
-            <div>
-              <div ref={ref}>
-                <motion.div
-                  className="container w-[100vw] h-[120vh] relative"
-                  animate={animation}
-                >
-                  <MouseParallaxContainer
-                    useWindowMouseEvents
-                    className="flex w-full h-full items-center justify-around paralax "
-                    globalFactorX={0.3}
-                    globalFactorY={0.3}
-                    resetOnLeave
-                  >
-                    {projectList.map((item) =>
-                      item.section1.map((data, key) => {
-                        const myImage = new CloudinaryImage(data.image, {
-                          cloudName: "unm",
-                        });
-
-                        return (
-                          <MouseParallaxChild
-                            key={key}
-                            factorX={data.factoryX}
-                            factorY={data.factoryY}
-                            width={data.width}
-                            className={`absolute ${data.class} ease-out duration-500`}
-                          >
-                            <Link
-                              to={`/portofolio/${data.id}`}
-                              state={data.width}
-                            >
-                              <motion.div
-                                exit={hoverId !== data.id && { opacity: 0 }}
-                                className="w-full relative cursor-pointer bg-gray-200"
-                                id={data.id}
-                                onMouseEnter={handleHover}
-                                onMouseLeave={handleLeave}
-                              >
-                                <AdvancedImage
-                                  loading="lazy"
-                                  cldImg={myImage}
-                                  className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed hover:opacity-70 duration-500"
-                                />
-                                <p
-                                  className={`${
-                                    idProject === data.id
-                                      ? "flex duration-500"
-                                      : "hidden"
-                                  } absolute ease-out left-[50%] top-[50%] z-0 text-[.6rem] bg-black text-white duration-300 px-2`}
-                                >
-                                  {data.name}
-                                </p>
-                              </motion.div>
-                            </Link>
-                          </MouseParallaxChild>
-                        );
-                      })
-                    )}
-                    <motion.div
-                      initial={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ transition }}
-                      className="text-container h-full flex items-center justify-around text-right"
-                    >
-                      <div className="text-[2rem] ml-[15rem] mt-[1rem] border-b-[2px] border-[#353435]">
-                        <p className="">SOME OF</p>
-                        <p className="font-bold">MY WORK.</p>
-                      </div>
-                    </motion.div>
-                  </MouseParallaxContainer>
-                </motion.div>
-              </div>
-            </div>
-            <div>
-              <div className="container w-[100vw] h-[120vh] relative">
-                <MouseParallaxContainer
-                  useWindowMouseEvents
-                  className="flex w-full h-full items-center justify-around paralax"
-                  globalFactorX={0.3}
-                  globalFactorY={0.3}
-                  resetOnLeave
-                >
-                  {projectList.map((item) =>
-                    item.section2.map((data, key) => {
-                      const myImage = new CloudinaryImage(data.image, {
-                        cloudName: "unm",
-                      });
-                      return (
-                        <MouseParallaxChild
-                          key={key}
-                          factorX={data.factoryX}
-                          factorY={data.factoryY}
-                          width={data.width}
-                          className={`absolute ${data.class} ease-out duration-500`}
-                        >
-                          <Link
-                            to={`/portofolio/${data.id}`}
-                            state={data.width}
-                          >
-                            <motion.div
-                              exit={hoverId !== data.id && { opacity: 0 }}
-                              className="w-full relative cursor-pointer bg-gray-200"
-                              id={data.id}
-                              onMouseEnter={handleHover}
-                              onMouseLeave={handleLeave}
-                            >
-                              <AdvancedImage
-                                loading="lazy"
-                                cldImg={myImage}
-                                className="border-[#353435] border-dashed border-[2px] relative hover:border-dashed hover:opacity-70 duration-500"
-                              />
-                              <p
-                                className={`${
-                                  idProject === data.id
-                                    ? "flex duration-500"
-                                    : "hidden"
-                                } absolute ease-out left-[50%] top-[50%] z-0 text-[.6rem] bg-black text-white duration-300 px-2`}
-                              >
-                                {data.name}
-                              </p>
-                            </motion.div>
-                          </Link>
-                        </MouseParallaxChild>
-                      );
-                    })
-                  )}
-                </MouseParallaxContainer>
-              </div>
-            </div>
-          </div>
-          <div
-            className={`hover:opacity-100 opacity-0 duration-500 absolute padding-auto grid content-center left-[76rem] h-[85%] top-0 flex justify-around align-center p-[1rem] ${
-              next >= 1296 ? "hidden duration-200" : "border-[#353435]"
-            }  cursor-pointer`}
-            onClick={slideRight}
-          >
-            <LazyLoadImage
-              alt=""
-              src="./icon/arrow.png"
-              className="w-[1rem] h-[1rem]"
-            />
-          </div>
-          <div className="container w-full items-center justify-around flex">
-            <div className="w-[85%]">
-              <div className="grid justify-items-end">
-                <ul className="flex gap-x-5">
-                  <li
-                    className={`${
-                      next ? "text-[#D9D9D9]" : "text-[#353435]"
-                    } duration-200`}
-                  >
-                    01
-                  </li>
-                  <li
-                    className={`${
-                      !next ? "text-[#D9D9D9]" : "text-[#353435]"
-                    } duration-200`}
-                  >
-                    02
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
         </section>
       </div>

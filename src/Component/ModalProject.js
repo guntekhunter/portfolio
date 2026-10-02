@@ -34,6 +34,7 @@ export default function ModalProject({ isVisible, onClose, id }) {
         <div className="flex flex-coll justify-center items-center">
           {/* <div className="absolute w-[100%] h-[70rem] rounded-b-full bg-gray-200"></div> */}
           <div className="w-20 flex flex-col">
+            asdasd
             <button
               className="text-white text-xl place-self-end"
               onClick={() => onClose()}
