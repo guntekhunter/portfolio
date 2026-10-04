@@ -1,7 +1,6 @@
 import React, {
   Suspense,
   useEffect,
-  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -40,116 +39,15 @@ export default function Main() {
   const refContact = useRef(null);
   const [idProject, setIdProject] = useState();
   const [showModal, setShowModal] = useState(false);
-  const [id, setId] = useState();
+  const [id] = useState();
   const [hoverId, setHoverId] = useState();
-  const [isMobile, setIsMobile] = useState(false);
   const [scrollPosition, setScrollPosition] = useState();
   const [mobile, setMobile] = useState(false);
   const [emailSend, setEmailSend] = useState(false);
   const [userName, setUserName] = useState();
   let [activeNav, setActiveNav] = useState(false);
 
-  const projectList = [
-    {
-      section1: [
-        {
-          id: 1,
-          image: "1_w0mgia",
-          width: "20rem",
-          class: "inset-[9rem] w-[15rem] hover:w-[17rem]",
-          name: "Persuratan Upana",
-          factoryX: 0.1,
-          factoryY: 0.1,
-        },
-        {
-          id: 2,
-          image: "3_rfywro",
-          width: "20rem",
-          class: "inset-[7rem] left-[35rem] w-[18rem] hover:w-[19rem]",
-          name: "Confie.id",
-          factoryX: 0.2,
-          factoryY: 0.2,
-        },
-        {
-          id: 3,
-          image: "6_bwyo8b",
-          width: "15rem",
-          name: "Sebuah Teman",
-          class: "inset-[17rem] left-[60rem] w-[15rem] hover:w-[17rem]",
-          factoryX: 0.2,
-          factoryY: 0.2,
-        },
-        {
-          id: 4,
-          image: "13_gbxvla",
-          width: "17rem",
-          class: "right-[19rem] top-[28rem] w-[15rem] hover:w-[17rem]",
-          name: "TokoKu",
-          factoryX: 0.4,
-          factoryY: 0.4,
-        },
-        {
-          id: 5,
-          image: "6_hrk5cq",
-          width: "20rem",
-          class: "inset-[15rem] top-[25rem] w-[16rem] hover:w-[17rem]",
-          name: "Digides FAQ",
-          factoryX: 0.3,
-          factoryY: 0.3,
-        },
-      ],
-      section2: [
-        {
-          id: 6,
-          image: "Screenshot_2025-03-09_054145_nn3kzo",
-          width: "20rem",
-          class: "inset-[9rem] w-[15rem] hover:w-[17rem]",
-          name: "Urban Print",
-          url: "www.youtube.com/watch?v=bqDV79o-4jY",
-          factoryX: 0.3,
-          factoryY: 0.3,
-        },
-        {
-          id: 7,
-          image: "14_glay4v",
-          width: "20rem",
-          class: "inset-[7rem] left-[35rem] w-[18rem] hover:w-[19rem]",
-          name: "E Katalogue",
-          url: "https://www.youtube.com/watch?v=9e1jGNzXI3o",
-          factoryX: 0.5,
-          factoryY: 0.5,
-        },
-        {
-          id: 8,
-          image: "8_j4er3d",
-          width: "15rem",
-          class: "inset-[18rem] left-[60rem] w-[13rem] hover:w-[17rem]",
-          name: "Kampusku",
-          factoryX: 0.2,
-          factoryY: 0.2,
-        },
-        {
-          id: 9,
-          name: "Car Rental",
-          image: "7_pa55e6",
-          width: "12rem",
-          class: "right-[19rem] top-[28rem] w-[15rem] hover:w-[17rem]",
-          factoryX: 0.3,
-          factoryY: 0.4,
-        },
-        {
-          id: 10,
-          image: "so_na_f8eeih",
-          width: "20rem",
-          class: "inset-[15rem] top-[25rem] w-[16rem] hover:w-[17rem]",
-          name: "Personal Website",
-          url: "https://www.youtube.com/watch?v=XuqTGP74ik8",
-          factoryX: 0.3,
-          factoryY: 0.3,
-        },
-      ],
-    },
-  ];
+
 
   // animation on scroll
   const ref1 = useRef(null);
@@ -179,14 +77,12 @@ export default function Main() {
   });
 
   // animation on view
-  const { ref, inView } = useInView({
+  const { inView } = useInView({
     threshold: 0.2,
   });
   const animation = useAnimation();
 
   useEffect(() => {
-    const userAgent = navigator.userAgent.toLowerCase();
-    setIsMobile(/mobile|android|iphone/.test(userAgent));
     if (inView) {
       animation.start({
         x: 0,

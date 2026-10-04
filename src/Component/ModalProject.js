@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import projectList from "../Data/ProjectList.json";
 
 export default function ModalProject({ isVisible, onClose, id }) {
