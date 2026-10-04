@@ -2,7 +2,6 @@ import React, { Suspense, useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import projectList from "../Data/ProjectList.json";
-import YouTube from "react-youtube";
 import { AdvancedImage } from "@cloudinary/react";
 import { CloudinaryImage } from "@cloudinary/url-gen";
 import YoutubeFallback from "../Component/YoutubeFallback";
@@ -14,9 +13,8 @@ export default function Portofolio() {
   const [scrollPosition, setScrollPosition] = useState();
   const [data, setData] = useState();
   const [videoId, setVideoId] = useState();
-  let [activeNav, setActiveNav] = useState(false);
+  const [activeNav] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   // get the id base on project that was clicked
   const id = useParams();
@@ -34,14 +32,13 @@ export default function Portofolio() {
   });
 
   // get data from json file base on id that was passing from previous page
-  const section1 = projectList[0].section1;
-  const section2 = projectList[0].section2;
-  const gabung = [...section1, ...section2];
-
   useEffect(() => {
+    const section1 = projectList[0].section1;
+    const section2 = projectList[0].section2;
+    const gabung = [...section1, ...section2];
     const selected = gabung.filter((data) => data.id === parseInt(id.id));
     setData(selected);
-  }, [projectList, id]);
+  }, [id.id]);
 
   // react youtube
   const opts = {
@@ -66,7 +63,6 @@ export default function Portofolio() {
       const dataUrl = data[0].url;
       const idVideo = dataUrl.split("v=")[1];
       setVideoId(idVideo);
-      setIsLoading(false);
     };
     getVideo();
   }, [data]);
